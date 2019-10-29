@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UIElementMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.UIElement">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="byType" jdbcType="VARCHAR" property="bytype" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="projectId" jdbcType="INTEGER" property="projectid" />
+  </resultMap>
+
+  <select id="getAllUIElement" parameterType="java.lang.String" resultType="com.example.model.UIElement">
+    select ue.id, ue.name, ue.byType, ue.path, ue.createTime, ue.comment, ue.projectId, pro.name AS projectName
+    from ui_element ue,project pro
+    where pro.id = ue.projectId
+  </select>
+
+  <select id="getUIElementByName" parameterType="java.lang.String" resultType="com.example.model.UIElement">
+    select ue.id, ue.name, ue.byType, ue.path, ue.createTime, ue.comment, ue.projectId, pro.name AS projectName
+    from ui_element ue,project pro
+    where ue.name like concat('%',#{name,jdbcType=VARCHAR},'%') and pro.id = ue.projectId
+  </select>
+</mapper>
