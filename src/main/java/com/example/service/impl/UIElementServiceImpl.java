@@ -20,13 +20,14 @@ public class UIElementServiceImpl extends BaseService<UIElement> implements UIEl
     @Autowired
     private UIElementMapper uiElementMapper;
 
+
     @Override
-    public List<UIElement> getAllUIElement() {
-        return uiElementMapper.getAllUIElement();
+    public List<UIElement> getUIElementBy(UIElement uiElement) {
+        return uiElementMapper.getUIElementBy(uiElement);
     }
 
     @Override
-    public List<UIElement> getUIElementByName(String name) {
-        return uiElementMapper.getUIElementByName(name);
+    public List<UIElement> getAllUIElement() {
+        return uiElementMapper.selectAll();
     }
 }

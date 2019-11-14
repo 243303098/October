@@ -14,15 +14,19 @@
     <result column="projectId" jdbcType="INTEGER" property="projectid" />
   </resultMap>
 
-  <select id="getAllUIElement" parameterType="java.lang.String" resultType="com.example.model.UIElement">
-    select ue.id, ue.name, ue.byType, ue.path, ue.createTime, ue.comment, ue.projectId, pro.name AS projectName
-    from ui_element ue,project pro
-    where pro.id = ue.projectId
+  <select id="getUIElementBy" parameterType="com.example.model.UIElement" resultType="com.example.model.UIElement">
+    select id, name, byType, path, createTime, comment, projectId
+    from ui_element
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="name != null">
+      and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="projectid != null">
+      and projectid = #{projectid,jdbcType=INTEGER}
+    </if>
   </select>
 
-  <select id="getUIElementByName" parameterType="java.lang.String" resultType="com.example.model.UIElement">
-    select ue.id, ue.name, ue.byType, ue.path, ue.createTime, ue.comment, ue.projectId, pro.name AS projectName
-    from ui_element ue,project pro
-    where ue.name like concat('%',#{name,jdbcType=VARCHAR},'%') and pro.id = ue.projectId
-  </select>
 </mapper>

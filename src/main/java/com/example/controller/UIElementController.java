@@ -6,11 +6,11 @@ import com.example.service.ProjectService;
 import com.example.service.UIElementService;
 import com.example.tools.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -30,31 +30,48 @@ public class UIElementController {
     private ProjectService projectService;
 
     @RequestMapping(value = "/uiTest/elementManage", method = RequestMethod.GET)
-    public ModelAndView toElementManagePage(){
+    public ModelAndView toElementManagePage(HttpServletRequest request){
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
         ModelAndView modelAndView = new ModelAndView();
+        UIElement uiElement = new UIElement();
+        uiElement.setProjectid(projectList.get(0).getId());
         modelAndView.setViewName("uiTest/elementManage");
-        List<UIElement> uiElementList = uiElementService.getAllUIElement();
+        List<UIElement> uiElementList = uiElementService.getUIElementBy(uiElement);
         modelAndView.addObject("uiElementList",uiElementList);
+        modelAndView.addObject("projectId",projectList.get(0).getId());
+        modelAndView.addObject("projectName", projectList.get(0).getName());
         return modelAndView;
     }
 
     /**
      * 根据name查询项目信息
      *
+     * @param request
      * @param name
      * @return
      */
     @RequestMapping(value = "/uiTest/elementManage", method = RequestMethod.POST)
-    public ModelAndView getProjectByName(String name) {
+    public ModelAndView getProjectByName(@RequestParam(name = "name") String name, HttpServletRequest request) {
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
         List<UIElement> uiElementList;
         ModelAndView modelAndView = new ModelAndView();
-        if (StringUtil.isNull(name)){
-            uiElementList = uiElementService.getAllUIElement();
-        }else {
-            uiElementList = uiElementService.getUIElementByName(name);
+        UIElement uiElement = new UIElement();
+        uiElement.setProjectid(projectList.get(0).getId());
+        if (!StringUtil.isNull(name)){
+            uiElement.setName(name);
         }
+        uiElementList = uiElementService.getUIElementBy(uiElement);
         modelAndView.setViewName("uiTest/elementManage");
         modelAndView.addObject("uiElementList", uiElementList);
+        modelAndView.addObject("projectName", projectList.get(0).getName());
         return modelAndView;
     }
 
@@ -77,15 +94,24 @@ public class UIElementController {
      * @return
      */
     @RequestMapping(value = "/uiTest/addElement", method = RequestMethod.POST)
-    public ModelAndView addProject(Integer id, String projectName, String name, String byType, String path, String comment){
+    public ModelAndView addProject(Integer id, String name, String byType, String path, String comment, HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
         UIElement uiElement = new UIElement();
         uiElement.setCreatetime(new Date());
         uiElement.setName(name);
-        uiElement.setBytype(byType);
+        if (StringUtil.isNull(byType)){
+            uiElement.setBytype("xpath");
+        }else {
+            uiElement.setBytype(byType);
+        }
         uiElement.setPath(path);
         uiElement.setComment(comment);
-        uiElement.setProjectid(projectService.getProjectByName(projectName).get(0).getId());
+        uiElement.setProjectid(projectList.get(0).getId());
         if (StringUtil.isNull(String.valueOf(id))){
             uiElementService.save(uiElement);
         }else {
@@ -102,13 +128,10 @@ public class UIElementController {
      * @return
      */
     @RequestMapping(value = "/uiTest/addElement", method = RequestMethod.GET)
-    public ModelAndView getAddProjectPageById(Integer id, String name, String bytype, String path, String comment, String projectId){
+    public ModelAndView getAddProjectPageById(Integer id, String name, String bytype, String path, String comment){
         ModelAndView modelAndView = new ModelAndView();
         List<Project> projectList = projectService.getAllProject();
         modelAndView.setViewName("uiTest/elementEdit");
-        if (!StringUtil.isNull(projectId)){
-            modelAndView.addObject("projectName", projectService.selectByKey(projectId).getName());
-        }
         modelAndView.addObject("elementId", id);
         modelAndView.addObject("name", name);
         modelAndView.addObject("bytype", bytype);

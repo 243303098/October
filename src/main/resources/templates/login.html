@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -29,7 +31,7 @@
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="../static/assets/ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -64,16 +66,18 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="" method="post" class="login-form">
+                        <form id="formTag" th:action="@{/loginPost}" method="POST" class="login-form" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label class="sr-only" for="user_login">Username</label>
-                                <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="user_login">
+                                <label class="sr-only" for="userName">Username</label>
+                                <input type="text" name="userName" placeholder="Username..." class="form-username form-control" id="userName">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="user_pass">Password</label>
-                                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="user_pass">
+                                <label class="sr-only" for="password">Password</label>
+                                <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="password">
                             </div>
-                            <button type="submit" class="btn" onclick="login()">Sign in!</button>
+                            <div class="form-group">
+                                <button id="submitButton" class="btn btn-primary" type="button">Sign in!</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -102,30 +106,44 @@
         hideMethod: "fadeOut"
     };
 </script>
-<script>
-    function login() {
-        var accountName = $("#user_login"), password = $("#user_pass");
-        var accountName = accountName.val(), password = password.val();
-        if (!accountName || !password) {
-            toastr.warning("请输入用户名或密码");
-        }else {
-            var paramData = {"username": accountName, "password": password};
-            $.ajax({
-                url: "/loginPost",
-                data: JSON.stringify(paramData),
-                type: "POST",
-                dataType: "json",
-                contentType:'application/json;charset=UTF-8',
-                success: function (data) {
-                    if (data.code == 1) {
-                        window.location.href = "baseConfig/dashboard";
-                        toastr.success("登录成功");
-                    } else {
-                        toastr.warning("用户名或密码不正确","登录失败");
-                    }
-                }
-            })
-        }
-    }
+<!--<script>-->
+    <!--function login() {-->
+        <!--var accountName = $("#user_login"), password = $("#user_pass");-->
+        <!--var accountName = accountName.val(), password = password.val();-->
+        <!--if (!accountName || !password) {-->
+            <!--toastr.warning("请输入用户名或密码");-->
+        <!--}else {-->
+            <!--var paramData = {"username": accountName, "password": password};-->
+            <!--$.ajax({-->
+                <!--url: "/loginPost",-->
+                <!--data: JSON.stringify(paramData),-->
+                <!--type: "POST",-->
+                <!--dataType: "json",-->
+                <!--contentType:'application/json;charset=UTF-8',-->
+                <!--success: function () {-->
+                    <!--toastr.success("登录成功");-->
+                <!--}-->
+            <!--})-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+<script th:inline="javascript">
+    $(document).ready(function () {
+
+        //提交
+        $("#submitButton").click(function(){
+
+            if($("#userName").val() == ""){
+                toastr.error('请输入用户名');
+                return;
+            }
+            if($("#password").val() == ""){
+                toastr.error('请输入密码');
+                return;
+            }
+            $("#formTag").submit();
+        });
+
+    });
 </script>
 </html>

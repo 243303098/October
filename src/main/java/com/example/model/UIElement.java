@@ -23,8 +23,6 @@ public class UIElement{
     @Column(name = "projectId")
     private Integer projectid;
 
-    private String projectName;
-
     /**
      * @return id
      */
@@ -123,11 +121,4 @@ public class UIElement{
         this.projectid = projectid;
     }
 
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
 }

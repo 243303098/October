@@ -8,7 +8,7 @@ public class Project {
     @Id
     private Integer id;
 
-    public String name;
+    private String name;
 
     @Column(name = "createTime")
     private Date createtime;
@@ -20,6 +20,9 @@ public class Project {
      * 1启动，0停用
      */
     private Integer status;
+
+    @Column(name = "userId")
+    private Integer userid;
 
     /**
      * @return id
@@ -93,5 +96,19 @@ public class Project {
      */
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    /**
+     * @return userId
+     */
+    public Integer getUserid() {
+        return userid;
+    }
+
+    /**
+     * @param userid
+     */
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 }

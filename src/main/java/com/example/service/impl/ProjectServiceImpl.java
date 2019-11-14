@@ -27,6 +27,11 @@ public class ProjectServiceImpl extends BaseService<Project> implements ProjectS
     }
 
     @Override
+    public List<Project> getProjectBy(Project project) {
+        return projectMapper.selectBy(project);
+    }
+
+    @Override
     public List<Project> getProjectByName(String name) {
         return projectMapper.selectByName(name);
     }

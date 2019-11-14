@@ -18,6 +18,7 @@
     <!-- summernote style -->
     <link th:href="@{/css/plugins/summernote/summernote.css}" rel="stylesheet" />
     <link th:href="@{/css/plugins/summernote/summernote-bs3.css}" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -28,16 +29,16 @@
         <div class="border-bottom" th:include="header :: headerTop"></div>
         <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
             <div class="col-lg-10">
-                <h2>元素管理</h2>
+                <h2>模块管理</h2>
                 <ol class="breadcrumb">
                     <li>
                         <a href="#">UI自动化</a>
                     </li>
                     <li>
-                        <a>元素管理</a>
+                        <a>模块管理</a>
                     </li>
                     <li class="active">
-                        <strong>元素新增或修改</strong>
+                        <strong>模块新增或修改</strong>
                     </li>
                 </ol>
             </div>
@@ -49,7 +50,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>新增或修改元素</h5>
+                            <h5>新增或修改模块</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -57,33 +58,39 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form id="formTag" action="/uiTest/addElement" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="formTag" th:action="@{/uiTest/editModule}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
                                 <div class="form-group"><label class="col-sm-2 control-label">ID：</label>
                                     <div class="col-sm-10">
-                                        <input id="id" name="id" readonly="readonly" type="text" class="form-control" th:value="${elementId}"/>
+                                        <input id="id" name="id" readonly="readonly" type="text" class="form-control" th:value="${id}"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label"><a class="text-danger">*</a>元素名称：</label>
+                                <div class="form-group"><label class="col-sm-2 control-label"><a class="text-danger">*</a>模块名称：</label>
                                     <div class="col-sm-10">
-                                        <input id="name" name="name" type="text" class="form-control" th:value="${name}"/>
+                                        <input id="moduleName" name="moduleName" type="text" class="form-control" th:value="${moduleName}"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
-                                <div class="form-group"><label class="col-sm-2 control-label">类型：</label>
+                                <div class="form-group"><label class="col-sm-2 control-label"><a class="text-danger">*</a>状态：</label>
                                     <div class="col-sm-10">
-                                        <input id="byType" name="byType" type="text" class="form-control" th:value="${bytype}" placeholder="默认为xpath"/>
+                                        <input id="status" name="status" type="text" class="form-control" th:value="${status}"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
-                                <div class="form-group required"><label class="col-sm-2 control-label"><a class="text-danger">*</a>路径：</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">参数：</label>
                                     <div class="col-sm-10">
-                                        <input id="path" name="path" type="text" class="form-control" th:value="${path}"/>
+                                        <input id="paramData" name="paramData" type="text" class="form-control" th:value="${paramData}"/>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">返回参数：</label>
+                                    <div class="col-sm-10">
+                                        <input id="returnData" name="returnData" type="text" class="form-control" th:value="${returnData}"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -141,12 +148,12 @@
         //提交
         $("#submitButton").click(function(){
 
-            if($("#name").val() == ""){
+            if($("#moduleName").val() == ""){
                 toastr.error('请输入名称','提示');
                 return;
             }
-            if($("#path").val() == ""){
-                toastr.error('请输入路径','提示');
+            if($("#status").val() == ""){
+                toastr.error('请输入状态','提示');
                 return;
             }
 

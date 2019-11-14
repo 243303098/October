@@ -10,11 +10,26 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
   </resultMap>
     <select id="selectByName" parameterType="java.lang.String" resultType="com.example.model.Project">
-        select id, name, createTime, updateTime, status
+        select id, name, createTime, updateTime, status, userId
         from project
         where name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    </select>
+    <select id="selectBy" parameterType="com.example.model.UIModule" resultType="com.example.model.Project">
+        select id, name, createTime, updateTime, status, userId
+        from project
+        where 1=1
+        <if test="id != null">
+            and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="name != null">
+            and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userid != null">
+            and userId = #{userid,jdbcType=INTEGER}
+        </if>
     </select>
 
 </mapper>

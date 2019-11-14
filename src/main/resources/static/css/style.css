@@ -8091,3 +8091,7 @@ body.md-skin {
     display: none;
   }
 }
+
+.form-group .required .control-label {
+  content:"*";color:red;
+}

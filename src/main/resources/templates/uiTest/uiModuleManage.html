@@ -21,16 +21,13 @@
         <div class="border-bottom" th:include="header :: headerTop"></div>
         <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
             <div class="col-lg-10">
-                <h2>项目管理</h2>
+                <h2>模块管理</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="#">首页</a>
-                    </li>
-                    <li>
-                        <a>基础配置</a>
+                        <a href="#">UI自动化</a>
                     </li>
                     <li class="active">
-                        <strong>项目管理</strong>
+                        <strong>模块管理</strong>
                     </li>
                 </ol>
             </div>
@@ -41,42 +38,42 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
 
-                <!--<div class="col-lg-12">-->
-                    <!--<div class="ibox float-e-margins">-->
-                        <!--&lt;!&ndash;搜索操作框&ndash;&gt;-->
-                        <!--<div class="ibox-title">-->
-                            <!--<h5>查询</h5>-->
-                            <!--<div class="ibox-tools">-->
-                                <!--<a class="collapse-link">-->
-                                    <!--<i class="fa fa-chevron-up"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="ibox-content" style="display: block;">-->
-                            <!--<form action="/baseConfig/projectManage" class="col-sm-10 m-b-xs" th:method="post">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="col-sm-7 m-b-xs">-->
-                                        <!--<input id="name" name="name" placeholder="项目名称" class="form-control" type="text" th:value="${name}"/>-->
-                                    <!--</div>-->
-                                    <!--<div class="col-sm-3 m-b-xs">-->
-                                        <!--<button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search-plus"></i>&nbsp;&nbsp;<strong>搜索</strong>&nbsp;&nbsp;</button>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</form>-->
-                            <!--<div class="row">-->
-                                <!--<div class="col-sm-2 m-b-xs">-->
-                                    <!--&lt;!&ndash;&ndash;&gt;-->
-                                    <!--<a th:href="@{/baseConfig/projectEdit}" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增项目</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <!--搜索操作框-->
+                        <div class="ibox-title">
+                            <h5>查询</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <form th:action="@{/uiTest/moduleManage}" class="col-sm-10 m-b-xs" th:method="post">
+                                <div class="row">
+                                    <div class="col-sm-7 m-b-xs">
+                                        <input id="moduleName" name="moduleName" placeholder="模块名称" class="form-control" type="text" th:value="${moduleName}"/>
+                                    </div>
+                                    <div class="col-sm-3 m-b-xs">
+                                        <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search-plus"></i>&nbsp;&nbsp;<strong>搜索</strong>&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-sm-2 m-b-xs">
+                                    <!---->
+                                    <a th:href="@{/uiTest/editModule}" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增模块</a>
+                                </div>
+                            </div>
 
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>项目列表</h5>
+                            <h5>模块列表</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -88,30 +85,31 @@
                                 <table class=" table table-hover" data-page-size="5">
                                     <thead>
                                     <tr>
-                                        <th width="10%">ID</th>
-                                        <th width="25%">项目名称</th>
-                                        <th width="15%">创建时间</th>
-                                        <th width="15%">状态</th>
-                                        <th width="10%">所属用户</th>
-                                        <!--<th width="25">操作</th>-->
+                                        <th width="5%">ID</th>
+                                        <th width="10%">模块名称</th>
+                                        <th width="5%">状态</th>
+                                        <th width="30%">参数</th>
+                                        <th width="20%">返回参数</th>
+                                        <th width="10%">描述</th>
+                                        <th width="20">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item : ${project}">
+                                    <tr th:each="item : ${uiModuleList}">
                                         <td th:text="${item.id}">Onions</td>
-                                        <td th:text="${item.name}">Onions</td>
-                                        <td th:text="${#dates.format(item.createtime, 'yyyy-MM-dd')}">Onions</td>
-                                        <td th:switch="${item.status}">
-                                            <span th:case = "0">禁用</span>
-                                            <span th:case = "1">启用</span>
+                                        <td th:text="${item.modulename}">Onions</td>
+                                        <td th:text="${item.status}">Onions</td>
+                                        <td th:text="${item.paramdata}">Onions</td>
+                                        <td th:text="${item.returndata}">Onions</td>
+                                        <td th:text="${item.comment}">Onions</td>
+                                        <td>
+                                            <a th:href="@{/uiTest/editModule(id=${item.id},moduleName=${item.modulename},status=${item.status},comment=${item.comment},paramData=${item.paramdata},returnData=${item.returndata})}" title="修改"><i class="fa fa-edit text-navy"></i></a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a th:href="@{/uiTest/editUIStep(moduleId=${item.id})}" title="添加步骤"><i class="fa fa-plus text-navy"></i></a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
-                                        <td th:text="${item.userid}">Onions</td>
-                                        <!--<td>-->
-                                            <!--<a th:href="@{/baseConfig/projectEdit(id=${item.id},name=${item.name},status=${item.status})}" title="修改"><i class="fa text-navy"></i>修改</a>-->
-                                            <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
-                                            <!--<a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa text-navy"></i>删除</a>-->
-                                            <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
-                                        <!--</td>-->
                                     </tr>
                                     </tbody>
                                     <tfoot>
@@ -160,7 +158,7 @@
 
 <script th:inline="javascript">
 
-    $("#baseConfig").attr("class","active");
+    $("#uiTest").attr("class","active");
 
     var pageHTML = [[${pageHTML}]];
     $(document).ready(function () {
@@ -178,7 +176,7 @@
         if(deleteTag){
             $.ajax({
                 type: "POST",
-                url: "/baseConfig/deleteProject?id="+id,
+                url: "/uiTest/deleteModule?id="+id,
                 contentType: "application/json; charset=utf-8",
                 success: function(msg){
                     window.location.reload();

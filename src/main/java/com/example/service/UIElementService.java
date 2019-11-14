@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface UIElementService extends IService<UIElement>{
 
-    List<UIElement> getAllUIElement();
+    List<UIElement> getUIElementBy(UIElement uiElement);
 
-    List<UIElement> getUIElementByName(String name);
+    List<UIElement> getAllUIElement();
 
 }

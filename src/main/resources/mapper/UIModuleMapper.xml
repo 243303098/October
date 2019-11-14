@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UIModuleMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.UIModule">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="moduleName" jdbcType="VARCHAR" property="modulename" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="paramData" jdbcType="VARCHAR" property="paramdata" />
+    <result column="returnData" jdbcType="VARCHAR" property="returndata" />
+    <result column="projectId" jdbcType="INTEGER" property="projectid" />
+  </resultMap>
+  <select id="selectBy" parameterType="com.example.model.UIModule" resultType="com.example.model.UIModule">
+      select id,moduleName,status,comment,paramData,returnData,projectId
+      from ui_module
+      where 1=1
+      <if test="id != null">
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="modulename != null">
+        and modulename like concat('%',#{modulename,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="projectid != null">
+          and projectid = #{projectid,jdbcType=INTEGER}
+      </if>
+  </select>
+</mapper>

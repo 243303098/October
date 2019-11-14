@@ -11,4 +11,6 @@ public interface ProjectMapper extends MyMapper<Project> {
 
     List<Project> selectByName(String name);
 
+    List<Project> selectBy(Project project);
+
 }

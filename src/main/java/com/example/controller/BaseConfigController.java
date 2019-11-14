@@ -4,11 +4,10 @@ import com.example.model.Project;
 import com.example.service.ProjectService;
 import com.example.tools.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -28,17 +27,15 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/projectManage", method = RequestMethod.GET)
-    public ModelAndView projectManager() {
-        //if (pageSize == 0) pageSize = 50;
-        //if (pageCurrent == 0) pageCurrent = 1;
-        List<Project> projectList = projectService.getAllProject();
-        //int rows = projectList.size();
-        //if (pageCount == 0) pageCount = rows % pageSize == 0 ? (rows / pageSize) : (rows / pageSize) + 1;
-        //String pageHTML = PageUtil.getPageContent("projectManage_{pageCurrent}_{pageSize}_{pageCount}", pageCurrent, pageSize, pageCount);
+    public ModelAndView projectManager(HttpServletRequest request) {
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("baseConfig/projectManage");
         modelAndView.addObject("project", projectList);
-        //modelAndView.addObject("pageHTML", pageHTML);
         return modelAndView;
     }
 
@@ -104,10 +101,12 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/projectEdit", method = RequestMethod.GET)
-    public ModelAndView getAddProjectPageById(Integer id){
+    public ModelAndView getAddProjectPageById(Integer id, String name, Integer status){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("baseConfig/projectEdit");
         modelAndView.addObject("projectId", id);
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("status", status);
         return modelAndView;
     }
 

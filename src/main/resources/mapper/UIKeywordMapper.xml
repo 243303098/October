@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UIKeywordMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.UIKeyword">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="actionType" jdbcType="VARCHAR" property="actiontype" />
+    <result column="actionKey" jdbcType="VARCHAR" property="actionkey" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+    <select id="selectById" resultType="com.example.model.UIKeyword" parameterType="java.lang.String">
+      select id, actionType, actionKey, comment
+      from ui_keyword
+      where id like concat('%',#{id,jdbcType=VARCHAR},'%')
+    </select>
+</mapper>

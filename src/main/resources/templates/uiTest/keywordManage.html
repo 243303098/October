@@ -6,6 +6,7 @@
 
     <title>后台信息管理系统</title>
 
+
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
@@ -21,13 +22,16 @@
         <div class="border-bottom" th:include="header :: headerTop"></div>
         <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
             <div class="col-lg-10">
-                <h2>元素管理</h2>
+                <h2>关键字</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="#">UI自动化</a>
+                        <a href="#">项目管理</a>
+                    </li>
+                    <li>
+                        <a>基础配置</a>
                     </li>
                     <li class="active">
-                        <strong>元素管理</strong>
+                        <strong>关键字</strong>
                     </li>
                 </ol>
             </div>
@@ -50,10 +54,10 @@
                             </div>
                         </div>
                         <div class="ibox-content" style="display: block;">
-                            <form th:action="@{/uiTest/elementManage}" class="col-sm-10 m-b-xs" th:method="post">
+                            <form th:action="@{/uiTest/keywordManage}" class="col-sm-12 m-b-xs" th:method="post">
                                 <div class="row">
                                     <div class="col-sm-7 m-b-xs">
-                                        <input id="name" name="name" placeholder="元素名称" class="form-control" type="text" th:value="${name}"/>
+                                        <input id="id" name="id" placeholder="关键字" class="form-control" type="text" th:value="${id}"/>
                                     </div>
                                     <div class="col-sm-3 m-b-xs">
                                         <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search-plus"></i>&nbsp;&nbsp;<strong>搜索</strong>&nbsp;&nbsp;</button>
@@ -63,17 +67,15 @@
                             <div class="row">
                                 <div class="col-sm-2 m-b-xs">
                                     <!---->
-                                    <a th:href="@{/uiTest/addElement}" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="left" title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增元素</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>元素列表</h5>
+                            <h5>关键字列表</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -82,40 +84,23 @@
                         </div>
                         <div class="ibox-content">
                             <div class="table-responsive">
-                                <table class=" table table-hover" data-page-size="5">
+                                <table class=" table table-hover" data-page-size="5" data-use-row-attr-func="true" data-reorderable-rows="true">
                                     <thead>
                                     <tr>
-                                        <th width="10%">ID</th>
-                                        <th width="20%">元素名称</th>
-                                        <th width="10%">类型</th>
-                                        <th width="30%">路径</th>
-                                        <th width="10%">描述</th>
-                                        <th width="10%">项目</th>
-                                        <th width="10">操作</th>
+                                        <th width="25%">ID</th>
+                                        <th width="20%">actionType</th>
+                                        <th width="20%">actionKey</th>
+                                        <th width="35%">comment</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item : ${uiElementList}">
+                                    <tr th:each="item : ${keywordList}">
                                         <td th:text="${item.id}">Onions</td>
-                                        <td th:text="${item.name}">Onions</td>
-                                        <td th:text="${item.bytype}">Onions</td>
-                                        <td th:text="${item.path}">Onions</td>
+                                        <td th:text="${item.actiontype}">Onions</td>
+                                        <td th:text="${item.actionkey}">Onions</td>
                                         <td th:text="${item.comment}">Onions</td>
-                                        <td th:text="${projectName}">Onions</td>
-                                        <td>
-                                            <a th:href="@{/uiTest/addElement(id=${item.id},name=${item.name},bytype=${item.bytype},path=${item.path},comment=${item.comment})}" title="修改"><i class="fa fa-edit text-navy"></i></a>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
-                                        </td>
                                     </tr>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="8">
-                                            <ul id="pageHTML" class="pagination pull-right"></ul>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
                                 </table>
 
                             </div>
@@ -153,9 +138,24 @@
 <!-- common -->
 <script th:src="@{/js/common.js}"></script>
 
+<script th:src="@{/js/jquery.tablednd.js}"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/extensions/reorder-rows/bootstrap-table-reorder-rows.js"></script>
+
 <script th:inline="javascript">
 
-    $("#uiTest").attr("class","active");
+    onReorderRowsDrag: function f(table, row) {
+        return false;
+    };
+
+    onReorderRowsDrop: function f(table, row) {
+        return false;
+    };
+    onReorderRow: function f(newData) {
+        return false;
+    };
+
+
+    $("#baseConfig").attr("class","active");
 
     var pageHTML = [[${pageHTML}]];
     $(document).ready(function () {

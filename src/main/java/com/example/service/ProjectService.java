@@ -12,6 +12,8 @@ public interface ProjectService extends IService<Project>{
 
     List<Project> getAllProject();
 
+    List<Project> getProjectBy(Project project);
+
     List<Project> getProjectByName(String name);
 
 }
