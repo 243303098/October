@@ -11,4 +11,6 @@ public interface UIModuleMapper extends MyMapper<UIModule> {
 
     List<UIModule> selectBy(UIModule uiModule);
 
+    List<UIModule> selectByIdIn(List<Integer> list);
+
 }

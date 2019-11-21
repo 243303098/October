@@ -52,6 +52,6 @@
        </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="ui_step" domainObjectName="UIStep"/>
+        <table tableName="ui_case" domainObjectName="UICase"/>
     </context>
 </generatorConfiguration>

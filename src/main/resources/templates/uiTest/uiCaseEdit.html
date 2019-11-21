@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>后台信息管理系统</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
+
+    <!-- Toastr style -->
+    <link th:href="@{/css/plugins/toastr/toastr.min.css}" rel="stylesheet"/>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
+    <!-- summernote style -->
+    <link th:href="@{/css/plugins/summernote/summernote.css}" rel="stylesheet"/>
+    <link th:href="@{/css/plugins/summernote/summernote-bs3.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation" th:include="nav :: navigation"></nav>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="border-bottom" th:include="header :: headerTop"></div>
+        <div class="row wrapper border-bottom white-bg page-heading" th:fragment="headerNav">
+            <div class="col-lg-10">
+                <h2>CASE管理</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">UI自动化</a>
+                    </li>
+                    <li>
+                        <a>CASE管理</a>
+                    </li>
+                    <li class="active">
+                        <strong>CASE新增或修改</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>新增或修改模块</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form id="formTag" action="" method="" class="form-horizontal" enctype="">
+
+                                <div class="form-group"><label class="col-sm-2 control-label">ID：</label>
+                                    <div class="col-sm-10">
+                                        <input id="id" name="id" readonly="readonly" type="text" class="form-control"
+                                               th:value="${id}"/>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label"><a
+                                        class="text-danger">*</a>CASE名称：</label>
+                                    <div class="col-sm-10">
+                                        <input id="name" name="name" type="text" class="form-control"
+                                               th:value="${name}"/>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group" th:switch="${isAdd}"><label class="col-sm-2 control-label"><a
+                                        class="text-danger">*</a>关联模块：</label>
+                                    <div class="col-sm-8" id="moduleList" th:case="0" >
+                                        <select th:each="userdModule : ${useredModuleList}" id="moduleid"
+                                                name="moduleid" class="form-control">
+                                            <option th:value="${userdModule.id}" th:text="${userdModule.modulename}" disabled selected
+                                                    hidden></option>
+                                            <option th:each="uiModule : ${uiModuleList}"
+                                                    th:value="${uiModule.id}" th:text="${uiModule.modulename}"
+                                                    th:title="${uiModule.comment}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-8" id="moduleList" th:case="1" >
+                                        <select id="moduleid" name="moduleid" class="form-control">
+                                            <option th:text="请选择模块" disabled selected hidden></option>
+                                            <option th:each="uiModule : ${uiModuleList}"
+                                                    th:value="${uiModule.id}" th:text="${uiModule.modulename}"
+                                                    th:title="${uiModule.comment}"></option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <a id="addModule" title="添加模块" class="btn btn-primary btn-block">添加模块</a>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group"><label class="col-sm-2 control-label">状态：</label>
+                                    <div class="col-sm-10">
+                                        <input id="status" name="status" type="text" class="form-control"
+                                               th:value="${status}"/>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button id="submitButton" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer" th:include="footer :: copyright"></div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script th:src="@{/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+<!-- Peity -->
+<script th:src="@{/js/plugins/peity/jquery.peity.min.js}"></script>
+
+<!-- Custom and plugin javascript -->
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+
+<!-- Toastr script -->
+<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+
+<!-- common -->
+<script th:src="@{/js/common.js}"></script>
+
+<!-- SUMMERNOTE -->
+<script th:src="@{/js/plugins/summernote/summernote.min.js}"></script>
+
+<script th:inline="javascript">
+
+    $("#uiTest").attr("class", "active");
+
+    //模块后面添加br隔开
+    var moduleList = document.getElementsByTagName("select");
+    var br = document.createElement("br");
+    // var deleteModule = document.createElement("<div class='col-sm-2'><a id='addModule' title='删除模块' class='btn btn-primary btn-block'>删除模块</a></div>");
+    for(var i = 0 ;i<moduleList.length -1 ;i++){
+        moduleList[i].after(br);
+    }
+
+    $(document).ready(function () {
+        //提交
+        $("#submitButton").click(function () {
+
+            var moduleArr = '';
+
+            if ($("#name").val() == "") {
+                toastr.error('请输入名称', '提示');
+                return;
+            }
+            if ($("#status").val() == "") {
+                toastr.error('请输入状态', '提示');
+                return;
+            }
+            var selectList = $('select');
+            for(var i = 0 ;i<selectList.length ;i++){
+                if (selectList[i].value == "请选择模块" || selectList[i].value ==""){
+                    toastr.error('请选择模块', '提示');
+                    return;
+                }else {
+                    if (moduleArr != "") {
+                        moduleArr = moduleArr + ',';
+                    }
+                    moduleArr = moduleArr + selectList[i].value
+                }
+            }
+            var id = [[${id}]];
+            var projectId = [[${projectId}]];
+            var json = {"id":id,"name":$("#name").val(),"moduleId":moduleArr,"status":$("#status").val(),"projectId":projectId};
+            $.ajax({
+                url:'/uiTest/editCase',
+                type:'post',
+                dataType : "html",
+                data:JSON.stringify(json),
+                contentType: "application/json",
+                success:function (data) {
+                    toastr.success("更新成功");
+                    window.location.href = "/uiTest/caseManage";
+                },
+                error:function(error){
+                    toastr.error('系统异常');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                }
+            })
+
+        });
+
+        //添加关联模块
+        $("#addModule").click(function () {
+            var uiModuleList = [[${uiModuleList}]];
+            var uiModuleOption = '<option disabled selected hidden>请选择模块</option>';
+            for (var i = 0; i < uiModuleList.length; i++) {
+                uiModuleOption += "<option value=\"" + uiModuleList[i].id + "\" title=\"" + uiModuleList[i].comment + "\">" + uiModuleList[i].modulename + "</option>"
+            }
+            $("#moduleList").append("<br><select id='moduleid' name='moduleid' class='form-control'>" + uiModuleOption);
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+package com.example.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.example.mapper.UICaseMapper;
+import com.example.model.Project;
+import com.example.model.UICase;
+import com.example.model.UIModule;
+import com.example.service.ProjectService;
+import com.example.service.UICaseService;
+import com.example.service.UIModuleService;
+import com.example.tools.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @Auther: Leo.hu
+ * @Date: 2019/11/15 14:07
+ * @Description:
+ */
+
+@RestController
+public class UICaseController {
+
+    @Autowired
+    private UICaseService uiCaseService;
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Autowired
+    private UIModuleService uiModuleService;
+
+    @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.GET)
+    public ModelAndView toModuleManagePage(HttpServletRequest request){
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
+        ModelAndView modelAndView = new ModelAndView();
+        UICase uiCase = new UICase();
+        uiCase.setProjectid(projectList.get(0).getId());
+        modelAndView.setViewName("uiTest/uiCaseManage");
+        modelAndView.addObject("projectId", projectList.get(0).getId());
+        modelAndView.addObject("uiCaseList", uiCaseService.getUICaseBy(uiCase));
+        return modelAndView;
+    }
+
+    /**
+     * 查询module
+     * @param name
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.POST)
+    public ModelAndView toModuleManagePagePost(@RequestParam(name = "name") String name, HttpServletRequest request){
+        Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
+        List<Project> projectList = projectService.getProjectBy(project);
+        ModelAndView modelAndView = new ModelAndView();
+        UICase uiCase = new UICase();
+        uiCase.setProjectid(projectList.get(0).getId());
+        uiCase.setName(name);
+        modelAndView.setViewName("uiTest/uiCaseManage");
+        modelAndView.addObject("projectId", projectList.get(0).getId());
+        modelAndView.addObject("uiCaseList", uiCaseService.getUICaseBy(uiCase));
+        return modelAndView;
+    }
+
+    /**
+     * 编辑Case页面
+     * @param id
+     * @param name
+     * @param status
+     * @param moduleId
+     * @return
+     */
+    @RequestMapping(value = "/uiTest/editCase", method = RequestMethod.GET)
+    public ModelAndView getEditCasePageById(Integer id, String name, String moduleId, String status, Integer projectId){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("uiTest/uiCaseEdit");
+        UIModule uiModule = new UIModule();
+        uiModule.setProjectid(projectId);
+        List<Integer> moduleIdList = new ArrayList();
+        if (!StringUtil.isNull(moduleId)){
+            String[] modulearr = moduleId.split(",");
+            for (String s:modulearr) {
+                moduleIdList.add(Integer.valueOf(s));
+            }
+            modelAndView.addObject("useredModuleList", uiModuleService.getUIModuleByIdIn(moduleIdList));
+            modelAndView.addObject("isAdd","0");
+        }else {
+            modelAndView.addObject("useredModuleList","");
+            modelAndView.addObject("isAdd","1");
+        }
+        modelAndView.addObject("uiModuleList",uiModuleService.getUIModuleBy(uiModule));
+        modelAndView.addObject("id",id);
+        modelAndView.addObject("name",name);
+        modelAndView.addObject("moduleid",moduleId);
+        modelAndView.addObject("status",status);
+        modelAndView.addObject("projectId",projectId);
+        return modelAndView;
+    }
+
+    /**
+     * 删除case
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/uiTest/deleteCase", method = RequestMethod.POST)
+    public ModelAndView deleteModule(Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        uiCaseService.delete(id);
+        modelAndView.setViewName("uiTest/uiCaseManage");
+        return modelAndView;
+    }
+
+    /**
+     * 编辑case
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/uiTest/editCase", method = RequestMethod.POST)
+    public ModelAndView editModule(@RequestBody JSONObject json){
+        ModelAndView modelAndView = new ModelAndView();
+        UICase uiCase = new UICase();
+        uiCase.setProjectid(json.getInteger("projectId"));
+        uiCase.setName(json.getString("name"));
+        uiCase.setModuleid(json.getString("moduleId"));
+        uiCase.setStatus(json.getString("status"));
+        if (StringUtil.isNull(String.valueOf(json.getInteger("id")))){
+            uiCaseService.save(uiCase);
+        }else {
+            uiCase.setId(json.getInteger("id"));
+            uiCaseService.updateAll(uiCase);
+        }
+        modelAndView.setViewName("redirect:/uiTest/caseManage");
+        return modelAndView;
+    }
+
+}

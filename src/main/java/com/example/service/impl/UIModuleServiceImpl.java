@@ -23,4 +23,9 @@ public class UIModuleServiceImpl extends BaseService<UIModule> implements UIModu
     public List<UIModule> getUIModuleBy(UIModule uiModule) {
         return uiModuleMapper.selectBy(uiModule);
     }
+
+    @Override
+    public List<UIModule> getUIModuleByIdIn(List<Integer> idList) {
+        return uiModuleMapper.selectByIdIn(idList);
+    }
 }

@@ -13,4 +13,6 @@ public interface UIModuleService extends IService<UIModule>{
 
     List<UIModule> getUIModuleBy(UIModule uiModule);
 
+    List<UIModule> getUIModuleByIdIn(List<Integer> idList);
+
 }

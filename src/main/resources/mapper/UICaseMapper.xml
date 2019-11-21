@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UICaseMapper">
+    <resultMap id="BaseResultMap" type="com.example.model.UICase">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="moduleId" jdbcType="VARCHAR" property="moduleid"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="projectId" jdbcType="INTEGER" property="projectid"/>
+    </resultMap>
+    <select id="selectBy" resultType="com.example.model.UICase" parameterType="com.example.model.UICase">
+        select id,name,moduleId,status,projectId
+        from ui_case
+        where 1=1
+        <if test="id != null">
+            and id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="name != null">
+            and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="projectid != null">
+            and projectid = #{projectid,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>
