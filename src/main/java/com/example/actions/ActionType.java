@@ -18,11 +18,6 @@ public enum ActionType {
     SWITCHWINDOW("SWITCHWINDOW"),
 
     /**
-     * 关闭新窗口
-     */
-    CLOSENEWWINDOW("CLOSENEWWINDOW"),
-
-    /**
      * 切换frame
      */
     SWITCHTOFRAME("SWITCHTOFRAME"),
@@ -41,11 +36,6 @@ public enum ActionType {
      * 点击事件
      */
     CLICK("CLICK"),
-
-    /**
-     *
-     */
-    IMPLICIT_CLICK("IMPLICIT_CLICK"),
 
     /**
      * 右击事件
@@ -88,16 +78,6 @@ public enum ActionType {
     CANCELALERT("CANCELALERT"),
 
     /**
-     * 获取alert文本
-     */
-    GETALERTTEXT("GETALERTTEXT"),
-
-    /**
-     * The switchFrame.
-     */
-    SWITCHFRAME("SWITCHFRAME"),
-
-    /**
      * The Keyboard
      */
     KEYBOARD("KEYBOARD"),
@@ -118,9 +98,9 @@ public enum ActionType {
     ELEMENTEXIST("ELEMENTEXIST"),
 
     /**
-     * The Element NotExist.
+     * The Check status.
      */
-    ELEMENTNOTEXIST("ELEMENTNOTEXIST"),
+    ELEMENTCHECKED("ELEMENTCHECKED"),
 
     /**
      * The Equal Text.
@@ -138,9 +118,9 @@ public enum ActionType {
     EQUALHREFVALUE("EQUALHREFVALUE"),
 
     /**
-     * The NotEqual HrefValue.
+     * The Selected status
      */
-    NOTEQUALHREFVALUE("NOTEQUALHREFVALUE"),
+    ELEMENTSELECTED("ELEMENTSELECTED"),
 
     /**
      * get attribute and if equal the given value.
@@ -151,11 +131,6 @@ public enum ActionType {
      * 强制等待
      */
     WAIT("WAIT"),
-
-    /**
-     * 元素滚动操作
-     */
-    SCROLL("SCROLL"),
 
     /**
      * 通过接口打开URL

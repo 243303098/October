@@ -33,9 +33,13 @@ public class UIStep {
 
     private String uiElementComment;
 
-    private String URL;
+    private String url;
 
-    private String BROWSERTYPE;
+    private String browsertype;
+
+    private String actionKey;
+
+    private String actionType;
 
     public Integer getId() {
         return id;
@@ -169,19 +173,35 @@ public class UIStep {
         this.uiElementComment = uiElementComment;
     }
 
-    public String getURL() {
-        return URL;
+    public String getActionKey() {
+        return actionKey;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setActionKey(String actionKey) {
+        this.actionKey = actionKey;
     }
 
-    public String getBROWSERTYPE() {
-        return BROWSERTYPE;
+    public String getActionType() {
+        return actionType;
     }
 
-    public void setBROWSERTYPE(String BROWSERTYPE) {
-        this.BROWSERTYPE = BROWSERTYPE;
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getBrowsertype() {
+        return browsertype;
+    }
+
+    public void setBrowsertype(String browsertype) {
+        this.browsertype = browsertype;
     }
 }

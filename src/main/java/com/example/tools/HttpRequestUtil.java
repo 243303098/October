@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
-public class httpRequestUtil {
+public class HttpRequestUtil {
     Logger logger = LogManager.getLogger("mylog");
     String responseResult = "";
     //同步get请求

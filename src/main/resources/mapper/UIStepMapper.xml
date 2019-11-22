@@ -16,9 +16,9 @@
   </resultMap>
 
   <select id="selectBy" parameterType="com.example.model.UIStep" resultType="com.example.model.UIStep">
-      select us.id,us.sort,us.name,us.elementId,us.dataKey,us.actionId,us.comment,us.moduleId,ue.name as uiElementName,ue.byType AS uiElementByType,ue.path AS uiElementPath,ue.comment AS uiElementComment,p.url as URL,p.browserType as BROWSERTYPE
-      from ui_step us, ui_element ue, project p
-      where us.elementid = ue.id and ue.projectId = p.id
+      select us.id,us.sort,us.name,us.elementId,us.dataKey,us.actionId,us.comment,us.moduleId,ue.name as uiElementName,ue.byType AS uiElementByType,ue.path AS uiElementPath,ue.comment AS uiElementComment,p.url as url,p.browserType as browserType,uk.actionKey AS actionKey, uk.actionType as actionType
+      from ui_step us, ui_element ue, project p, ui_keyword uk
+      where us.elementid = ue.id and ue.projectId = p.id and uk.id = us.actionId
       <if test="name != null">
         and us.name like concat('%',#{name,jdbcType=VARCHAR},'%')
       </if>
