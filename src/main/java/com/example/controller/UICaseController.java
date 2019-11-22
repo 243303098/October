@@ -7,10 +7,13 @@ import com.example.mapper.UICaseMapper;
 import com.example.model.Project;
 import com.example.model.UICase;
 import com.example.model.UIModule;
+import com.example.model.UIStep;
 import com.example.service.ProjectService;
 import com.example.service.UICaseService;
 import com.example.service.UIModuleService;
+import com.example.service.UIStepService;
 import com.example.tools.StringUtil;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +40,12 @@ public class UICaseController {
 
     @Autowired
     private UIModuleService uiModuleService;
+
+    @Autowired
+    private UIStepService uiStepService;
+
+    @Autowired
+    private RabbitTemplate template;
 
     @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.GET)
     public ModelAndView toModuleManagePage(HttpServletRequest request){
@@ -145,6 +154,26 @@ public class UICaseController {
             uiCaseService.updateAll(uiCase);
         }
         modelAndView.setViewName("redirect:/uiTest/caseManage");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/uiTest/excuteCase", method = RequestMethod.POST)
+    public ModelAndView excuteCase(Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        UICase uiCase = uiCaseService.selectByKey(id);
+        List<Integer> moduleIdList = new ArrayList();
+        String[] modulearr = uiCase.getModuleid().split(",");
+        for (String s : modulearr) {
+            moduleIdList.add(Integer.valueOf(s));
+        }
+        List<UIStep> uiStepList = new ArrayList();
+        for (int i = 0; i < moduleIdList.size(); i++) {
+            UIStep uiStep = new UIStep();
+            uiStep.setModuleid(moduleIdList.get(i));
+            uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+        }
+        template.convertAndSend("ExcuteTest", uiStepList);
+        modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
     }
 

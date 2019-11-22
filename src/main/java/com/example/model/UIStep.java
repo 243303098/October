@@ -27,6 +27,16 @@ public class UIStep {
 
     private String uiElementName;
 
+    private String uiElementByType;
+
+    private String uiElementPath;
+
+    private String uiElementComment;
+
+    private String URL;
+
+    private String BROWSERTYPE;
+
     public Integer getId() {
         return id;
     }
@@ -133,5 +143,45 @@ public class UIStep {
 
     public void setUiElementName(String uiElementName) {
         this.uiElementName = uiElementName;
+    }
+
+    public String getUiElementByType() {
+        return uiElementByType;
+    }
+
+    public void setUiElementByType(String uiElementByType) {
+        this.uiElementByType = uiElementByType;
+    }
+
+    public String getUiElementPath() {
+        return uiElementPath;
+    }
+
+    public void setUiElementPath(String uiElementPath) {
+        this.uiElementPath = uiElementPath;
+    }
+
+    public String getUiElementComment() {
+        return uiElementComment;
+    }
+
+    public void setUiElementComment(String uiElementComment) {
+        this.uiElementComment = uiElementComment;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+
+    public String getBROWSERTYPE() {
+        return BROWSERTYPE;
+    }
+
+    public void setBROWSERTYPE(String BROWSERTYPE) {
+        this.BROWSERTYPE = BROWSERTYPE;
     }
 }

@@ -24,6 +24,10 @@ public class Project {
     @Column(name = "userId")
     private Integer userid;
 
+    private String url;
+
+    private String browsertype;
+
     /**
      * @return id
      */
@@ -110,5 +114,21 @@ public class Project {
      */
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getBrowserType() {
+        return browsertype;
+    }
+
+    public void setBrowserType(String browsertype) {
+        this.browsertype = browsertype;
     }
 }

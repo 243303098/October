@@ -78,13 +78,18 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/addProject", method = RequestMethod.POST)
-    public ModelAndView deleteProjectById(Integer id, String name, Integer status){
+    public ModelAndView deleteProjectById(HttpServletRequest request, Integer id, String name, Integer status, String url, String browserType){
         ModelAndView modelAndView = new ModelAndView();
         Project project = new Project();
+        HttpSession session = request.getSession();
+        Integer userId = Integer.valueOf(session.getAttribute("user").toString());
+        project.setUserid(userId);
         project.setCreatetime(new Date());
         project.setUpdatetime(new Date());
         project.setName(name);
         project.setStatus(status);
+        project.setBrowserType(browserType);
+        project.setUrl(url);
         if (StringUtil.isNull(String.valueOf(id))){
             projectService.save(project);
         }else {
@@ -101,12 +106,14 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/projectEdit", method = RequestMethod.GET)
-    public ModelAndView getAddProjectPageById(Integer id, String name, Integer status){
+    public ModelAndView getAddProjectPageById(Integer id, String name, Integer status, String url, String browserType){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("baseConfig/projectEdit");
         modelAndView.addObject("projectId", id);
         modelAndView.addObject("name", name);
         modelAndView.addObject("status", status);
+        modelAndView.addObject("url", url);
+        modelAndView.addObject("browserType", browserType);
         return modelAndView;
     }
 

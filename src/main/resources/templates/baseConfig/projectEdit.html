@@ -84,6 +84,20 @@
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">URL：</label>
+                                    <div class="col-sm-10">
+                                        <input id="url" name="url" type="text" class="form-control" th:value="${url}"/>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group"><label class="col-sm-2 control-label">浏览器：</label>
+                                    <div class="col-sm-10">
+                                        <input id="browserType" name="browserType" type="text" class="form-control" th:value="${browserType}"/>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <button id="submitButton" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;&nbsp;&nbsp;&nbsp;</button>
@@ -137,6 +151,14 @@
             }
             if($("#status").val() == ""){
                 toastr.error('请输入状态','提示');
+                return;
+            }
+            if($("#url").val() == ""){
+                toastr.error('请输入URL','提示');
+                return;
+            }
+            if($("#browserType").val() == ""){
+                toastr.error('请输入浏览器','提示');
                 return;
             }
             $("#formTag").submit();

@@ -103,6 +103,8 @@
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" th:onclick="'javascript:excuteCase('+${item.id}+',2,0);'" title="执行"><i class="fa fa-play text-navy"></i></a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                     </tbody>
@@ -182,6 +184,28 @@
         }
     }
     /*]]>*/
+
+    function excuteCase(id,state,commendState){
+        var deleteTag;
+        if(state==2){
+            deleteTag = confirm("确定执行此条CASE?");
+        } else {
+            deleteTag = true;
+        }
+        if(deleteTag){
+            $.ajax({
+                type: "POST",
+                url: "/uiTest/excuteCase?id="+id,
+                contentType: "application/json; charset=utf-8",
+                success: function(msg){
+                    window.location.reload();
+                },
+                error: function(){
+                    alert("系统异常！");
+                }
+            });
+        }
+    }
 </script>
 
 </body>

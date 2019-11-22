@@ -11,14 +11,16 @@
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="userId" jdbcType="INTEGER" property="userid" />
+      <result column="url" jdbcType="VARCHAR" property="url" />
+      <result column="browserType" jdbcType="VARCHAR" property="browsertype" />
   </resultMap>
     <select id="selectByName" parameterType="java.lang.String" resultType="com.example.model.Project">
-        select id, name, createTime, updateTime, status, userId
+        select id, name, createTime, updateTime, status, userId, url, browsertype
         from project
         where name like concat('%',#{name,jdbcType=VARCHAR},'%')
     </select>
     <select id="selectBy" parameterType="com.example.model.UIModule" resultType="com.example.model.Project">
-        select id, name, createTime, updateTime, status, userId
+        select id, name, createTime, updateTime, status, userId, url, browsertype
         from project
         where 1=1
         <if test="id != null">
