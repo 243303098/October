@@ -1,9 +1,7 @@
 package com.example.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.mapper.UICaseMapper;
 import com.example.model.Project;
 import com.example.model.UICase;
 import com.example.model.UIModule;
@@ -42,10 +40,15 @@ public class UICaseController {
     private UIModuleService uiModuleService;
 
     @Autowired
-    private UIStepService uiStepService;
+    private RabbitTemplate template;
 
     @Autowired
-    private RabbitTemplate template;
+    private UIStepService uiStepService;
+
+    private static List<UICase> uiCaseList = new ArrayList<>();
+
+    private static Object dateMap[][];
+
 
     @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.GET)
     public ModelAndView toModuleManagePage(HttpServletRequest request){
@@ -157,24 +160,82 @@ public class UICaseController {
         return modelAndView;
     }
 
+    /**
+     * 单个执行
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/uiTest/excuteCase", method = RequestMethod.POST)
     public ModelAndView excuteCase(Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         UICase uiCase = uiCaseService.selectByKey(id);
+        uiCaseList.add(uiCase);
         List<Integer> moduleIdList = new ArrayList();
-        String[] modulearr = uiCase.getModuleid().split(",");
-        for (String s : modulearr) {
-            moduleIdList.add(Integer.valueOf(s));
-        }
-        List<UIStep> uiStepList = new ArrayList();
-        for (int i = 0; i < moduleIdList.size(); i++) {
+        Object dateMap[][] = new Object[uiCaseList.size()][2];
+        for (int i = 0; i < uiCaseList.size(); i++) {
+            List<UIStep> uiStepList = new ArrayList<>();
             UIStep uiStep = new UIStep();
-            uiStep.setModuleid(moduleIdList.get(i));
-            uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+            String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
+            for (String s : modulearr) {
+                moduleIdList.add(Integer.valueOf(s));
+            }
+            for (int j = 0; j < moduleIdList.size(); j++) {
+                uiStep.setModuleid(moduleIdList.get(j));
+                uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+            }
+            dateMap[i][0] = uiCaseList.get(i);
+            dateMap[i][1] = uiStepList;
         }
-        template.convertAndSend("ExcuteTest", uiStepList);
+        setDateMap(dateMap);
+        template.convertAndSend("ExcuteTest", uiCase.getId());
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
     }
 
+    /**
+     * 批量执行
+     * @param json
+     * @return
+     */
+    @RequestMapping(value = "/uiTest/excuteAllCase", method = RequestMethod.POST)
+    public ModelAndView excuteCase(@RequestBody JSONArray json) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i <json.size() ; i++) {
+            list.add(Integer.valueOf(json.get(i).toString()));
+        }
+        uiCaseList = uiCaseService.getUICaseByIdIn(list);
+        Object dateMapDetail[][] = new Object[uiCaseList.size()][2];
+        for (int i = 0; i < uiCaseList.size(); i++) {
+            List<Integer> moduleIdList = new ArrayList();
+            List<UIStep> uiStepList = new ArrayList<>();
+            UIStep uiStep = new UIStep();
+            String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
+            for (String s : modulearr) {
+                moduleIdList.add(Integer.valueOf(s));
+            }
+            for (int j = 0; j < moduleIdList.size(); j++) {
+                uiStep.setModuleid(moduleIdList.get(j));
+                uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+            }
+            dateMapDetail[i][0] = uiCaseList.get(i);
+            dateMapDetail[i][1] = uiStepList;
+        }
+        setDateMap(dateMapDetail);
+        template.convertAndSend("ExcuteTest", list.get(0));
+        modelAndView.setViewName("uiTest/uiCaseManage");
+        return modelAndView;
+    }
+
+    public static List<UICase> getUiCaseList() {
+        return uiCaseList;
+    }
+
+    public static Object[][] getDateMap() {
+        return dateMap;
+    }
+
+    public static void setDateMap(Object[][] dateMap) {
+        UICaseController.dateMap = dateMap;
+    }
 }

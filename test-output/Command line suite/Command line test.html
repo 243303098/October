@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>TestNG:  Command line test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Command line test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Nov 26 16:28:02 CST 2019</td>
+</tr>
+<tr><td>Total time:</td><td>35 seconds (35010 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.example.excute.ExcuteCase.excute()'><b>excute</b><br>Test class: com.example.excute.ExcuteCase<br>Parameters: com.example.model.UICase@6a112cc5, [com.example.model.UIStep@4e1cc09f, com.example.model.UIStep@3effddc3, com.example.model.UIStep@59f7ad47, com.example.model.UIStep@368f73fa]<br/>
+<a href="#Output-507467148" onClick='toggleBox("Output-507467148", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-507467148" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-507467148">
+使用的浏览器为：Chrome打开的默认URL为：https://www.stuartweitzman.cn<br/>
+执行的步骤名称为：click_homePage_loginLinkText<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//ul[@class = 'component-the-site-utils-inner']//span[contains(text(),'登录')]<br/>
+获取到的元素为：<span class="link-text">登录 / 注册</span><br/>
+执行的步骤名称为：input_homePage_usernameInput<br/>
+选择的Action为：ACTIONSSENDKEY<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入手机号']<br/>
+获取到的元素为：<input class="form-control" placeholder="请输入手机号" type="text"></input><br/>
+执行的步骤名称为：input_homePage_pssswordInput<br/>
+选择的Action为：ACTIONSSENDKEY<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入密码']<br/>
+获取到的元素为：<input class="form-control" placeholder="请输入密码" type="password"></input><br/>
+执行的步骤名称为：click_homePage_loginBtn<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//button[contains(text(),'登录')]<br/>
+获取到的元素为：<button class="button primary" type="submit">登录</button><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.example.excute.ExcuteCase@34c1c09d</td></tr>
+<tr>
+<td title='com.example.excute.ExcuteCase.excute()'><b>excute</b><br>Test class: com.example.excute.ExcuteCase<br>Parameters: com.example.model.UICase@6f33d982, [com.example.model.UIStep@2436dad9, com.example.model.UIStep@2e8995b0, com.example.model.UIStep@4d9de3a0, com.example.model.UIStep@34dbc095, com.example.model.UIStep@26a924c5, com.example.model.UIStep@44ef11b5]<br/>
+<a href="#Output-1724742251" onClick='toggleBox("Output-1724742251", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1724742251" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1724742251">
+使用的浏览器为：Chrome打开的默认URL为：https://www.stuartweitzman.cn<br/>
+执行的步骤名称为：click_homePage_loginLinkText<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//ul[@class = 'component-the-site-utils-inner']//span[contains(text(),'登录')]<br/>
+获取到的元素为：<span class="link-text">登录 / 注册</span><br/>
+执行的步骤名称为：input_homePage_usernameInput<br/>
+选择的Action为：ACTIONSSENDKEY<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入手机号']<br/>
+获取到的元素为：<input class="form-control" placeholder="请输入手机号" type="text"></input><br/>
+执行的步骤名称为：input_homePage_pssswordInput<br/>
+选择的Action为：ACTIONSSENDKEY<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入密码']<br/>
+获取到的元素为：<input class="form-control" placeholder="请输入密码" type="password"></input><br/>
+执行的步骤名称为：click_homePage_loginBtn<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//button[contains(text(),'登录')]<br/>
+获取到的元素为：<button class="button primary" type="submit">登录</button><br/>
+执行的步骤名称为：点击首页个人中心<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//span[contains(text(),'个人中心')]<br/>
+获取到的元素为：<span class="link-text">个人中心</span><br/>
+执行的步骤名称为：点击首页搜索输入框LinkText<br/>
+选择的Action为：ACTIONSCLICK<br/>
+查找的locationType为：xpath元素路径为：//ul[@class = 'component-the-site-utils-inner']//span[contains(text(),'搜索')]//preceding-sibling::i<br/>
+获取到的元素为：<i class="link-icon"></i><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>com.example.excute.ExcuteCase@34c1c09d</td></tr>
+</table><p>
+</body>
+</html>

@@ -1,21 +1,25 @@
-package com.example.util;
-
+package com.example.excute;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.example.actions.ActionType;
 import com.example.actions.ByType;
+import com.example.config.AllureSelenide;
+import com.example.controller.UICaseController;
+import com.example.model.UICase;
 import com.example.model.UIStep;
 import com.example.tools.HttpRequestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
-
+import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import java.util.List;
-
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -23,8 +27,7 @@ import static com.codeborne.selenide.Selenide.*;
  * @Date: 2019/11/21 17:28
  * @Description:
  */
-@Component
-@RabbitListener(queues = "ExcuteTest")
+@Listeners({ExtentTestNGIReporterListener.class})
 public class ExcuteCase {
 
     /* 操作枚举类型 */
@@ -36,24 +39,40 @@ public class ExcuteCase {
     /* 页面元素 */
     private SelenideElement selenideElement;
 
-    @RabbitHandler
-    public void excute(List<UIStep> uiStepList) throws Exception {
-        List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList),UIStep.class);
+    @Test(dataProvider = "initData")
+    public void excute(UICase uiCase, List<UIStep> uiStepList) throws Exception {
+        List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList), UIStep.class);
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
+        Configuration.timeout = 30000;
+        Reporter.log("使用的浏览器为："+ Configuration.browser + "打开的默认URL为：" + Configuration.baseUrl);
         Selenide.clearBrowserCookies();
         open("/");
         //遍历uiSteps，执行具体的Step
         for (int i = 0; i < uiSteps.size(); i++) {
+            Reporter.log("执行的步骤名称为：" + uiSteps.get(i).getName());
             excuteStep(uiSteps.get(i));
         }
         Selenide.close();
     }
 
+    @DataProvider
+    public Object[][] initData() {
+        return UICaseController.getDateMap();
+    }
+
+    /**
+     * 执行具体的操作步骤
+     *
+     * @param uiStep
+     * @throws Exception
+     */
     public void excuteStep(UIStep uiStep) throws Exception {
         actionType = ActionType.getEnumByValue(uiStep.getActionType());
         actionKey = ActionType.getEnumByValue(uiStep.getActionKey());
+        Reporter.log("选择的Action为：" + actionType + actionKey);
         selenideElement = getElement(uiStep);
+        Reporter.log("获取到的元素为：" + selenideElement);
         doAllAction(uiStep);
     }
 
@@ -67,6 +86,7 @@ public class ExcuteCase {
     private SelenideElement getElement(UIStep uiStep) {
         String locationType = uiStep.getUiElementByType();
         String path = uiStep.getUiElementPath();
+        Reporter.log("查找的locationType为：" + locationType + "元素路径为：" + path);
         switch (locationType) {
             case ByType.ID:
                 return $(By.id(path)).shouldBe(Condition.enabled);
@@ -91,6 +111,7 @@ public class ExcuteCase {
 
     /**
      * 执行
+     *
      * @param uiStep
      * @throws Exception
      */
@@ -118,6 +139,7 @@ public class ExcuteCase {
 
     /**
      * ACTION
+     *
      * @param uiStep
      * @throws InterruptedException
      */
@@ -165,7 +187,8 @@ public class ExcuteCase {
     }
 
     /**
-     *  校验
+     * 校验
+     *
      * @param uiStep
      */
     private void executeCheckAction(UIStep uiStep) {
@@ -178,7 +201,7 @@ public class ExcuteCase {
                 break;
             case EQUALHREFVALUE:
                 //值由data提供
-                selenideElement.shouldHave(Condition.attribute("href",uiStep.getDatakey()));
+                selenideElement.shouldHave(Condition.attribute("href", uiStep.getDatakey()));
                 break;
             case ELEMENTSELECTED:
                 selenideElement.shouldHave(Condition.cssClass("selected"));
@@ -196,6 +219,7 @@ public class ExcuteCase {
 
     /**
      * 切换窗口，值由data提供
+     *
      * @param uiStep
      */
     private void switchAction(UIStep uiStep) {
@@ -219,6 +243,7 @@ public class ExcuteCase {
 
     /**
      * 执行JS
+     *
      * @param uiStep
      */
     private void javaScriptAction(UIStep uiStep) {
@@ -227,6 +252,7 @@ public class ExcuteCase {
 
     /**
      * 执行键盘事件，值由data提供
+     *
      * @param uiStep
      */
     private void pressKeyboard(UIStep uiStep) {

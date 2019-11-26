@@ -11,4 +11,6 @@ public interface UICaseMapper extends MyMapper<UICase> {
 
     List<UICase> selectBy(UICase uiCase);
 
+    List<UICase> selectByIdIn(List<Integer> list);
+
 }

@@ -23,4 +23,9 @@ public class UICaseServiceImpl extends BaseService<UICase> implements UICaseServ
     public List<UICase> getUICaseBy(UICase uiCase) {
         return uiCaseMapper.selectBy(uiCase);
     }
+
+    @Override
+    public List<UICase> getUICaseByIdIn(List<Integer> list) {
+        return uiCaseMapper.selectByIdIn(list);
+    }
 }

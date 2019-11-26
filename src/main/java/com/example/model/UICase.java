@@ -17,6 +17,8 @@ public class UICase {
     @Column(name = "projectId")
     private Integer projectid;
 
+    private Integer retrycount;
+
     /**
      * @return id
      */
@@ -85,5 +87,13 @@ public class UICase {
      */
     public void setProjectid(Integer projectid) {
         this.projectid = projectid;
+    }
+
+    public Integer getRetrycount() {
+        return retrycount;
+    }
+
+    public void setRetrycount(Integer retrycount) {
+        this.retrycount = retrycount;
     }
 }

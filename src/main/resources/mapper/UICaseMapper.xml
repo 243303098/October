@@ -10,9 +10,10 @@
         <result column="moduleId" jdbcType="VARCHAR" property="moduleid"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="projectId" jdbcType="INTEGER" property="projectid"/>
+        <result column="retryCount" jdbcType="INTEGER" property="retrycount"/>
     </resultMap>
     <select id="selectBy" resultType="com.example.model.UICase" parameterType="com.example.model.UICase">
-        select id,name,moduleId,status,projectId
+        select id,name,moduleId,status,projectId,retrycount
         from ui_case
         where 1=1
         <if test="id != null">
@@ -24,5 +25,19 @@
         <if test="projectid != null">
             and projectid = #{projectid,jdbcType=INTEGER}
         </if>
+    </select>
+    <select id="selectByIdIn" resultType="com.example.model.UICase" parameterType="java.util.List">
+        select id,name,moduleId,status,projectId,retrycount
+        from ui_case
+        where id in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        order by field(id,
+        <foreach item="item" index="index" collection="list"
+                 open="" separator="," close="">
+            #{item}
+        </foreach>
+        )
     </select>
 </mapper>

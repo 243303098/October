@@ -12,4 +12,6 @@ public interface UICaseService extends IService<UICase>{
 
     List<UICase> getUICaseBy(UICase uiCase);
 
+    List<UICase> getUICaseByIdIn(List<Integer> list);
+
 }
