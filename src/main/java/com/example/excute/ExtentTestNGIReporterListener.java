@@ -7,8 +7,11 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.model.TestAttribute;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
-import com.example.controller.UICaseController;
-import com.example.model.UICase;
+import com.example.controller.CaseLogController;
+import com.example.controller.CaseLogDetailController;
+import com.example.model.CaseLog;
+import com.example.model.CaseLogDetail;
+import com.example.rabbitmq.ConsumeMq;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
@@ -181,7 +184,29 @@ public class ExtentTestNGIReporterListener implements IReporter {
                 } else {
                     test.log(status, "Test " + status.toString().toLowerCase() + "ed");
                 }
-
+                if (test.getStatus().toString().equals("pass") || ConsumeMq.getRetryCount() > 3){
+                    //插入将所有的log插入数据库
+                    //caseLogController.save(test, outputList);
+                    CaseLog caseLog = new CaseLog();
+                    caseLog.setCreatetime(new Date());
+                    caseLog.setStatus(test.getStatus().toString());
+                    caseLog.setCaseid(Integer.valueOf(outputList.get(0)));
+                    CaseLogController.getInstance().getCaseLogService().save(caseLog);
+                    //caseLogDetailController.save(outputList);
+                    CaseLog caseLog1 = CaseLogController.getInstance().getCaseLogService().getLastLog(Integer.valueOf(outputList.get(0)));
+                    List<CaseLogDetail> caseLogDetailList = new ArrayList<>();
+                    for (int i = 1; i < outputList.size(); i++) {
+                        CaseLogDetail caseLogDetail = new CaseLogDetail();
+                        caseLogDetail.setCaselogid(caseLog1.getId());
+                        if (outputList.get(i).length() < 255){
+                            caseLogDetail.setStepdetail(outputList.get(i));
+                        }else {
+                            caseLogDetail.setStepdetail(outputList.get(i).substring(0,250));
+                        }
+                        caseLogDetailList.add(caseLogDetail);
+                    }
+                    CaseLogDetailController.getInstance().getcaseLogDetailService().saveByList(caseLogDetailList);
+                }
                 test.getModel().setStartTime(getTime(result.getStartMillis()));
                 test.getModel().setEndTime(getTime(result.getEndMillis()));
             }

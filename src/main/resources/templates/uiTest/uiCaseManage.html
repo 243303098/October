@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>后台信息管理系统</title>
+    <title>CASE管理</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"/>
@@ -104,33 +104,44 @@
                                     <tbody>
                                     <tr th:each="item : ${uiCaseList}">
                                         <td>
-                                            <label><input id="checkCaseId" name="checkCaseId" type="checkbox" th:value="${item.id}"></label>
+                                            <label><input id="checkCaseId" name="checkCaseId" type="checkbox"
+                                                          th:value="${item.id}"></label>
                                         </td>
                                         <td th:text="${item.id}">Onions</td>
                                         <td th:text="${item.name}">Onions</td>
                                         <td th:text="${item.moduleid}">Onions</td>
                                         <td th:text="${item.status}">Onions</td>
                                         <td>
-                                            <a th:href="@{/uiTest/editCase(id=${item.id},name=${item.name},moduleId=${item.moduleid},status=${item.status},projectId=${projectId})}" title="修改"><i class="fa fa-edit text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa fa-trash-o text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a href="#" th:onclick="'javascript:excuteCase('+${item.id}+',2,0);'" title="执行"><i class="fa fa-play text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a id="viewReport" href="#" title="查看报告"><i class="fa fa-pie-chart text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a th:href="@{/uiTest/editCase(id=${item.id},name=${item.name},moduleId=${item.moduleid},status=${item.status},projectId=${projectId})}"
+                                               title="修改"><i class="fa fa-edit text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'"
+                                               title="删除"><i class="fa fa-trash-o text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" th:onclick="'javascript:excuteCase('+${item.id}+',2,0);'"
+                                               title="执行"><i class="fa fa-play text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td colspan="8">
-                                            <ul id="pageHTML" class="pagination pull-right"></ul>
+                                        <td colspan="12">
+                                            <div class="col-sm-6 m-b-xs">
+                                                <a id="excuteAll" class="btn btn-primary btn-block" type="submit"><i
+                                                        class="fa fa-play"></i>&nbsp;&nbsp;<strong>批量执行</strong>&nbsp;&nbsp;
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-6 m-b-xs">
+                                                <a id="viewReport" class="btn btn-primary btn-block" type="submit"><i
+                                                        class="fa fa-pie-chart"></i>&nbsp;&nbsp;<strong>查看报告</strong>&nbsp;&nbsp;
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
-                        <a id="excuteAll" class="btn btn-primary btn-block" type="submit"><i
-                                class="fa fa-play"></i>&nbsp;&nbsp;<strong>批量执行</strong>&nbsp;&nbsp;
-                        </a>
+
+
                     </div>
                 </div>
             </div>
@@ -160,57 +171,73 @@
 
 <!-- FooTable -->
 <script th:src="@{/js/plugins/footable/footable.all.min.js}"></script>
-
+<!-- Toastr script -->
+<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
 <!-- common -->
 <script th:src="@{/js/common.js}"></script>
 
+<!-- SUMMERNOTE -->
+<script th:src="@{/js/plugins/summernote/summernote.min.js}"></script>
+
 <script th:inline="javascript">
+
+    $('#uiCaseManage').addClass("active");
 
     $("#uiTest").attr("class", "active");
 
-    $("#viewReport").click(function () {
-        $.ajax({
-            url:'/uiTest/report',
-            type:'POST',
-            async:false,
-            success: function(data){
-                window.open('/report');
+    $(document).ready(function () {
+
+        //全选
+        $("#checkAll").on("click", function () {
+            if ($(this).is(':checked')) {
+                $('input[name="checkCaseId"]').each(function () {
+                    $(this).prop("checked", true);
+                });
+            } else {
+                $('input[name="checkCaseId"]').each(function () {
+                    $(this).prop("checked", false);
+                });
             }
         });
-    });
 
-    //全选
-    $("#checkAll").on("click",function(){
-        if($(this).is(':checked')){
-            $('input[name="checkCaseId"]').each(function(){
-                $(this).prop("checked",true);
+        //批量执行
+        $("#excuteAll").click(function () {
+            var checkID = [];
+            $("input:checkbox[name='checkCaseId']:checked").each(function (i) {
+                checkID[i] = $(this).val();
             });
-        }else{
-            $('input[name="checkCaseId"]').each(function(){
-                $(this).prop("checked",false);
-            });
-        }
-    });
-
-    //批量执行
-    $("#excuteAll").click(function () {
-        var checkID = [];
-        $("input:checkbox[name='checkCaseId']:checked").each(function (i) {
-            checkID[i] = $(this).val();
-        });
-        $.ajax({
-            type: "POST",
-            url: "/uiTest/excuteAllCase",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(checkID),
-            success: function (msg) {
-                window.location.reload();
-            },
-            error: function () {
-                alert("系统异常！");
+            if (checkID.length < 1) {
+                toastr.error('请输入选择执行CASE', '提示');
+                return;
             }
+            $.ajax({
+                type: "POST",
+                url: "/uiTest/excuteAllCase",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(checkID),
+                success: function (msg) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("系统异常！");
+                }
+            });
         });
+
+        //查看Report
+        $("#viewReport").click(function () {
+            $.ajax({
+                url: '/uiTest/report',
+                type: 'POST',
+                async: false,
+                success: function (data) {
+                    window.open('/report');
+                }
+            });
+        });
+
     });
+
 
     var pageHTML = [[${pageHTML}]];
     $(document).ready(function () {

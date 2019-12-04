@@ -12,20 +12,20 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     	<span>
-                            <img alt="image" class="img-circle" th:src="@{/img/cat.jpg}" height="48px" width="48px" />
-                            <!--<img  th:src="@{'/img/user/'+${session.user.getUserName()}+'.jpg'}" alt="image" class="img-circle" height="48px" width="48px"/>-->
-                            <!--<tb th:text="@{session.user.getImage()}"></tb>-->
+                            <img alt="image" class="img-circle" th:src="@{/img/icon.png}" height="50px" width="55px" />
 						</span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                             	<span class="block m-t-xs">
-                            		<strong class="font-bold" th:text="admin">admin</strong>
+                            		<strong class="font-bold" th:text="${session.userName}"></strong>
                              	</span>
                              </span>
                     </a>
                 </div>
                 <div class="logo-element">
-                    YX
+                    <span>
+                        <img alt="image" class="img-circle" th:src="@{/img/icon.png}" height="50px" width="55px" />
+                    </span>
                 </div>
             </li>
             <li>
@@ -37,6 +37,7 @@
                 <ul class="nav nav-second-level collapse">
                     <li id="projectManage"><a th:href="@{/baseConfig/projectManage}">项目管理</a></li>
                     <li id="keywordManage"><a th:href="@{/uiTest/keywordManage}">关键字</a></li>
+                    <li id="JobManage"><a th:href="@{/schedule}">任务调度</a></li>
                 </ul>
             </li>
             <li id="uiTest">
@@ -45,7 +46,7 @@
                     <li id="elementManage"><a th:href="@{/uiTest/elementManage}">元素管理</a></li>
                     <li id="moduleManage"><a th:href="@{/uiTest/moduleManage}">模块管理</a></li>
                     <li id="caseManage"><a th:href="@{/uiTest/caseManage}">CASE管理</a></li>
-                    <li id="reportManage"><a href="#">执行记录</a></li>
+                    <li id="reportManage"><a th:href="@{/uiTest/excuteLog}">执行记录</a></li>
                 </ul>
             </li>
 

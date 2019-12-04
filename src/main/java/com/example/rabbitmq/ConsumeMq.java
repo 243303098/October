@@ -19,17 +19,23 @@ import java.util.Arrays;
 @RabbitListener(queues = "ExcuteTest")
 public class ConsumeMq {
 
-    private Integer retryCount = 0;
+    private static Integer retryCount = 0;
 
     @RabbitHandler
     public void consume(Integer caseId) {
-        retryCount++;
-        TestNG testNG = new TestNG();
-        Class[] listenerClass = {ExtentTestNGIReporterListener.class};
-        testNG.setListenerClasses(Arrays.asList(listenerClass));
-        testNG.setTestClasses(new Class[]{ExcuteCase.class});
-        if (retryCount < 5) {
-            testNG.run();
+        synchronized (this){
+            retryCount++;
+            TestNG testNG = new TestNG();
+            Class[] listenerClass = {ExtentTestNGIReporterListener.class};
+            testNG.setListenerClasses(Arrays.asList(listenerClass));
+            testNG.setTestClasses(new Class[]{ExcuteCase.class});
+            if (retryCount < 5) {
+                testNG.run();
+            }
         }
+    }
+
+    public static Integer getRetryCount() {
+        return retryCount;
     }
 }

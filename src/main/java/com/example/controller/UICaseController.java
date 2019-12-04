@@ -11,11 +11,11 @@ import com.example.service.UICaseService;
 import com.example.service.UIModuleService;
 import com.example.service.UIStepService;
 import com.example.tools.StringUtil;
+import kotlin.jvm.Synchronized;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -45,13 +45,11 @@ public class UICaseController {
     @Autowired
     private UIStepService uiStepService;
 
-    private static List<UICase> uiCaseList = new ArrayList<>();
-
     private static Object dateMap[][];
 
 
     @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.GET)
-    public ModelAndView toModuleManagePage(HttpServletRequest request){
+    public ModelAndView toModuleManagePage(HttpServletRequest request) {
         Project project = new Project();
         HttpSession session = request.getSession();
         Integer userId = Integer.valueOf(session.getAttribute("user").toString());
@@ -68,12 +66,13 @@ public class UICaseController {
 
     /**
      * 查询module
+     *
      * @param name
      * @param request
      * @return
      */
     @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.POST)
-    public ModelAndView toModuleManagePagePost(@RequestParam(name = "name") String name, HttpServletRequest request){
+    public ModelAndView toModuleManagePagePost(@RequestParam(name = "name") String name, HttpServletRequest request) {
         Project project = new Project();
         HttpSession session = request.getSession();
         Integer userId = Integer.valueOf(session.getAttribute("user").toString());
@@ -91,6 +90,7 @@ public class UICaseController {
 
     /**
      * 编辑Case页面
+     *
      * @param id
      * @param name
      * @param status
@@ -98,39 +98,40 @@ public class UICaseController {
      * @return
      */
     @RequestMapping(value = "/uiTest/editCase", method = RequestMethod.GET)
-    public ModelAndView getEditCasePageById(Integer id, String name, String moduleId, String status, Integer projectId){
+    public ModelAndView getEditCasePageById(Integer id, String name, String moduleId, String status, Integer projectId) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("uiTest/uiCaseEdit");
         UIModule uiModule = new UIModule();
         uiModule.setProjectid(projectId);
         List<Integer> moduleIdList = new ArrayList();
-        if (!StringUtil.isNull(moduleId)){
+        if (!StringUtil.isNull(moduleId)) {
             String[] modulearr = moduleId.split(",");
-            for (String s:modulearr) {
+            for (String s : modulearr) {
                 moduleIdList.add(Integer.valueOf(s));
             }
             modelAndView.addObject("useredModuleList", uiModuleService.getUIModuleByIdIn(moduleIdList));
-            modelAndView.addObject("isAdd","0");
-        }else {
-            modelAndView.addObject("useredModuleList","");
-            modelAndView.addObject("isAdd","1");
+            modelAndView.addObject("isAdd", "0");
+        } else {
+            modelAndView.addObject("useredModuleList", "");
+            modelAndView.addObject("isAdd", "1");
         }
-        modelAndView.addObject("uiModuleList",uiModuleService.getUIModuleBy(uiModule));
-        modelAndView.addObject("id",id);
-        modelAndView.addObject("name",name);
-        modelAndView.addObject("moduleid",moduleId);
-        modelAndView.addObject("status",status);
-        modelAndView.addObject("projectId",projectId);
+        modelAndView.addObject("uiModuleList", uiModuleService.getUIModuleBy(uiModule));
+        modelAndView.addObject("id", id);
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("moduleid", moduleId);
+        modelAndView.addObject("status", status);
+        modelAndView.addObject("projectId", projectId);
         return modelAndView;
     }
 
     /**
      * 删除case
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "/uiTest/deleteCase", method = RequestMethod.POST)
-    public ModelAndView deleteModule(Integer id){
+    public ModelAndView deleteModule(Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         uiCaseService.delete(id);
         modelAndView.setViewName("uiTest/uiCaseManage");
@@ -139,20 +140,21 @@ public class UICaseController {
 
     /**
      * 编辑case
+     *
      * @param json
      * @return
      */
     @RequestMapping(value = "/uiTest/editCase", method = RequestMethod.POST)
-    public ModelAndView editModule(@RequestBody JSONObject json){
+    public ModelAndView editCase(@RequestBody JSONObject json) {
         ModelAndView modelAndView = new ModelAndView();
         UICase uiCase = new UICase();
         uiCase.setProjectid(json.getInteger("projectId"));
         uiCase.setName(json.getString("name"));
         uiCase.setModuleid(json.getString("moduleId"));
         uiCase.setStatus(json.getString("status"));
-        if (StringUtil.isNull(String.valueOf(json.getInteger("id")))){
+        if (StringUtil.isNull(String.valueOf(json.getInteger("id")))) {
             uiCaseService.save(uiCase);
-        }else {
+        } else {
             uiCase.setId(json.getInteger("id"));
             uiCaseService.updateAll(uiCase);
         }
@@ -162,12 +164,15 @@ public class UICaseController {
 
     /**
      * 单个执行
+     *
      * @param id
      * @return
      */
+    @Synchronized
     @RequestMapping(value = "/uiTest/excuteCase", method = RequestMethod.POST)
     public ModelAndView excuteCase(Integer id) {
         ModelAndView modelAndView = new ModelAndView();
+        List<UICase> uiCaseList = new ArrayList<>();
         UICase uiCase = uiCaseService.selectByKey(id);
         uiCaseList.add(uiCase);
         List<Integer> moduleIdList = new ArrayList();
@@ -194,14 +199,17 @@ public class UICaseController {
 
     /**
      * 批量执行
+     *
      * @param json
      * @return
      */
+    @Synchronized
     @RequestMapping(value = "/uiTest/excuteAllCase", method = RequestMethod.POST)
     public ModelAndView excuteCase(@RequestBody JSONArray json) {
         ModelAndView modelAndView = new ModelAndView();
+        List<UICase> uiCaseList;
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i <json.size() ; i++) {
+        for (int i = 0; i < json.size(); i++) {
             list.add(Integer.valueOf(json.get(i).toString()));
         }
         uiCaseList = uiCaseService.getUICaseByIdIn(list);
@@ -225,10 +233,6 @@ public class UICaseController {
         template.convertAndSend("ExcuteTest", list.get(0));
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
-    }
-
-    public static List<UICase> getUiCaseList() {
-        return uiCaseList;
     }
 
     public static Object[][] getDateMap() {

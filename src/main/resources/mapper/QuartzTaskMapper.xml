@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.QuartzTaskMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.QuartzTask">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="jobName" jdbcType="VARCHAR" property="jobname" />
+    <result column="jobProject" jdbcType="VARCHAR" property="jobproject" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="jobClassName" jdbcType="VARCHAR" property="jobclassname" />
+    <result column="cronExpression" jdbcType="VARCHAR" property="cronexpression" />
+    <result column="triggerName" jdbcType="VARCHAR" property="triggername" />
+    <result column="triggerState" jdbcType="VARCHAR" property="triggerstate" />
+    <result column="updateData" jdbcType="TIMESTAMP" property="updatedata" />
+    <result column="jobParam" jdbcType="VARCHAR" property="jobparam" />
+  </resultMap>
+
+  <select id="selectBy" resultType="com.example.model.QuartzTask" parameterType="com.example.model.QuartzTask">
+    select id,jobName,jobProject,description,jobClassName,cronExpression,triggerName,triggerState,updateData,jobParam
+    from quartz_task
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="jobname != null">
+      and jobname like concat('%',#{jobname,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="jobproject != null">
+      and jobproject = #{jobproject,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+</mapper>

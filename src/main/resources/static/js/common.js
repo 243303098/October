@@ -10,19 +10,16 @@ if (url.indexOf("newsCategoryManage") > 0
 }
 
 // 提示条配置
-toastr.options = {
-	"closeButton" : true,
-	"debug" : false,
-	"progressBar" : true,
-	"preventDuplicates" : false,
-	"positionClass" : "toast-top-right",
-	"onclick" : null,
-	"showDuration" : "400",
-	"hideDuration" : "1000",
-	"timeOut" : "7000",
-	"extendedTimeOut" : "1000",
-	"showEasing" : "swing",
-	"hideEasing" : "linear",
-	"showMethod" : "fadeIn",
-	"hideMethod" : "fadeOut"
-}
+toastr.options= {
+    "closeButton":false,//显示关闭按钮
+    "debug":false,//启用debug
+    "positionClass":"toast-top-center",//弹出的位置
+    "showDuration":"300",//显示的时间
+    "hideDuration":"1000",//消失的时间
+    "timeOut":"5000",//停留的时间
+    "extendedTimeOut":"1000",//控制时间
+    "showEasing":"swing",//显示时的动画缓冲方式
+    "hideEasing":"linear",//消失时的动画缓冲方式
+    "showMethod":"fadeIn",//显示时的动画方式
+    "hideMethod":"fadeOut"//消失时的动画方式
+};

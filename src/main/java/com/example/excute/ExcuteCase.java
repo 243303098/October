@@ -5,10 +5,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.example.actions.ActionType;
 import com.example.actions.ByType;
-import com.example.config.AllureSelenide;
 import com.example.controller.UICaseController;
 import com.example.model.UICase;
 import com.example.model.UIStep;
@@ -44,7 +42,10 @@ public class ExcuteCase {
         List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList), UIStep.class);
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
+        Configuration.headless = true;
         Configuration.timeout = 30000;
+        //输出UICaseId以便插入日志
+        Reporter.log(uiCase.getId().toString());
         Reporter.log("使用的浏览器为："+ Configuration.browser + "打开的默认URL为：" + Configuration.baseUrl);
         Selenide.clearBrowserCookies();
         open("/");
@@ -141,15 +142,15 @@ public class ExcuteCase {
      * ACTION
      *
      * @param uiStep
-     * @throws InterruptedException
      */
-    private void actionsAction(UIStep uiStep) throws InterruptedException {
+    private void actionsAction(UIStep uiStep) {
         switch (actionKey) {
             case CLICK:
                 selenideElement.click();
                 break;
             case SENDKEY:
                 selenideElement.clear();
+                Reporter.log("输入参数为：" + uiStep.getDatakey());
                 //值由data提供
                 selenideElement.setValue(uiStep.getDatakey());
                 break;
@@ -164,12 +165,15 @@ public class ExcuteCase {
                 break;
             case DRAG:
                 //To的值（XPATH路径）由data提供
+                Reporter.log("移动到的元素为：" + $(By.xpath(uiStep.getDatakey())));
                 selenideElement.dragAndDropTo($(By.xpath(uiStep.getDatakey())));
                 break;
             case ACCEPTALERT:
+                Reporter.log("接受Alert");
                 Selenide.confirm();
                 break;
             case CANCELALERT:
+                Reporter.log("取消Alert");
                 Selenide.dismiss();
                 break;
             case OPEN:
@@ -180,6 +184,7 @@ public class ExcuteCase {
                 open(uiStep.getDatakey());
                 break;
             case WAIT:
+                Reporter.log("强制等待3S");
                 sleep(3000);
             default:
                 break;
@@ -194,13 +199,16 @@ public class ExcuteCase {
     private void executeCheckAction(UIStep uiStep) {
         switch (actionKey) {
             case EQUALTEXT:
+                Reporter.log("期望相等且预期值为：" + uiStep.getDatakey() + "实际值为：" +selenideElement.getText());
                 selenideElement.waitUntil(Condition.matchesText(uiStep.getDatakey()), 30000);
                 break;
             case NOTEQUALTEXT:
+                Reporter.log("期望不相等且预期值为：" + uiStep.getDatakey() + "实际值为：" +selenideElement.getText());
                 selenideElement.shouldNotHave(Condition.text(uiStep.getDatakey()));
                 break;
             case EQUALHREFVALUE:
                 //值由data提供
+                Reporter.log("期望相等且预期href为：" + uiStep.getDatakey() + "实际href为：" +selenideElement.getAttribute("href"));
                 selenideElement.shouldHave(Condition.attribute("href", uiStep.getDatakey()));
                 break;
             case ELEMENTSELECTED:
@@ -225,14 +233,17 @@ public class ExcuteCase {
     private void switchAction(UIStep uiStep) {
         switch (actionKey) {
             case SWITCHWINDOW:
+                Reporter.log("根据参数：" + uiStep.getDatakey() + "切换至新窗口");
                 //nameOrHandleOrTitle
                 Selenide.switchTo().window(uiStep.getDatakey());
                 break;
             case SWITCHTOFRAME:
+                Reporter.log("切换到的Iframe为：" + selenideElement);
                 // 切换frame
                 Selenide.switchTo().frame(selenideElement);
                 break;
             case SWITCHTODEFRAME:
+                Reporter.log("切换到默认的Iframe");
                 // 切换到默认frame
                 Selenide.switchTo().defaultContent();
                 break;
@@ -247,6 +258,7 @@ public class ExcuteCase {
      * @param uiStep
      */
     private void javaScriptAction(UIStep uiStep) {
+        Reporter.log("当前执行的JS为：" + uiStep.getDatakey());
         Selenide.executeJavaScript(uiStep.getDatakey(), selenideElement);
     }
 
@@ -256,6 +268,7 @@ public class ExcuteCase {
      * @param uiStep
      */
     private void pressKeyboard(UIStep uiStep) {
+        Reporter.log("输入的键盘事件为：" + uiStep.getDatakey());
         selenideElement.sendKeys(Keys.valueOf(uiStep.getDatakey()));
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CaseLogMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.CaseLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="caseId" jdbcType="INTEGER" property="caseid" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+    <select id="getLastCaseLog" resultType="com.example.model.CaseLog">
+      select id,caseId,status,createtime
+      from case_log
+      where caseId = #{caseid,jdbcType=INTEGER} order by createtime desc limit 1;
+    </select>
+  <select id="selectByIdIn" resultType="com.example.model.CaseLog">
+    select id,caseId,status,createtime
+    from case_log
+    where caseId in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    order by createtime desc
+  </select>
+</mapper>

@@ -36,6 +36,7 @@ public class LoginController {
             List<UserInfo> userInfoList = userService.selectUserInfoByUserNameAndPassword(userName, password);
             if (userInfoList.size() > 0) {
                 request.getSession().setAttribute("user", userInfoList.get(0).getId());
+                request.getSession().setAttribute("userName", userInfoList.get(0).getUsername());
                 modelAndView.addObject("userName",userName);
                 modelAndView.setViewName("/dashboard");
             } else {

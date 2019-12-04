@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CaseLogDetailMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.CaseLogDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="caseLogId" jdbcType="INTEGER" property="caselogid" />
+    <result column="stepDetail" jdbcType="VARCHAR" property="stepdetail" />
+  </resultMap>
+    <insert id="insertForeach" parameterType="java.util.List">
+      insert into case_log_detail
+      (caseLogId,stepDetail)
+      VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+        (
+        #{item.caselogid},
+        #{item.stepdetail}
+        )
+      </foreach>
+    </insert>
+
+  <select id="selectByCaseId" resultType="com.example.model.CaseLogDetail">
+      select id,caseLogId,stepDetail
+      from case_log_detail
+      where caseLogId = #{caselogid,jdbcType=INTEGER}
+    </select>
+</mapper>
