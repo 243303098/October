@@ -42,12 +42,12 @@ public class UIStepController {
         ModelAndView modelAndView = new ModelAndView();
         UIStep uiStep = new UIStep();
         uiStep.setModuleid(moduleId);
-        modelAndView.addObject("stepList", uiStepService.getUIStepBy(uiStep));
         UIModule uiModule = new UIModule();
         uiModule.setId(moduleId);
         List<UIModule> uiModuleList = moduleService.getUIModuleBy(uiModule);
         UIElement uiElement = new UIElement();
         uiElement.setProjectid(uiModuleList.get(0).getProjectid());
+        modelAndView.addObject("stepList", uiStepService.getUIStepBy(uiStep));
         modelAndView.addObject("moduleId",moduleId);
         modelAndView.addObject("uiElementList", uiElementService.getUIElementBy(uiElement));
         modelAndView.addObject("uiKeywordList", uiKeywordService.getAllUIKeyword());

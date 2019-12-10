@@ -17,7 +17,7 @@
     <result column="jobParam" jdbcType="VARCHAR" property="jobparam" />
   </resultMap>
 
-  <select id="selectBy" resultType="com.example.model.QuartzTask" parameterType="com.example.model.QuartzTask">
+  <select id="selectBy" parameterType="com.example.model.QuartzTask" resultType="com.example.model.QuartzTask">
     select id,jobName,jobProject,description,jobClassName,cronExpression,triggerName,triggerState,updateData,jobParam
     from quartz_task
     where 1=1

@@ -26,6 +26,7 @@ import java.util.*;
 public class ExtentTestNGIReporterListener implements IReporter {
     //生成的路径以及文件名
     private static final String OUTPUT_FOLDER = System.getProperty("user.dir") + "\\src\\main\\resources\\templates\\";
+    //private static final String OUTPUT_FOLDER = "C:\\work\\report\\";
     private static final String FILE_NAME = "report.html";
 
     private ExtentReports extent;
@@ -184,29 +185,28 @@ public class ExtentTestNGIReporterListener implements IReporter {
                 } else {
                     test.log(status, "Test " + status.toString().toLowerCase() + "ed");
                 }
-                if (test.getStatus().toString().equals("pass") || ConsumeMq.getRetryCount() > 3){
-                    //插入将所有的log插入数据库
-                    //caseLogController.save(test, outputList);
-                    CaseLog caseLog = new CaseLog();
-                    caseLog.setCreatetime(new Date());
-                    caseLog.setStatus(test.getStatus().toString());
-                    caseLog.setCaseid(Integer.valueOf(outputList.get(0)));
-                    CaseLogController.getInstance().getCaseLogService().save(caseLog);
-                    //caseLogDetailController.save(outputList);
-                    CaseLog caseLog1 = CaseLogController.getInstance().getCaseLogService().getLastLog(Integer.valueOf(outputList.get(0)));
-                    List<CaseLogDetail> caseLogDetailList = new ArrayList<>();
-                    for (int i = 1; i < outputList.size(); i++) {
-                        CaseLogDetail caseLogDetail = new CaseLogDetail();
-                        caseLogDetail.setCaselogid(caseLog1.getId());
-                        if (outputList.get(i).length() < 255){
-                            caseLogDetail.setStepdetail(outputList.get(i));
-                        }else {
-                            caseLogDetail.setStepdetail(outputList.get(i).substring(0,250));
-                        }
-                        caseLogDetailList.add(caseLogDetail);
+                //if (test.getStatus().toString().equals("pass") || ConsumeMq.getRetryCount() > 3){
+                //插入将所有的log插入数据库
+                //caseLogController.save(test, outputList);
+                CaseLog caseLog = new CaseLog();
+                caseLog.setCreatetime(new Date());
+                caseLog.setStatus(test.getStatus().toString());
+                caseLog.setCaseid(Integer.valueOf(outputList.get(0)));
+                CaseLogController.getInstance().getCaseLogService().save(caseLog);
+                //caseLogDetailController.save(outputList);
+                CaseLog caseLog1 = CaseLogController.getInstance().getCaseLogService().getLastLog(Integer.valueOf(outputList.get(0)));
+                List<CaseLogDetail> caseLogDetailList = new ArrayList<>();
+                for (int i = 1; i < outputList.size(); i++) {
+                    CaseLogDetail caseLogDetail = new CaseLogDetail();
+                    caseLogDetail.setCaselogid(caseLog1.getId());
+                    if (outputList.get(i).length() < 255) {
+                        caseLogDetail.setStepdetail(outputList.get(i));
+                    } else {
+                        caseLogDetail.setStepdetail(outputList.get(i).substring(0, 250));
                     }
-                    CaseLogDetailController.getInstance().getcaseLogDetailService().saveByList(caseLogDetailList);
+                    caseLogDetailList.add(caseLogDetail);
                 }
+                CaseLogDetailController.getInstance().getcaseLogDetailService().saveByList(caseLogDetailList);
                 test.getModel().setStartTime(getTime(result.getStartMillis()));
                 test.getModel().setEndTime(getTime(result.getEndMillis()));
             }

@@ -227,7 +227,7 @@
         //查看Report
         $("#viewReport").click(function () {
             $.ajax({
-                url: '/uiTest/report',
+                url: '/uiTest/report?param=' + new Date().getTime().toString(),
                 type: 'POST',
                 async: false,
                 success: function (data) {
@@ -235,6 +235,10 @@
                 }
             });
         });
+
+        // $("#viewReport1").click(function () {
+        //    window.location.href = "/report/report.html";
+        // });
 
     });
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,7 +61,7 @@ public class CaseLogController {
 
 
     @RequestMapping(value = "/uiTest/excuteLog", method = RequestMethod.GET)
-    public ModelAndView toLogPage(HttpServletRequest request){
+    public ModelAndView toLogPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         Project project = new Project();
         HttpSession session = request.getSession();
@@ -72,10 +73,11 @@ public class CaseLogController {
         List<UICase> uiCaseList = uiCaseService.getUICaseBy(uiCase);
         List<Integer> uiCaseId = new ArrayList<>();
         for (int i = 0; i < uiCaseList.size(); i++) {
+
             uiCaseId.add(uiCaseList.get(i).getId());
         }
         //查询caseId在里面的所有log
-        modelAndView.addObject("caseLogList",caseLogService.selectByIDIn(uiCaseId));
+        modelAndView.addObject("caseLogList", caseLogService.selectByIDIn(uiCaseId));
         modelAndView.setViewName("uiTest/uiExcuteLog");
         return modelAndView;
     }

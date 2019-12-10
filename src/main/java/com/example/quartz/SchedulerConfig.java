@@ -14,8 +14,6 @@ import java.util.Properties;
 
 /**
  * quartz配置
- * 创建者 科帮网
- * 创建时间	2018年4月3日
  */
 @Configuration
 public class SchedulerConfig {

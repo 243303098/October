@@ -14,16 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReportController {
 
     @RequestMapping(value = "/uiTest/report", method = RequestMethod.POST)
-    public ModelAndView toReport(){
+    public ModelAndView toReport(String param){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/report");
+        modelAndView.setViewName("report");
         return modelAndView;
     }
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public ModelAndView toReportPage(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/report");
+        modelAndView.setViewName("report");
         return modelAndView;
     }
 

@@ -23,7 +23,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login")
     public ModelAndView loginPage(ModelAndView modelAndView) {
-        modelAndView.setViewName("/login");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
@@ -38,7 +38,7 @@ public class LoginController {
                 request.getSession().setAttribute("user", userInfoList.get(0).getId());
                 request.getSession().setAttribute("userName", userInfoList.get(0).getUsername());
                 modelAndView.addObject("userName",userName);
-                modelAndView.setViewName("/dashboard");
+                modelAndView.setViewName("dashboard");
             } else {
                 modelAndView.addObject("msg", "登录失败，用户名或密码错误");
             }

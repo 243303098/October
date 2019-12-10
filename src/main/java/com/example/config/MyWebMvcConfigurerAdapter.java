@@ -11,10 +11,10 @@ import org.springframework.web.servlet.config.annotation.*;
 import java.util.List;
 
 /**
- * Created by tengj on 2017/3/13.
+ * Created by leo on 2019/11/13.
  */
 @Configuration
-public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
+public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
 
 
     /**
@@ -26,8 +26,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         //自定义项目内目录
         //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
         //指向外部目录
-        //registry.addResourceHandler("/my/**").addResourceLocations("file:E:/my/");
-        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/file/**").addResourceLocations("file:C://work/report/");
     }
 
     /**
@@ -39,7 +38,6 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login.html").setViewName("login");
-        super.addViewControllers(registry);
     }
 
     /**
@@ -51,7 +49,6 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
         registry.addInterceptor(new MyInterceptor()).excludePathPatterns("/login","/assets/**","/loginPost");
-        super.addInterceptors(registry);
     }
 
 
@@ -66,7 +63,6 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
         fastConverter.setFastJsonConfig(fastJsonConfig);
         converters.add(fastConverter);
-        super.configureMessageConverters(converters);
     }
 }
 

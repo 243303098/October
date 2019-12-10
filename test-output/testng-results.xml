@@ -2,144 +2,90 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
     <line>
-      <![CDATA[3]]>
+      <![CDATA[9]]>
     </line>
     <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.stuartweitzman.cn]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：click_homePage_loginLinkText]]>
+      <![CDATA[执行的步骤名称为：输入搜索内容]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：ACTIONSCLICK]]>
+      <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//ul[@class = 'component-the-site-utils-inner']//span[contains(text(),'登录')]]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<span class="link-text">登录 / 注册</span>]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：input_homePage_usernameInput]]>
+      <![CDATA[输入参数为：测试]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：ACTIONSSENDKEY]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入手机号']]]>
+      <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<input class="form-control" placeholder="请输入手机号" type="text"></input>]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：input_homePage_pssswordInput]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：ACTIONSSENDKEY]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入密码']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input class="form-control" placeholder="请输入密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：huyu1220329]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：click_homePage_loginBtn]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：ACTIONSCLICK]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//button[contains(text(),'登录')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button primary" type="submit">登录</button>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="12021" started-at="2019-12-04T13:05:00 CST" finished-at="2019-12-04T13:05:12 CST">
+  <suite name="Command line suite" duration-ms="5618" started-at="2019-12-10T11:52:12 CST" finished-at="2019-12-10T11:52:17 CST">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="12021" started-at="2019-12-04T13:05:00 CST" finished-at="2019-12-04T13:05:12 CST">
+    <test name="Command line test" duration-ms="5618" started-at="2019-12-10T11:52:12 CST" finished-at="2019-12-10T11:52:17 CST">
       <class name="com.example.excute.ExcuteCase">
-        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List)[pri:0, instance:com.example.excute.ExcuteCase@26b5a73]" name="excute" duration-ms="11988" started-at="2019-12-04T13:05:00 CST" data-provider="initData" finished-at="2019-12-04T13:05:12 CST">
+        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List)[pri:0, instance:com.example.excute.ExcuteCase@55c8e91]" name="excute" duration-ms="5575" started-at="2019-12-10T11:52:12 CST" data-provider="initData" finished-at="2019-12-10T11:52:17 CST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[com.example.model.UICase@55fdffe4]]>
+                <![CDATA[com.example.model.UICase@63d4b4d6]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[[com.example.model.UIStep@39d33708, com.example.model.UIStep@4eafbbe, com.example.model.UIStep@1b9200fc, com.example.model.UIStep@1aeae81b]]]>
+                <![CDATA[[com.example.model.UIStep@6a7ca1a5, com.example.model.UIStep@2c04c47a]]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[3]]>
+              <![CDATA[9]]>
             </line>
             <line>
-              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.stuartweitzman.cn]]>
+              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
             </line>
             <line>
-              <![CDATA[执行的步骤名称为：click_homePage_loginLinkText]]>
+              <![CDATA[执行的步骤名称为：输入搜索内容]]>
             </line>
             <line>
-              <![CDATA[选择的Action为：ACTIONSCLICK]]>
+              <![CDATA[选择的Action为：元素做输入操作]]>
             </line>
             <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//ul[@class = 'component-the-site-utils-inner']//span[contains(text(),'登录')]]]>
+              <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
             </line>
             <line>
-              <![CDATA[获取到的元素为：<span class="link-text">登录 / 注册</span>]]>
+              <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
             </line>
             <line>
-              <![CDATA[执行的步骤名称为：input_homePage_usernameInput]]>
+              <![CDATA[输入参数为：测试]]>
             </line>
             <line>
-              <![CDATA[选择的Action为：ACTIONSSENDKEY]]>
+              <![CDATA[执行的步骤名称为：点击百度一下]]>
             </line>
             <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入手机号']]]>
+              <![CDATA[选择的Action为：元素做点击操作]]>
             </line>
             <line>
-              <![CDATA[获取到的元素为：<input class="form-control" placeholder="请输入手机号" type="text"></input>]]>
+              <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
             </line>
             <line>
-              <![CDATA[输入参数为：15221527941]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：input_homePage_pssswordInput]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：ACTIONSSENDKEY]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//input[@placeholder= '请输入密码']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input class="form-control" placeholder="请输入密码" type="password"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：huyu1220329]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：click_homePage_loginBtn]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：ACTIONSCLICK]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[contains(@class,'component-mini-my-account')]//button[contains(text(),'登录')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button primary" type="submit">登录</button>]]>
+              <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
             </line>
           </reporter-output>
         </test-method> <!-- excute -->

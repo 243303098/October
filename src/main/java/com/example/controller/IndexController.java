@@ -21,7 +21,7 @@ public class IndexController {
         HttpSession session = request.getSession();
         Integer userId = Integer.valueOf(session.getAttribute("user").toString());
         modelAndView.addObject("userId", userId);
-        modelAndView.setViewName("/dashboard");
+        modelAndView.setViewName("dashboard");
         return modelAndView;
     }
 
