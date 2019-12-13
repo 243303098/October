@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ExcuteLogMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.ExcuteLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="projectId" jdbcType="VARCHAR" property="projectid" />
+  </resultMap>
+
+  <select id="selectBy" resultType="com.example.model.ExcuteLog" parameterType="com.example.model.ExcuteLog">
+    select id,status,createTime,projectId
+    from excute_log
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null">
+      and status = #{status,jdbcType=VARCHAR}
+    </if>
+    <if test="projectid != null">
+      and projectid = #{projectid,jdbcType=INTEGER}
+    </if>
+    order by createtime desc
+  </select>
+</mapper>

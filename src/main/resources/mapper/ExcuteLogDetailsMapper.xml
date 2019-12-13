@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ExcuteLogDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.ExcuteLogDetails">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="excuteLogId" jdbcType="VARCHAR" property="excutelogid" />
+    <result column="excuteName" jdbcType="VARCHAR" property="excutename" />
+    <result column="methodName" jdbcType="VARCHAR" property="methodname" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="excuteTime" jdbcType="VARCHAR" property="excutetime" />
+    <result column="startTime" jdbcType="VARCHAR" property="starttime" />
+  </resultMap>
+
+  <select id="getLastExcuteLog" resultType="com.example.model.ExcuteLogDetails">
+    SELECT * FROM excute_log_details ORDER BY id DESC LIMIT 1;
+  </select>
+    <select id="selectBy" resultType="com.example.model.ExcuteLogDetails">
+      select id,excuteLogId,excuteName,methodName,status,excuteTime,startTime
+      from excute_log_details
+      where 1=1
+      <if test="id != null">
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="excutelogid != null">
+        and excutelogid = #{excutelogid,jdbcType=VARCHAR}
+      </if>
+    </select>
+</mapper>

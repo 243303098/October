@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ExcuteStepDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.example.model.ExcuteStepDetails">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="excuteLogDetailId" jdbcType="INTEGER" property="excutelogdetailid" />
+    <result column="stepDeatail" jdbcType="VARCHAR" property="stepdeatail" />
+  </resultMap>
+    <insert id="insertForeach" parameterType="java.util.List">
+      insert into excute_step_details
+      (excutelogdetailid,stepdeatail)
+      VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+        (
+        #{item.excutelogdetailid},
+        #{item.stepdeatail}
+        )
+      </foreach>
+    </insert>
+  <select id="selectBy" resultType="com.example.model.ExcuteStepDetails">
+    select id,excuteLogDetailId,stepDeatail
+    from excute_step_details
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="excutelogdetailid != null">
+      and excutelogdetailid = #{excutelogdetailid,jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>

@@ -72,7 +72,6 @@
                                        title="" data-original-title="Refresh inbox"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增CASE</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -124,24 +123,22 @@
                                     <tfoot>
                                     <tr>
                                         <td colspan="12">
-                                            <div class="col-sm-6 m-b-xs">
+                                            <div class="col-sm-6 m-b-xs col-sm-offset-3">
                                                 <a id="excuteAll" class="btn btn-primary btn-block" type="submit"><i
                                                         class="fa fa-play"></i>&nbsp;&nbsp;<strong>批量执行</strong>&nbsp;&nbsp;
                                                 </a>
                                             </div>
-                                            <div class="col-sm-6 m-b-xs">
-                                                <a id="viewReport" class="btn btn-primary btn-block" type="submit"><i
-                                                        class="fa fa-pie-chart"></i>&nbsp;&nbsp;<strong>查看报告</strong>&nbsp;&nbsp;
-                                                </a>
-                                            </div>
+                                            <!--<div class="col-sm-6 m-b-xs">-->
+                                                <!--<a id="viewReport" class="btn btn-primary btn-block" type="submit"><i-->
+                                                        <!--class="fa fa-pie-chart"></i>&nbsp;&nbsp;<strong>查看报告</strong>&nbsp;&nbsp;-->
+                                                <!--</a>-->
+                                            <!--</div>-->
                                         </td>
                                     </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -226,20 +223,17 @@
             $(this).attr("disabled",　false);
         });
 
-        //查看Report
-        $("#viewReport").click(function () {
-            $.ajax({
-                url: '/uiTest/report?param=' + new Date().getTime().toString(),
-                type: 'POST',
-                async: false,
-                success: function (data) {
-                    window.open('/report');
-                }
-            });
-        });
-
-        // $("#viewReport1").click(function () {
-        //    window.location.href = "/report/report.html";
+        // 启用新报告页面
+        // //查看Report
+        // $("#viewReport").click(function () {
+        //     $.ajax({
+        //         url: '/uiTest/report?param=' + new Date().getTime().toString(),
+        //         type: 'POST',
+        //         async: false,
+        //         success: function (data) {
+        //             window.open('/report');
+        //         }
+        //     });
         // });
 
     });
