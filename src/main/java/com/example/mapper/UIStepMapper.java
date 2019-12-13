@@ -13,4 +13,6 @@ public interface UIStepMapper extends MyMapper<UIStep> {
 
     int updateForeach(List<UIStep> list);
 
+    int deleteBymoduleId(Integer moduleId);
+
 }

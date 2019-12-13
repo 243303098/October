@@ -60,7 +60,7 @@ public class CaseLogController {
     }
 
 
-    @RequestMapping(value = "/uiTest/excuteLog", method = RequestMethod.GET)
+    //@RequestMapping(value = "/uiTest/excuteLog", method = RequestMethod.GET)
     public ModelAndView toLogPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         Project project = new Project();

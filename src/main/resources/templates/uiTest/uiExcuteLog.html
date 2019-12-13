@@ -53,21 +53,19 @@
                                 <table class=" table table-hover" data-page-size="5">
                                     <thead>
                                     <tr>
-                                        <th width="15%">ID</th>
-                                        <th width="15%">CASEID</th>
-                                        <th width="15%">状态</th>
-                                        <th width="25%">执行时间</th>
-                                        <th width="30">操作</th>
+                                        <th width="30%">ID</th>
+                                        <th width="20%">状态</th>
+                                        <th width="30%">执行时间</th>
+                                        <th width="20">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="item : ${caseLogList}">
+                                    <tr th:each="item : ${excuteLogList}">
                                         <td th:text="${item.id}">Onions</td>
-                                        <td th:text="${item.caseid}">Onions</td>
                                         <td th:text="${item.status}">Onions</td>
                                         <td th:text="${#dates.format(item.createtime, 'yyyy-MM-dd hh:mm:ss')}">Onions</td>
                                         <td>
-                                            <a href="#" th:href="@{/uiTest/excuteLogDetails(caseLogId=${item.id})}"
+                                            <a href="#" th:href="@{/newReport(excuteLogId=${item.id})}"
                                                title="详细日志"><i class="fa fa-info-circle text-navy"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>

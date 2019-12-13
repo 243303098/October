@@ -11,7 +11,6 @@ import com.example.controller.CaseLogController;
 import com.example.controller.CaseLogDetailController;
 import com.example.model.CaseLog;
 import com.example.model.CaseLogDetail;
-import com.example.rabbitmq.ConsumeMq;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 

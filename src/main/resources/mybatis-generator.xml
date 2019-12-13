@@ -52,6 +52,7 @@
        </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="quartz_task" domainObjectName="QuartzTask"/>
+        <table tableName="excute_log_details" domainObjectName="ExcuteLogDetails"/>
+        <table tableName="excute_step_details" domainObjectName="ExcuteStepDetails"/>
     </context>
 </generatorConfiguration>

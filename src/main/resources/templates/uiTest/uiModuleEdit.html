@@ -147,19 +147,20 @@
     $(document).ready(function () {
         //提交
         $("#submitButton").click(function(){
-
+            $(this).attr("disabled",　true);
             if($("#moduleName").val() == ""){
                 toastr.error('请输入名称','提示');
+                $(this).attr("disabled",　false);
                 return;
             }
             if($("#status").val() == ""){
                 toastr.error('请输入状态','提示');
+                $(this).attr("disabled",　false);
                 return;
             }
 
             $("#formTag").submit();
         });
-
     });
 </script>
 

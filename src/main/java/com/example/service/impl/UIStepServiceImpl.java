@@ -33,4 +33,9 @@ public class UIStepServiceImpl extends BaseService<UIStep> implements UIStepServ
     public int updateByList(List<UIStep> uiStepList) {
         return uiStepMapper.updateForeach(uiStepList);
     }
+
+    @Override
+    public int deleteBymoduleId(Integer moduleId) {
+        return uiStepMapper.deleteBymoduleId(moduleId);
+    }
 }

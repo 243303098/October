@@ -2,8 +2,10 @@ package com.example.controller;
 
 import com.example.model.Project;
 import com.example.model.UIModule;
+import com.example.model.UIStep;
 import com.example.service.ProjectService;
 import com.example.service.UIModuleService;
+import com.example.service.UIStepService;
 import com.example.tools.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,9 @@ public class UIModuleController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private UIStepService uiStepService;
 
     /**
      * 进入module页面
@@ -131,9 +136,16 @@ public class UIModuleController {
         return modelAndView;
     }
 
+    /**
+     * 删除模块
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/uiTest/deleteModule", method = RequestMethod.POST)
     public ModelAndView deleteModule(Integer id){
         ModelAndView modelAndView = new ModelAndView();
+        //删除模块之前先删除下面的步骤
+        uiStepService.deleteBymoduleId(id);
         uiModuleService.delete(id);
         modelAndView.setViewName("uiTest/uiModuleManage");
         return modelAndView;

@@ -5,8 +5,8 @@
     <classes>
       <class name="com.example.excute.ExcuteCase">
         <methods>
+          <include name="initExcuteLog"/>
           <include name="excute"/>
-          <include name="initReport"/>
         </methods>
       </class> <!-- com.example.excute.ExcuteCase -->
     </classes>

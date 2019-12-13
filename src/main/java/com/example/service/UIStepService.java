@@ -17,4 +17,6 @@ public interface UIStepService extends IService<UIStep> {
 
     int updateByList(List<UIStep> uiStepList);
 
+    int deleteBymoduleId(Integer moduleId);
+
 }

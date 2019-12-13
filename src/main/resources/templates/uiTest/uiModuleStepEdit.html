@@ -197,8 +197,8 @@
     $("#uiTest").attr("class", "active");
 
     $(document).ready(function () {
-
         $("#submitButton").click(function () {
+            $(this).attr("disabled",　true);
             var moduleId = [[${moduleId}]];
             var tr = $("#field_list_table tr");
             var result = [];
@@ -253,6 +253,7 @@
                     }, 500);
                 }
             })
+            $(this).attr("disabled",　false);
         });
     });
 

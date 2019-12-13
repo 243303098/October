@@ -7,7 +7,9 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.example.actions.ActionType;
 import com.example.actions.ByType;
+import com.example.controller.ExcuteLogController;
 import com.example.controller.UICaseController;
+import com.example.model.ExcuteLog;
 import com.example.model.UICase;
 import com.example.model.UIStep;
 import com.example.tools.HttpRequestUtil;
@@ -15,11 +17,12 @@ import com.example.tools.StringUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.Reporter;
 import org.testng.annotations.*;
-import java.io.File;
+import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -27,7 +30,8 @@ import static com.codeborne.selenide.Selenide.*;
  * @Date: 2019/11/21 17:28
  * @Description:
  */
-@Listeners({ExtentTestNGIReporterListener.class})
+//@Listeners({ExtentTestNGIReporterListener.class})
+@Listeners({TestNGSimpleReport.class})
 public class ExcuteCase {
 
     /* 操作枚举类型 */
@@ -39,15 +43,28 @@ public class ExcuteCase {
     /* 页面元素 */
     private SelenideElement selenideElement;
 
+    private static String excuteId;
+
+    @BeforeSuite
+    public void initExcuteLog(){
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        setExcuteId(uuid);
+        ExcuteLog excuteLog = new ExcuteLog();
+        excuteLog.setId(uuid);
+        excuteLog.setCreatetime(new Date());
+        ExcuteLogController.getInstance().getExcuteLogService().save(excuteLog);
+    }
+
     @Test(dataProvider = "initData")
-    public void excute(UICase uiCase, List<UIStep> uiStepList) throws Exception {
+    public void excute(UICase uiCase, List<UIStep> uiStepList, ITestContext context) {
         List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList), UIStep.class);
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
-        Configuration.headless = true;
+        //Configuration.headless = true;
         Configuration.timeout = 30000;
+        //传递项目ID
+        context.setAttribute("projectId", uiCase.getProjectid());
         //输出UICaseId以便插入日志
-        Reporter.log(uiCase.getId().toString());
         Reporter.log("使用的浏览器为：" + Configuration.browser + "打开的默认URL为：" + Configuration.baseUrl);
         Selenide.clearBrowserCookies();
         open("/");
@@ -367,5 +384,13 @@ public class ExcuteCase {
     private void pressKeyboard(UIStep uiStep) {
         Reporter.log("输入的键盘事件为：" + uiStep.getDatakey());
         selenideElement.sendKeys(Keys.valueOf(uiStep.getDatakey()));
+    }
+
+    public static String getExcuteId() {
+        return excuteId;
+    }
+
+    public static void setExcuteId(String excuteId) {
+        ExcuteCase.excuteId = excuteId;
     }
 }

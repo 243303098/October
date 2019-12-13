@@ -140,12 +140,12 @@
     $(document).ready(function () {
         //提交
         $("#submitButton").click(function(){
-
+            $(this).attr("disabled",　true);
             if($("#name").val() == ""){
                 toastr.error('请输入名称','提示');
+                $(this).attr("disabled",　false);
                 return;
             }
-
             $("#formTag").submit();
         });
 

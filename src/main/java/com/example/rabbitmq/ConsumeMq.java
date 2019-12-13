@@ -1,12 +1,11 @@
 package com.example.rabbitmq;
 
 import com.example.excute.ExcuteCase;
-import com.example.excute.ExtentTestNGIReporterListener;
+import com.example.excute.TestNGSimpleReport;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import org.testng.TestNG;
-
 import java.util.Arrays;
 
 /**
@@ -26,7 +25,7 @@ public class ConsumeMq {
         synchronized (this){
             retryCount++;
             TestNG testNG = new TestNG();
-            Class[] listenerClass = {ExtentTestNGIReporterListener.class};
+            Class[] listenerClass = {TestNGSimpleReport.class};
             testNG.setListenerClasses(Arrays.asList(listenerClass));
             testNG.setTestClasses(new Class[]{ExcuteCase.class});
             if (retryCount < 5) {

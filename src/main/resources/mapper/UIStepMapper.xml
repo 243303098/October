@@ -14,8 +14,13 @@
     <result column="comment" jdbcType="VARCHAR" property="comment" />
     <result column="moduleId" jdbcType="INTEGER" property="moduleid" />
   </resultMap>
+    <delete id="deleteBymoduleId">
+        DELETE
+        FROM ui_step
+        WHERE moduleid = #{moduleid,jdbcType=INTEGER}
+    </delete>
 
-  <select id="selectBy" parameterType="com.example.model.UIStep" resultType="com.example.model.UIStep">
+    <select id="selectBy" parameterType="com.example.model.UIStep" resultType="com.example.model.UIStep">
       select us.id,us.sort,us.name,us.elementId,us.dataKey,us.actionId,us.comment,us.moduleId,ue.name as uiElementName,ue.byType AS uiElementByType,ue.path AS uiElementPath,ue.comment AS uiElementComment,p.url as url,p.browserType as browserType,uk.actionKey AS actionKey, uk.actionType as actionType
       from ui_step us, ui_element ue, project p, ui_keyword uk
       where us.elementid = ue.id and ue.projectId = p.id and uk.id = us.actionId
@@ -47,17 +52,17 @@
 
     <update id="updateForeach" parameterType="list">
         <foreach collection="list" index="index" item="item" open="" separator=";" close="">
-            update ui_step
+            update ui_step us
             <set>
-                sort = #{item.sort},
-                name = #{item.name},
-                elementid = #{item.elementid},
-                datakey = #{item.datakey},
-                actionid = #{item.actionid},
-                comment = #{item.comment},
-                moduleid = #{item.moduleid}
+                us.sort = #{item.sort},
+                us.name = #{item.name},
+                us.elementid = #{item.elementid},
+                us.datakey = #{item.datakey},
+                us.actionid = #{item.actionid},
+                us.comment = #{item.comment},
+                us.moduleid = #{item.moduleid}
             </set>
-            WHERE id = #{item.id}
+            WHERE us.id = #{item.id}
         </foreach>
     </update>
 </mapper>
