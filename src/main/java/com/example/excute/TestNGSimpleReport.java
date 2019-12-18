@@ -1,11 +1,13 @@
 package com.example.excute;
 
+import com.alibaba.druid.sql.visitor.functions.Substring;
 import com.example.controller.ExcuteLogController;
 import com.example.controller.ExcuteLogDetailsController;
 import com.example.controller.ExcuteStepDetailsController;
 import com.example.model.ExcuteLog;
 import com.example.model.ExcuteLogDetails;
 import com.example.model.ExcuteStepDetails;
+import com.example.rabbitmq.ConsumeMq;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
@@ -24,6 +26,8 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
+        //设置重新执行次数为0
+        ConsumeMq.setRetryCount(0);
         List<ITestResult> list = new ArrayList<>();
         Integer prijectId = null;
         for (ISuite suite : suites) {
@@ -33,12 +37,10 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
                 IResultMap passedTests = testContext.getPassedTests();
                 IResultMap failedTests = testContext.getFailedTests();
                 IResultMap skippedTests = testContext.getSkippedTests();
-                IResultMap failedConfig = testContext.getFailedConfigurations();
                 prijectId = Integer.valueOf(testContext.getAttribute("projectId").toString());
                 list.addAll(this.listTestResult(passedTests));
                 list.addAll(this.listTestResult(failedTests));
                 list.addAll(this.listTestResult(skippedTests));
-                list.addAll(this.listTestResult(failedConfig));
             }
         }
         this.sort(list);
@@ -80,7 +82,11 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
             for (int i = 0; i < Reporter.getOutput(result).size(); i++) {
                 ExcuteStepDetails excuteStepDetails = new ExcuteStepDetails();
                 excuteStepDetails.setExcutelogdetailid(ExcuteLogDetailsController.getInstance().getExcuteLogDetailsService().getLastExcuteLog().getId());
-                excuteStepDetails.setStepdeatail(Reporter.getOutput(result).get(i));
+                if (Reporter.getOutput(result).get(i).length() > 250){
+                    excuteStepDetails.setStepdeatail(Reporter.getOutput(result).get(i).substring(0,250));
+                }else {
+                    excuteStepDetails.setStepdeatail(Reporter.getOutput(result).get(i));
+                }
                 excuteStepDetailsList.add(excuteStepDetails);
             }
             ExcuteStepDetailsController.getInstance().getExcuteStepDetailsService().saveByList(excuteStepDetailsList);

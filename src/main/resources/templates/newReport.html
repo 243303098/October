@@ -7162,6 +7162,7 @@
                     $.each(logs, function (i, n) {
                         detailLog = detailLog + "<p>" + n + "</p>";
                     });
+                    //detailLog = detailLog + "<img src='C:/workspace/report/1576220864727.0.png'>";
                     $(obj).parent().parent().after("<tr><td colspan='" + len + "'><div style='font-family: Consolas;font-size:12px'>" + detailLog + "</div></td></tr>");
                 } else if ($(obj).text() == '收缩') {
                     $(obj).parent().parent().next().remove();

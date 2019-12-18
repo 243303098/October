@@ -28,6 +28,7 @@ public class ConsumeMq {
             Class[] listenerClass = {TestNGSimpleReport.class};
             testNG.setListenerClasses(Arrays.asList(listenerClass));
             testNG.setTestClasses(new Class[]{ExcuteCase.class});
+            System.out.println("当前重试次数为：" + getRetryCount());
             if (retryCount < 5) {
                 testNG.run();
             }
@@ -36,5 +37,9 @@ public class ConsumeMq {
 
     public static Integer getRetryCount() {
         return retryCount;
+    }
+
+    public static void setRetryCount(Integer retryCount) {
+        ConsumeMq.retryCount = retryCount;
     }
 }

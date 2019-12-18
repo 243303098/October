@@ -1,293 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
     <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击放大镜]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
       <![CDATA[执行的步骤名称为：输入搜索内容]]>
@@ -296,118 +11,28 @@
       <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[输入参数为：口红]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验搜索结果]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-    </line>
-    <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击放大镜]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
       <![CDATA[执行的步骤名称为：输入搜索内容]]>
@@ -416,205 +41,28 @@
       <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[输入参数为：口红]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验搜索结果]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击快速浏览]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'快速浏览')]]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="hover-text link-right blank-btn mobile-hidden" href="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/">快速浏览</a>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：等待弹窗]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：强制等待]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：null]]>
-    </line>
-    <line>
-      <![CDATA[强制等待3S]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：切换到弹窗Iframe]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：切换Frame]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//iframe[@class = 'fancybox-iframe']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216687403" name="fancybox-frame1576216687403" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-    </line>
-    <line>
-      <![CDATA[切换到的Iframe为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216687403" name="fancybox-frame1576216687403" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击加购操作]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='btn-cart']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button btn-cart" id="btn-cart" onclick="$('goto_cart').value=0;" title="添加到购物车" type="button">添加购物车</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验加购是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[contains(text(),'已添加到您的购物车')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<div class="add-cart-content" displayed:false></div>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：切换到默认Iframe]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：切换到默认Frame]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：null]]>
-    </line>
-    <line>
-      <![CDATA[切换到默认的Iframe]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：关闭快速浏览弹窗]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[@title = 'Close']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="fancybox-item fancybox-close" href="javascript:;" title="Close"></a>]]>
-    </line>
-    <line>
-      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入用户名]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：15221527941]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：输入密码]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做输入操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-    </line>
-    <line>
-      <![CDATA[输入参数为：test123]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击放大镜]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
       <![CDATA[执行的步骤名称为：输入搜索内容]]>
@@ -623,372 +71,147 @@
       <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[输入参数为：口红]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验搜索结果]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击快速浏览]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'快速浏览')]]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="hover-text link-right blank-btn mobile-hidden" href="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/">快速浏览</a>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：等待弹窗]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：强制等待]]>
+      <![CDATA[执行的步骤名称为：输入搜索内容]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：null]]>
+      <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[强制等待3S]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：切换到弹窗Iframe]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：切换Frame]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//iframe[@class = 'fancybox-iframe']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216713425" name="fancybox-frame1576216713425" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-    </line>
-    <line>
-      <![CDATA[切换到的Iframe为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216713425" name="fancybox-frame1576216713425" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：点击加购操作]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='btn-cart']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<button class="button btn-cart" id="btn-cart" onclick="$('goto_cart').value=0;" title="添加到购物车" type="button">添加购物车</button>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：校验加购是否成功]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
+      <![CDATA[执行的步骤名称为：输入搜索内容]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[contains(text(),'已添加到您的购物车')]]]>
+      <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<div class="add-cart-content" displayed:false></div>]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：切换到默认Iframe]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：切换到默认Frame]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：null]]>
-    </line>
-    <line>
-      <![CDATA[切换到默认的Iframe]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：关闭快速浏览弹窗]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//a[@title = 'Close']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="fancybox-item fancybox-close" href="javascript:;" title="Close"></a>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：点击购物车图标]]>
+      <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
+      <![CDATA[执行的步骤名称为：输入搜索内容]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-minicart')]]]>
+      <![CDATA[选择的Action为：元素做输入操作]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="top-minicart top-minicart-has-product" href="javascript:void(0);">2</a>]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
     </line>
     <line>
-      <![CDATA[执行的步骤名称为：点击查看购物车按钮]]>
+      <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
     </line>
     <line>
-      <![CDATA[选择的Action为：元素做点击操作]]>
+      <![CDATA[输入参数为：百度一下]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='header-cart']//a[@class='cart-link-word']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<a class="cart-link-word" href="https://www.makeupforever.cn/checkout/cart/">查看购物车</a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：删除商品]]>
+      <![CDATA[执行的步骤名称为：点击百度一下]]>
     </line>
     <line>
       <![CDATA[选择的Action为：元素做点击操作]]>
     </line>
     <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//td[contains(@class,'remove')]//a[@title='删除项目']]]>
+      <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
     </line>
     <line>
-      <![CDATA[获取到的元素为：<a class="remove-button" href="https://www.makeupforever.cn/checkout/cart/delete/id/712559/uenc/aHR0cHM6Ly93d3cubWFrZXVwZm9yZXZlci5jbi9jaGVja291dC9jYXJ0Lw,,/" title="删除项目"></a>]]>
-    </line>
-    <line>
-      <![CDATA[执行的步骤名称为：校验删除成功]]>
-    </line>
-    <line>
-      <![CDATA[选择的Action为：校验元素是否存在]]>
-    </line>
-    <line>
-      <![CDATA[查找的locationType为：xpath元素路径为：//p[text()='购物车为空']]]>
-    </line>
-    <line>
-      <![CDATA[获取到的元素为：<p>购物车为空</p>]]>
+      <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
     </line>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="108177" started-at="2019-12-13T13:57:11 CST" finished-at="2019-12-13T13:58:59 CST">
+  <suite name="Command line suite" duration-ms="3895" started-at="2019-12-17T16:14:36 CST" finished-at="2019-12-17T16:14:40 CST">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="108177" started-at="2019-12-13T13:57:11 CST" finished-at="2019-12-13T13:58:59 CST">
+    <test name="Command line test" duration-ms="3895" started-at="2019-12-17T16:14:36 CST" finished-at="2019-12-17T16:14:40 CST">
       <class name="com.example.excute.ExcuteCase">
-        <test-method status="PASS" signature="initExcuteLog()[pri:0, instance:com.example.excute.ExcuteCase@24245a77]" name="initExcuteLog" is-config="true" duration-ms="4" started-at="2019-12-13T13:57:11 CST" finished-at="2019-12-13T13:57:11 CST">
+        <test-method status="PASS" signature="initExcuteLog()[pri:0, instance:com.example.excute.ExcuteCase@34a52d8c]" name="initExcuteLog" is-config="true" duration-ms="5" started-at="2019-12-17T16:14:36 CST" finished-at="2019-12-17T16:14:36 CST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initExcuteLog -->
-        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List, org.testng.ITestContext)[pri:0, instance:com.example.excute.ExcuteCase@24245a77]" name="excute" duration-ms="16421" started-at="2019-12-13T13:57:11 CST" data-provider="initData" finished-at="2019-12-13T13:57:28 CST">
+        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List, org.testng.ITestContext)[pri:0, instance:com.example.excute.ExcuteCase@34a52d8c]" name="excute" duration-ms="3893" started-at="2019-12-17T16:14:36 CST" data-provider="initData" finished-at="2019-12-17T16:14:40 CST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[com.example.model.UICase@2215183d]]>
+                <![CDATA[com.example.model.UICase@6d849a51]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[[com.example.model.UIStep@3146350e, com.example.model.UIStep@4ac6a15b, com.example.model.UIStep@cd75808, com.example.model.UIStep@bc438c7, com.example.model.UIStep@baa92f4]]]>
+                <![CDATA[[com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132c630]]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[org.testng.TestRunner@5edf461e]]>
+                <![CDATA[org.testng.TestRunner@70220e0c]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入用户名]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：15221527941]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入密码]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：test123]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- excute -->
-        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List, org.testng.ITestContext)[pri:0, instance:com.example.excute.ExcuteCase@24245a77]" name="excute" duration-ms="19504" started-at="2019-12-13T13:57:28 CST" data-provider="initData" finished-at="2019-12-13T13:57:47 CST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[com.example.model.UICase@1afb25f0]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[[com.example.model.UIStep@7d7ddddf, com.example.model.UIStep@77a3e6bd, com.example.model.UIStep@5368a1e1, com.example.model.UIStep@7a41b30c, com.example.model.UIStep@69c10abe, com.example.model.UIStep@1bf9f35, com.example.model.UIStep@6542966b, com.example.model.UIStep@27ffe802, com.example.model.UIStep@b1dcb04]]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[org.testng.TestRunner@5edf461e]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入用户名]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：15221527941]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入密码]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：test123]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击放大镜]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
+              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com]]>
             </line>
             <line>
               <![CDATA[执行的步骤名称为：输入搜索内容]]>
@@ -997,541 +220,25 @@
               <![CDATA[选择的Action为：元素做输入操作]]>
             </line>
             <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
+              <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='kw']]]>
             </line>
             <line>
-              <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
+              <![CDATA[获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input>]]>
             </line>
             <line>
-              <![CDATA[输入参数为：口红]]>
+              <![CDATA[输入参数为：百度一下]]>
             </line>
             <line>
-              <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验搜索结果]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- excute -->
-        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List, org.testng.ITestContext)[pri:0, instance:com.example.excute.ExcuteCase@24245a77]" name="excute" duration-ms="27858" started-at="2019-12-13T13:57:47 CST" data-provider="initData" finished-at="2019-12-13T13:58:15 CST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[com.example.model.UICase@24a20f23]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[[com.example.model.UIStep@219e0e2c, com.example.model.UIStep@79bde864, com.example.model.UIStep@3aaa8606, com.example.model.UIStep@1a3b4bc4, com.example.model.UIStep@4b85c9c1, com.example.model.UIStep@5d6df61d, com.example.model.UIStep@3399d100, com.example.model.UIStep@733cd9dc, com.example.model.UIStep@1692cdbb, com.example.model.UIStep@247d1c6a, com.example.model.UIStep@5991c834, com.example.model.UIStep@4c7608e3, com.example.model.UIStep@4c89ebc3, com.example.model.UIStep@5b3074, com.example.model.UIStep@575c8823, com.example.model.UIStep@2b91b33b]]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[org.testng.TestRunner@5edf461e]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
+              <![CDATA[执行的步骤名称为：点击百度一下]]>
             </line>
             <line>
               <![CDATA[选择的Action为：元素做点击操作]]>
             </line>
             <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
+              <![CDATA[查找的locationType为：xpath元素路径为：//input[@id='su']]]>
             </line>
             <line>
-              <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入用户名]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：15221527941]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入密码]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：test123]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击放大镜]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入搜索内容]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：口红]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验搜索结果]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击快速浏览]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'快速浏览')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="hover-text link-right blank-btn mobile-hidden" href="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/">快速浏览</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：等待弹窗]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：强制等待]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：null]]>
-            </line>
-            <line>
-              <![CDATA[强制等待3S]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：切换到弹窗Iframe]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：切换Frame]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//iframe[@class = 'fancybox-iframe']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216687403" name="fancybox-frame1576216687403" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-            </line>
-            <line>
-              <![CDATA[切换到的Iframe为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216687403" name="fancybox-frame1576216687403" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击加购操作]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='btn-cart']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button btn-cart" id="btn-cart" onclick="$('goto_cart').value=0;" title="添加到购物车" type="button">添加购物车</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验加购是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[contains(text(),'已添加到您的购物车')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<div class="add-cart-content" displayed:false></div>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：切换到默认Iframe]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：切换到默认Frame]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：null]]>
-            </line>
-            <line>
-              <![CDATA[切换到默认的Iframe]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：关闭快速浏览弹窗]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[@title = 'Close']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="fancybox-item fancybox-close" href="javascript:;" title="Close"></a>]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- excute -->
-        <test-method status="PASS" signature="excute(com.example.model.UICase, java.util.List, org.testng.ITestContext)[pri:0, instance:com.example.excute.ExcuteCase@24245a77]" name="excute" duration-ms="44391" started-at="2019-12-13T13:58:15 CST" data-provider="initData" finished-at="2019-12-13T13:58:59 CST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[com.example.model.UICase@6d93643e]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[[com.example.model.UIStep@43dfb1ad, com.example.model.UIStep@3351131f, com.example.model.UIStep@73ec941, com.example.model.UIStep@fd4bac2, com.example.model.UIStep@3138204c, com.example.model.UIStep@aca049f, com.example.model.UIStep@7b4fb046, com.example.model.UIStep@51670747, com.example.model.UIStep@21ad6767, com.example.model.UIStep@7b197131, com.example.model.UIStep@7d523394, com.example.model.UIStep@14e64e46, com.example.model.UIStep@5e3a85e2, com.example.model.UIStep@6e1ae7ed, com.example.model.UIStep@2b8a729, com.example.model.UIStep@240a5d46, com.example.model.UIStep@2e95c9b0, com.example.model.UIStep@17896600, com.example.model.UIStep@504f0a37, com.example.model.UIStep@26598d15]]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[org.testng.TestRunner@5edf461e]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击首页用户按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id='user-links']//a[contains(@class,'no-login')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-account no-login" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入用户名]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:email']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocapitalize="off" autocorrect="off" class="input-text required-entry validate-email-phone" errormsg="*请输入正确的邮箱或手机号码" id="login:email" name="login[username]" spellcheck="false" tabindex="0" title="电子邮件地址" type="text"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：15221527941]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入密码]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='login:pass']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input autocomplete="false" class="input-text required-entry validate-password" errormsg="*请输入正确的密码" id="login:pass" name="login[password]" title="密码" type="password"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：test123]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击立即登录按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='send2']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button" id="send2" name="send" onclick="loginForm.submit();" title="登录" type="button">登录</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验登录是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'注销')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a href="https://www.makeupforever.cn/customer/account/logout/">注销</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击放大镜]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-search')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-search" href="javascript:void(0)"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：输入搜索内容]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做输入操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//input[@id='search']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<input class="input-text required-entry form-text mini-search" id="search" maxlength="128" name="q" placeholder="搜索" type="search"></input>]]>
-            </line>
-            <line>
-              <![CDATA[输入参数为：口红]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击搜索按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@id = 'user-links']//button[@title='搜索']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button search-button" title="搜索" type="submit">确定</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验搜索结果]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//div[@class='inner-banner']//h1[contains(text(),'搜索结果')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<h1>1 搜索结果 "口红"</h1>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击快速浏览]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[contains(text(),'快速浏览')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="hover-text link-right blank-btn mobile-hidden" href="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/">快速浏览</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：等待弹窗]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：强制等待]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：null]]>
-            </line>
-            <line>
-              <![CDATA[强制等待3S]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：切换到弹窗Iframe]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：切换Frame]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//iframe[@class = 'fancybox-iframe']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216713425" name="fancybox-frame1576216713425" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-            </line>
-            <line>
-              <![CDATA[切换到的Iframe为：<iframe class="fancybox-iframe" frameborder="0" hspace="0" id="fancybox-frame1576216713425" name="fancybox-frame1576216713425" scrolling="auto" src="https://www.makeupforever.cn/mcatalog/product/quickshop/id/2520/" vspace="0"></iframe>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击加购操作]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='btn-cart']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<button class="button btn-cart" id="btn-cart" onclick="$('goto_cart').value=0;" title="添加到购物车" type="button">添加购物车</button>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验加购是否成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[contains(text(),'已添加到您的购物车')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<div class="add-cart-content" displayed:false></div>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：切换到默认Iframe]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：切换到默认Frame]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：null]]>
-            </line>
-            <line>
-              <![CDATA[切换到默认的Iframe]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：关闭快速浏览弹窗]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//a[@title = 'Close']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="fancybox-item fancybox-close" href="javascript:;" title="Close"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击购物车图标]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='user-links']//a[contains(@class,'top-minicart')]]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="top-minicart top-minicart-has-product" href="javascript:void(0);">2</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：点击查看购物车按钮]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//*[@id='header-cart']//a[@class='cart-link-word']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="cart-link-word" href="https://www.makeupforever.cn/checkout/cart/">查看购物车</a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：删除商品]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：元素做点击操作]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//td[contains(@class,'remove')]//a[@title='删除项目']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<a class="remove-button" href="https://www.makeupforever.cn/checkout/cart/delete/id/712559/uenc/aHR0cHM6Ly93d3cubWFrZXVwZm9yZXZlci5jbi9jaGVja291dC9jYXJ0Lw,,/" title="删除项目"></a>]]>
-            </line>
-            <line>
-              <![CDATA[执行的步骤名称为：校验删除成功]]>
-            </line>
-            <line>
-              <![CDATA[选择的Action为：校验元素是否存在]]>
-            </line>
-            <line>
-              <![CDATA[查找的locationType为：xpath元素路径为：//p[text()='购物车为空']]]>
-            </line>
-            <line>
-              <![CDATA[获取到的元素为：<p>购物车为空</p>]]>
+              <![CDATA[获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input>]]>
             </line>
           </reporter-output>
         </test-method> <!-- excute -->

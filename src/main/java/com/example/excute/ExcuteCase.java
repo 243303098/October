@@ -46,8 +46,8 @@ public class ExcuteCase {
     private static String excuteId;
 
     @BeforeSuite
-    public void initExcuteLog(){
-        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+    public void initExcuteLog() {
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         setExcuteId(uuid);
         ExcuteLog excuteLog = new ExcuteLog();
         excuteLog.setId(uuid);
@@ -60,7 +60,8 @@ public class ExcuteCase {
         List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList), UIStep.class);
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
-        //Configuration.headless = true;
+        Configuration.reportsFolder = "C:\\workspace\\report";
+        Configuration.headless = true;
         Configuration.timeout = 30000;
         //传递项目ID
         context.setAttribute("projectId", uiCase.getProjectid());
@@ -128,30 +129,56 @@ public class ExcuteCase {
     private SelenideElement getElement(UIStep uiStep) {
         String locationType = uiStep.getUiElementByType();
         String path = uiStep.getUiElementPath();
+        SelenideElement element;
         if (StringUtil.isNull(path)) {
             return null;
         } else {
             Reporter.log("查找的locationType为：" + locationType + "元素路径为：" + path);
             switch (locationType) {
                 case ByType.ID:
-                    return $(By.id(path)).shouldBe(Condition.enabled);
+                    element = $(By.id(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.NAME:
-                    return $(By.name(path)).shouldBe(Condition.enabled);
+                    element = $(By.name(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.XPATH:
-                    return $(By.xpath(path)).shouldBe(Condition.enabled);
+                    element = $(By.xpath(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.CSSSELECTOR:
-                    return $(By.cssSelector(path)).shouldBe(Condition.enabled);
+                    element = $(By.cssSelector(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.CLASSNAME:
-                    return $(By.className(path)).shouldBe(Condition.enabled);
+                    element = $(By.className(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.LINKTEXT:
-                    return $(By.linkText(path)).shouldBe(Condition.enabled);
+                    element = $(By.linkText(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.PARTIALLINKTEXT:
-                    return $(By.partialLinkText(path)).shouldBe(Condition.enabled);
+                    element = $(By.partialLinkText(path)).should(Condition.enabled);
+                    return checkElement(element);
                 case ByType.TAGNAME:
-                    return $(By.tagName(path)).shouldBe(Condition.enabled);
+                    element = $(By.tagName(path)).should(Condition.enabled);
+                    return checkElement(element);
                 default:
-                    return $(By.xpath(path)).shouldBe(Condition.enabled);
+                    element = $(By.xpath(path)).should(Condition.enabled);
+                    return checkElement(element);
             }
+        }
+    }
+
+    /**
+     * 校验获取的元素
+     *
+     * @param element
+     * @return
+     */
+    public SelenideElement checkElement(SelenideElement element) {
+        if (element.toString().contains("Exception")) {
+            Reporter.log("查询元素出现异常！" + element);
+            Assert.fail("查询元素出现异常！");
+            return null;
+        } else {
+            return element;
         }
     }
 
@@ -191,10 +218,10 @@ public class ExcuteCase {
     private void actionsAction(UIStep uiStep) {
         switch (actionKey) {
             case CLICK:
-                try{
+                try {
                     selenideElement.click();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("点击元素时发生异常：" + e.toString());
                     Assert.fail();
                 }
@@ -205,64 +232,64 @@ public class ExcuteCase {
                     //值由data提供
                     selenideElement.setValue(uiStep.getDatakey());
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("输入参数时发生异常：" + e.toString());
                     Assert.fail();
                 }
             case MOVE:
-                try{
+                try {
                     selenideElement.hover();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("浮动到元素上时发生异常：" + e.toString());
                     Assert.fail();
                 }
 
             case RIGHTCLICK:
-                try{
+                try {
                     selenideElement.contextClick();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("元素右击时发生异常：" + e.toString());
                     Assert.fail();
                 }
 
             case DOUBLECLICK:
-                try{
+                try {
                     selenideElement.doubleClick();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("元素双击时时发生异常：" + e.toString());
                     Assert.fail();
                 }
 
             case DRAG:
-                try{
+                try {
                     //To的值（XPATH路径）由data提供
                     Reporter.log("移动到的元素为：" + $(By.xpath(uiStep.getDatakey())));
                     selenideElement.dragAndDropTo($(By.xpath(uiStep.getDatakey())));
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("拖动元素时发生异常：" + e.toString());
                     Assert.fail();
                 }
 
             case ACCEPTALERT:
-                try{
+                try {
                     Reporter.log("执行接受Alert操作");
                     Selenide.confirm();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("执行接受Alert操作时发生异常：" + e.toString());
                     Assert.fail();
                 }
 
             case CANCELALERT:
-                try{
+                try {
                     Reporter.log("执行取消Alert操作");
                     Selenide.dismiss();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("执行取消Alert操作时发生异常：" + e.toString());
                     Assert.fail();
                 }
@@ -329,7 +356,7 @@ public class ExcuteCase {
                     //nameOrHandleOrTitle
                     Selenide.switchTo().window(uiStep.getDatakey());
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("切换窗口时发生异常：" + e.toString());
                     Assert.fail();
                 }
@@ -340,7 +367,7 @@ public class ExcuteCase {
                     // 切换frame
                     Selenide.switchTo().frame(selenideElement);
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("切换Iframe时发生异常：" + e.toString());
                     Assert.fail();
                 }
@@ -351,7 +378,7 @@ public class ExcuteCase {
                     // 切换到默认frame
                     Selenide.switchTo().defaultContent();
                     break;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("切换到默认Iframe时发生异常：" + e.toString());
                     Assert.fail();
                 }
@@ -369,7 +396,7 @@ public class ExcuteCase {
         try {
             Reporter.log("当前执行的JS为：" + uiStep.getDatakey());
             Selenide.executeJavaScript(uiStep.getDatakey(), selenideElement);
-        }catch (Exception e){
+        } catch (Exception e) {
             Reporter.log("执行JS时发生异常：" + e.toString());
             Assert.fail();
         }

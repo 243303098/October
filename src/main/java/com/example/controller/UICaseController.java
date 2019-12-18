@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @Auther: Leo.hu
@@ -170,7 +172,7 @@ public class UICaseController {
      */
     @Synchronized
     @RequestMapping(value = "/uiTest/excuteCase", method = RequestMethod.POST)
-    public ModelAndView excuteCase(Integer id) {
+    public ModelAndView excuteCase(Integer id) throws IOException, TimeoutException {
         ModelAndView modelAndView = new ModelAndView();
         List<UICase> uiCaseList = new ArrayList<>();
         UICase uiCase = uiCaseService.selectByKey(id);

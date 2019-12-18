@@ -53,7 +53,7 @@ public class RabbitMqConfig {
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
         connectionFactory.setPublisherConfirms(true);// 确认机制
-//        connectionFactory.setPublisherReturns(true);
+        connectionFactory.setPublisherReturns(true);
         //发布确认，template要求CachingConnectionFactory的publisherConfirms属性设置为true
         return connectionFactory;
     }
