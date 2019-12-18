@@ -6,6 +6,8 @@ import com.example.tools.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -21,6 +23,29 @@ public class BaseConfigController {
 
     @Autowired
     private ProjectService projectService;
+
+    @PostConstruct
+    public void init() {
+        BaseConfigController.getInstance().projectService = this.projectService;
+    }
+
+    private static class SingletonHolder {
+        private static final BaseConfigController INSTANCE = new BaseConfigController();
+    }
+
+    private BaseConfigController() {
+    }
+
+    public static final BaseConfigController getInstance() {
+        return BaseConfigController.SingletonHolder.INSTANCE;
+    }
+
+    /**
+     * 实现单例 end
+     */
+    public ProjectService getProjectService() {
+        return BaseConfigController.getInstance().projectService;
+    }
 
     /**
      * 查询所有的项目信息，带分页
@@ -78,7 +103,7 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/addProject", method = RequestMethod.POST)
-    public ModelAndView deleteProjectById(HttpServletRequest request, Integer id, String name, Integer status, String url, String browserType){
+    public ModelAndView deleteProjectById(HttpServletRequest request, Integer id, String name, Integer status, String url, String browserType, String mail){
         ModelAndView modelAndView = new ModelAndView();
         Project project = new Project();
         HttpSession session = request.getSession();
@@ -90,6 +115,7 @@ public class BaseConfigController {
         project.setStatus(status);
         project.setBrowserType(browserType);
         project.setUrl(url);
+        project.setMail(mail);
         if (StringUtil.isNull(String.valueOf(id))){
             projectService.save(project);
         }else {
@@ -106,7 +132,7 @@ public class BaseConfigController {
      * @return
      */
     @RequestMapping(value = "/baseConfig/projectEdit", method = RequestMethod.GET)
-    public ModelAndView getAddProjectPageById(Integer id, String name, Integer status, String url, String browserType){
+    public ModelAndView getAddProjectPageById(Integer id, String name, Integer status, String url, String browserType, String mail){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("baseConfig/projectEdit");
         modelAndView.addObject("projectId", id);
@@ -114,6 +140,7 @@ public class BaseConfigController {
         modelAndView.addObject("status", status);
         modelAndView.addObject("url", url);
         modelAndView.addObject("browserType", browserType);
+        modelAndView.addObject("mail", mail);
         return modelAndView;
     }
 

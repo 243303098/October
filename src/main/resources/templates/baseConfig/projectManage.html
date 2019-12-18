@@ -90,11 +90,12 @@
                                     <tr>
                                         <th width="10%">ID</th>
                                         <th width="10%">项目名称</th>
-                                        <th width="15%">状态</th>
+                                        <th width="10%">状态</th>
                                         <th width="10%">所属用户</th>
                                         <th width="20%">URL</th>
                                         <th width="10%">浏览器</th>
-                                        <th width="25">操作</th>
+                                        <th width="20%">邮箱</th>
+                                        <th width="10">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -108,8 +109,9 @@
                                         <td th:text="${item.userid}">Onions</td>
                                         <td th:text="${item.url}">Onions</td>
                                         <td th:text="${item.browserType}">Onions</td>
+                                        <td th:text="${item.mail}">Onions</td>
                                         <td>
-                                            <a th:href="@{/baseConfig/projectEdit(id=${item.id},name=${item.name},status=${item.status},url=${item.url},browserType=${item.browserType})}" title="修改"><i class="fa text-navy"></i>修改</a>
+                                            <a th:href="@{/baseConfig/projectEdit(id=${item.id},name=${item.name},status=${item.status},url=${item.url},browserType=${item.browserType},mail=${item.mail})}" title="修改"><i class="fa text-navy"></i>修改</a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="#" th:onclick="'javascript:updateState('+${item.id}+',2,0);'" title="删除"><i class="fa text-navy"></i>删除</a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;

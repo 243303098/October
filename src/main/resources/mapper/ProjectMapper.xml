@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.ProjectMapper">
-  <resultMap id="BaseResultMap" type="com.example.model.Project">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="userId" jdbcType="INTEGER" property="userid" />
-      <result column="url" jdbcType="VARCHAR" property="url" />
-      <result column="browserType" jdbcType="VARCHAR" property="browsertype" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.model.Project">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="userId" jdbcType="INTEGER" property="userid"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="browserType" jdbcType="VARCHAR" property="browsertype"/>
+        <result column="mail" jdbcType="VARCHAR" property="mail"/>
+    </resultMap>
     <select id="selectByName" parameterType="java.lang.String" resultType="com.example.model.Project">
-        select id, name, createTime, updateTime, status, userId, url, browsertype
+        select id, name, createTime, updateTime, status, userId, url, browsertype, mail
         from project
         where name like concat('%',#{name,jdbcType=VARCHAR},'%')
     </select>
     <select id="selectBy" parameterType="com.example.model.UIModule" resultType="com.example.model.Project">
-        select id, name, createTime, updateTime, status, userId, url, browsertype
+        select id, name, createTime, updateTime, status, userId, url, browsertype, mail
         from project
         where 1=1
         <if test="id != null">

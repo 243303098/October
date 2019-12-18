@@ -1,16 +1,16 @@
 package com.example.excute;
 
-import com.alibaba.druid.sql.visitor.functions.Substring;
-import com.example.controller.ExcuteLogController;
-import com.example.controller.ExcuteLogDetailsController;
-import com.example.controller.ExcuteStepDetailsController;
+import com.example.controller.*;
 import com.example.model.ExcuteLog;
 import com.example.model.ExcuteLogDetails;
 import com.example.model.ExcuteStepDetails;
+import com.example.model.Project;
 import com.example.rabbitmq.ConsumeMq;
+import com.example.service.MailService;
+import com.example.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
-
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -21,8 +21,11 @@ import java.util.*;
  */
 public class TestNGSimpleReport implements ITestListener, IReporter {
 
+    @Autowired
+    private MailService mailService;
 
-    private static Boolean flag = true;
+    @Autowired
+    private ProjectService projectService;
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
@@ -63,9 +66,13 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
     }
 
     private void outputResult(List<ITestResult> list, Integer projectId) {
+        Boolean flag = true;
+        int successCount = 0;
         for (ITestResult result : list) {
             if (this.getStatus(result.getStatus()).equals("FAILURE")) {
                 flag = false;
+            }else {
+                successCount = successCount + 1;
             }
             //存储各个case的结果
             ExcuteLogDetails excuteLogDetails = new ExcuteLogDetails();
@@ -96,10 +103,13 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
         ExcuteLog excuteLog = new ExcuteLog();
         excuteLog.setId(ExcuteCase.getExcuteId());
         excuteLog.setProjectid(projectId);
-        if (flag) {
+        if (flag || successCount >= list.size()) {
             excuteLog.setStatus("SUCCESS");
         } else {
             excuteLog.setStatus("FAILURE");
+            //若发生错误则发送邮件通知
+            Project project = BaseConfigController.getInstance().getProjectService().selectByKey(projectId);
+            MailController.getInstance().getMailService().sendSimpleMail(project.getMail(), "异常通知", "FAILURE，请登录后台查看具体Report");
         }
         ExcuteLogController.getInstance().getExcuteLogService().updateNotNull(excuteLog);
     }

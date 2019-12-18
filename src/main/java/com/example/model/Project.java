@@ -28,6 +28,8 @@ public class Project {
 
     private String browsertype;
 
+    private String mail;
+
     /**
      * @return id
      */
@@ -130,5 +132,13 @@ public class Project {
 
     public void setBrowserType(String browsertype) {
         this.browsertype = browsertype;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

@@ -1,26 +1,24 @@
 package com.example.quartz;
 
 import com.example.controller.UICaseController;
-import com.example.excute.ExcuteCase;
-import com.example.excute.ExtentTestNGIReporterListener;
 import com.example.model.UICase;
 import com.example.model.UIStep;
 import com.example.service.UICaseService;
 import com.example.service.UIStepService;
+import org.apache.log4j.Logger;
 import org.quartz.*;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.TestNG;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Job 的实例要到该执行它们的时候才会实例化出来。每次 Job 被执行，一个新的 Job 实例会被创建。
  * 其中暗含的意思就是你的 Job 不必担心线程安全性，因为同一时刻仅有一个线程去执行给定 Job 类的实例，甚至是并发执行同一 Job 也是如此。
- * @DisallowConcurrentExecution 保证上一个任务执行完后，再去执行下一个任务，这里的任务是同一个任务
  */
+
 @DisallowConcurrentExecution
 public class SchedulerJob implements Job,Serializable {
 
@@ -32,8 +30,14 @@ public class SchedulerJob implements Job,Serializable {
 	@Autowired
 	private UIStepService uiStepService;
 
+	@Autowired
+	private RabbitTemplate template;
+
+	private static final Logger LOG = Logger.getLogger(SchedulerJob.class);
+
 	@Override
 	public void execute(JobExecutionContext context) {
+		LOG.info("当前任务由任务调度触发！触发时间为：" + new Date());
 		JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 		String caseIds = dataMap.getString("jobParam");
 		String[] caseIdArr = caseIds.split(",");
@@ -59,10 +63,11 @@ public class SchedulerJob implements Job,Serializable {
 			dateMapDetail[i][1] = uiStepList;
 		}
 		UICaseController.setDateMap(dateMapDetail);
-		TestNG testNG = new TestNG();
-		Class[] listenerClass = {ExtentTestNGIReporterListener.class};
-		testNG.setListenerClasses(Arrays.asList(listenerClass));
-		testNG.setTestClasses(new Class[]{ExcuteCase.class});
-		testNG.run();
+		template.convertAndSend("ExcuteTest", uiCaseList.get(0).getId());
+//		TestNG testNG = new TestNG();
+//		Class[] listenerClass = {ExtentTestNGIReporterListener.class};
+//		testNG.setListenerClasses(Arrays.asList(listenerClass));
+//		testNG.setTestClasses(new Class[]{ExcuteCase.class});
+//		testNG.run();
 	}
 }

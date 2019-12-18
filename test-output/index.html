@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Command_line_suite">
-              <span class="suite-name border-passed">Command line suite</span>
+              <span class="suite-name border-failed">Command line suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods passed suite-Command_line_suite"> (hide)</a> <!-- hide-methods passed suite-Command_line_suite -->
-                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods passed suite-Command_line_suite"> (show)</a> <!-- show-methods passed suite-Command_line_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods failed suite-Command_line_suite"> (hide)</a> <!-- hide-methods failed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods failed suite-Command_line_suite"> (show)</a> <!-- show-methods failed suite-Command_line_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Command_line_suite">
+                    <div class="method-list-content failed suite-Command_line_suite">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="com.example.excute.ExcuteCase" hash-for-method="excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...)">excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...)</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="com.example.excute.ExcuteCase" hash-for-method="excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...)">excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Command_line_suite -->
+                    </div> <!-- method-list-content failed suite-Command_line_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,22 +117,48 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Command_line_suite" class="panel Command_line_suite">
-          <div class="suite-Command_line_suite-class-passed">
+          <div class="suite-Command_line_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.example.excute.ExcuteCase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...)">
-                  </a> <!-- excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...) -->
+                  <a name="excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...)">
+                  </a> <!-- excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...) -->
                   <span class="method-name">excute</span>
-                  <span class="parameters">(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132c630], org.testng.TestRunner@70220e0c)</span>
+                  <span class="parameters">(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047aa8], org.testng.TestRunner@2487fb15)</span>
+                  <div class="stack-trace">java.lang.AssertionError: null
+	at com.example.excute.ExcuteCase.actionsAction(ExcuteCase.java:284)
+	at com.example.excute.ExcuteCase.doAllAction(ExcuteCase.java:194)
+	at com.example.excute.ExcuteCase.excuteStep(ExcuteCase.java:114)
+	at com.example.excute.ExcuteCase.excute(ExcuteCase.java:75)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at com.example.rabbitmq.ConsumeMq.consume(ConsumeMq.java:37)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120)
+	at org.springframework.amqp.rabbit.listener.adapter.DelegatingInvocableHandler.invoke(DelegatingInvocableHandler.java:130)
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:61)
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:196)
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:129)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1542)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1468)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1456)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1451)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1400)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:875)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:859)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:78)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1142)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1048)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-passed -->
+          </div> <!-- suite-Command_line_suite-class-failed -->
         </div> <!-- panel Command_line_suite -->
         <div panel-name="test-xml-Command_line_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -188,12 +214,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'excute')
 data.setCell(0, 2, 'com.example.excute.ExcuteCase')
-data.setCell(0, 3, 3893);
+data.setCell(0, 3, 33487);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 33 seconds</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -205,7 +231,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...)</span>
+              <span class="reporter-method-name">excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...)</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com</span>
                 <span class="reporter-method-output">执行的步骤名称为：输入搜索内容</span>
@@ -214,9 +240,11 @@ return data;
                 <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input></span>
                 <span class="reporter-method-output">输入参数为：百度一下</span>
                 <span class="reporter-method-output">执行的步骤名称为：点击百度一下</span>
-                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">选择的Action为：点击alert的确定按钮</span>
                 <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//input[@id='su']</span>
                 <span class="reporter-method-output">获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input></span>
+                <span class="reporter-method-output">执行接受Alert操作</span>
+                <span class="reporter-method-output">执行接受Alert操作时发生异常：org.openqa.selenium.NoAlertPresentException: Alert not found</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -240,8 +268,10 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="test-method">
-                <span class="method-name">excute(com.example.model.UICase@6d849a51, [com.example.model.UIStep@7a786c23, com.example.model.UIStep@1132...)</span>
-                <span class="method-start">6 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">excute(com.example.model.UICase@347089a3, [com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047a...)</span>
+                <span class="method-start">9 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
