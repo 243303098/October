@@ -3,10 +3,11 @@ package com.example.quartz;
 import com.example.controller.UICaseController;
 import com.example.model.UICase;
 import com.example.model.UIStep;
+import com.example.rabbitmq.ConsumeMq;
 import com.example.service.UICaseService;
 import com.example.service.UIStepService;
-import org.apache.log4j.Logger;
 import org.quartz.*;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.io.Serializable;
@@ -33,11 +34,13 @@ public class SchedulerJob implements Job,Serializable {
 	@Autowired
 	private RabbitTemplate template;
 
-	private static final Logger LOG = Logger.getLogger(SchedulerJob.class);
+	private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SchedulerJob.class);
 
 	@Override
 	public void execute(JobExecutionContext context) {
-		LOG.info("当前任务由任务调度触发！触发时间为：" + new Date());
+		//重置重试次数
+		ConsumeMq.setRetryCount(0);
+		LOGGER.info("当前任务由任务调度触发！触发时间为：" + new Date());
 		JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 		String caseIds = dataMap.getString("jobParam");
 		String[] caseIdArr = caseIds.split(",");

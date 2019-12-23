@@ -6,6 +6,7 @@ import com.example.model.Project;
 import com.example.model.UICase;
 import com.example.model.UIModule;
 import com.example.model.UIStep;
+import com.example.rabbitmq.ConsumeMq;
 import com.example.service.ProjectService;
 import com.example.service.UICaseService;
 import com.example.service.UIModuleService;
@@ -106,12 +107,14 @@ public class UICaseController {
         UIModule uiModule = new UIModule();
         uiModule.setProjectid(projectId);
         List<Integer> moduleIdList = new ArrayList();
+        List<UIModule> useredModuleList = new ArrayList<>();
         if (!StringUtil.isNull(moduleId)) {
             String[] modulearr = moduleId.split(",");
             for (String s : modulearr) {
                 moduleIdList.add(Integer.valueOf(s));
+                useredModuleList.add(uiModuleService.selectByKey(s));
             }
-            modelAndView.addObject("useredModuleList", uiModuleService.getUIModuleByIdIn(moduleIdList));
+            modelAndView.addObject("useredModuleList", useredModuleList);
             modelAndView.addObject("isAdd", "0");
         } else {
             modelAndView.addObject("useredModuleList", "");
@@ -194,6 +197,7 @@ public class UICaseController {
             dateMap[i][1] = uiStepList;
         }
         setDateMap(dateMap);
+        ConsumeMq.setRetryCount(0);
         template.convertAndSend("ExcuteTest", uiCase.getId());
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
@@ -232,6 +236,7 @@ public class UICaseController {
             dateMapDetail[i][1] = uiStepList;
         }
         setDateMap(dateMapDetail);
+        ConsumeMq.setRetryCount(0);
         template.convertAndSend("ExcuteTest", list.get(0));
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;

@@ -57,6 +57,10 @@ public class ExcuteCase {
 
     @Test(dataProvider = "initData")
     public void excute(UICase uiCase, List<UIStep> uiStepList, ITestContext context) {
+        ExcuteLog excuteLog = new ExcuteLog();
+        excuteLog.setProjectid(uiCase.getProjectid());
+        excuteLog.setId(ExcuteCase.getExcuteId());
+        ExcuteLogController.getInstance().getExcuteLogService().updateNotNull(excuteLog);
         List<UIStep> uiSteps = JSON.parseArray(JSON.toJSONString(uiStepList), UIStep.class);
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
@@ -69,6 +73,7 @@ public class ExcuteCase {
         Reporter.log("使用的浏览器为：" + Configuration.browser + "打开的默认URL为：" + Configuration.baseUrl);
         Selenide.clearBrowserCookies();
         open("/");
+        Reporter.log(String.valueOf(uiSteps.size()));
         //遍历uiSteps，执行具体的Step
         for (int i = 0; i < uiSteps.size(); i++) {
             Reporter.log("执行的步骤名称为：" + uiSteps.get(i).getName());

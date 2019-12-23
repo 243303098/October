@@ -2,11 +2,10 @@ package com.example.rabbitmq;
 
 import com.example.excute.ExcuteCase;
 import com.example.excute.TestNGSimpleReport;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-import org.testng.Reporter;
 import org.testng.TestNG;
 import java.util.Arrays;
 
@@ -22,7 +21,7 @@ public class ConsumeMq {
 
     private static Integer retryCount = 0;
 
-    private static final Logger LOG = Logger.getLogger(ConsumeMq.class);
+    private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ConsumeMq.class);
 
     @RabbitHandler
     public void consume(Integer caseId) {
@@ -32,7 +31,7 @@ public class ConsumeMq {
             Class[] listenerClass = {TestNGSimpleReport.class};
             testNG.setListenerClasses(Arrays.asList(listenerClass));
             testNG.setTestClasses(new Class[]{ExcuteCase.class});
-            LOG.info("当前执行次数为第：" + getRetryCount() + "次, CaseId为：" + caseId);
+            LOGGER.info("当前执行次数为第" + getRetryCount() + "次, CaseId为：" + caseId);
             if (retryCount < 5) {
                 testNG.run();
             }

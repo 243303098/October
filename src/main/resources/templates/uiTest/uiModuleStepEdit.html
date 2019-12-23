@@ -85,7 +85,7 @@
                                                        th:value="${item.name}"/>
                                             </td>
                                             <td>
-                                                <select name="uiElementName" id="uiElementName" class="form-control">
+                                                <select name="uiElementName" id="uiElementName" class="form-control" autocomplete="on">
                                                     <option th:text="${item.uiElementName}" disabled selected
                                                             hidden></option>
                                                     <option th:each="uiElement : ${uiElementList}"

@@ -9,17 +9,31 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Command line suite</th></tr>
-<tr><td><a href="#t0">Command line test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">33,490</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Command line test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">12,904</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Command line suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Command line test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.example.excute.ExcuteCase</td><td><a href="#m0">excute</a></td><td rowspan="1">1576648957424</td><td rowspan="1">33487</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Command line suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Command line test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">com.example.excute.ExcuteCase</td><td><a href="#m0">excute</a></td><td rowspan="2">1576758258931</td><td rowspan="2">6641</td></tr><tr class="failedeven"><td><a href="#m1">excute</a></td></tr></tbody>
 </table>
-<h2>Command line test</h2><h3 id="m0">com.example.excute.ExcuteCase#excute</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th></tr><tr class="param stripe"><td>com.example.model.UICase@347089a3</td><td>[com.example.model.UIStep@7f698f7, com.example.model.UIStep@2047aa8]</td><td>org.testng.TestRunner@2487fb15</td></tr><tr><th colspan="3">Messages</th></tr><tr><td colspan="3"><div class="messages">使用的浏览器为：Chrome打开的默认URL为：https://www.baidu.com<br/>执行的步骤名称为：输入搜索内容<br/>选择的Action为：元素做输入操作<br/>查找的locationType为：xpath元素路径为：//input[@id='kw']<br/>获取到的元素为：<input autocomplete="off" class="s_ipt" id="kw" maxlength="255" name="wd" type="text"></input><br/>输入参数为：百度一下<br/>执行的步骤名称为：点击百度一下<br/>选择的Action为：点击alert的确定按钮<br/>查找的locationType为：xpath元素路径为：//input[@id='su']<br/>获取到的元素为：<input class="bg s_btn" id="su" type="submit" value="百度一下"></input><br/>执行接受Alert操作<br/>执行接受Alert操作时发生异常：org.openqa.selenium.NoAlertPresentException: Alert not found</div></td></tr><tr><th colspan="3">Exception</th></tr><tr><td colspan="3"><div class="stacktrace">java.lang.AssertionError: null
-	at com.example.excute.ExcuteCase.actionsAction(ExcuteCase.java:284)
-	at com.example.excute.ExcuteCase.doAllAction(ExcuteCase.java:194)
-	at com.example.excute.ExcuteCase.excuteStep(ExcuteCase.java:114)
-	at com.example.excute.ExcuteCase.excute(ExcuteCase.java:75)
+<h2>Command line test</h2><h3 id="m0">com.example.excute.ExcuteCase#excute</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th></tr><tr class="param stripe"><td>com.example.model.UICase@1c0b8f97</td><td>[com.example.model.UIStep@686f9fbf, com.example.model.UIStep@4dc2900a, com.example.model.UIStep@603c91f, com.example.model.UIStep@65c9e3f3, com.example.model.UIStep@714f1a92, com.example.model.UIStep@28549671, com.example.model.UIStep@3087e955, com.example.model.UIStep@1a7b52cd, com.example.model.UIStep@13e9509a, com.example.model.UIStep@1f82bb88, com.example.model.UIStep@10c0346c, com.example.model.UIStep@506df183, com.example.model.UIStep@9d90694, com.example.model.UIStep@38da2dc, com.example.model.UIStep@127f9595, com.example.model.UIStep@2d218fb0, com.example.model.UIStep@6c0dc126, com.example.model.UIStep@2f80539, com.example.model.UIStep@6c45fbce, com.example.model.UIStep@4d38b5f9, com.example.model.UIStep@4fbe5989]</td><td>org.testng.TestRunner@78f11f71</td></tr><tr><th colspan="3">Messages</th></tr><tr><td colspan="3"><div class="messages">使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn</div></td></tr><tr><th colspan="3">Exception</th></tr><tr><td colspan="3"><div class="stacktrace">org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=76.0.3809.132)
+Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;
+System info: host: &apos;DELL18012504&apos;, ip: &apos;192.168.217.110&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_131&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 76.0.3809.132, chrome: {chromedriverVersion: 76.0.3809.126 (d80a294506b4..., userDataDir: C:\Users\D1M\AppData\Local\...}, goog:chromeOptions: {debuggerAddress: localhost:9058}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3426a776fd14685b7aaaa6760d48ca10
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:690)
+	at com.codeborne.selenide.Driver.clearCookies(Driver.java:28)
+	at com.codeborne.selenide.SelenideDriver.clearCookies(SelenideDriver.java:154)
+	at com.codeborne.selenide.Selenide.clearBrowserCookies(Selenide.java:784)
+	at com.example.excute.ExcuteCase.excute(ExcuteCase.java:70)
 	at java.util.ArrayList.forEach(ArrayList.java:1249)
-	at com.example.rabbitmq.ConsumeMq.consume(ConsumeMq.java:37)
+	at com.example.rabbitmq.ConsumeMq.consume(ConsumeMq.java:38)
 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171)
 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120)
 	at org.springframework.amqp.rabbit.listener.adapter.DelegatingInvocableHandler.invoke(DelegatingInvocableHandler.java:130)
@@ -37,6 +51,45 @@
 	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1142)
 	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1048)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.example.excute.ExcuteCase#excute</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th></tr><tr class="param stripe"><td>com.example.model.UICase@4ec840a0</td><td>[com.example.model.UIStep@3e224b06, com.example.model.UIStep@7e151c62, com.example.model.UIStep@eef9e46, com.example.model.UIStep@2c1b6457, com.example.model.UIStep@cd60a9, com.example.model.UIStep@566d8ade, com.example.model.UIStep@240223fb, com.example.model.UIStep@53ccd2f0, com.example.model.UIStep@38ef3808, com.example.model.UIStep@26e6eb1, com.example.model.UIStep@37c688fc, com.example.model.UIStep@2a897a6, com.example.model.UIStep@4346d083, com.example.model.UIStep@322c25bc, com.example.model.UIStep@312eca6d, com.example.model.UIStep@77fd6e49, com.example.model.UIStep@24a6afd, com.example.model.UIStep@5118aecd, com.example.model.UIStep@16a27b21, com.example.model.UIStep@ab1c09a]</td><td>org.testng.TestRunner@78f11f71</td></tr><tr><th colspan="3">Messages</th></tr><tr><td colspan="3"><div class="messages">使用的浏览器为：Chrome打开的默认URL为：https://www.makeupforever.cn</div></td></tr><tr><th colspan="3">Exception</th></tr><tr><td colspan="3"><div class="stacktrace">org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=76.0.3809.132)
+Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;
+System info: host: &apos;DELL18012504&apos;, ip: &apos;192.168.217.110&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_131&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 76.0.3809.132, chrome: {chromedriverVersion: 76.0.3809.126 (d80a294506b4..., userDataDir: C:\Users\D1M\AppData\Local\...}, goog:chromeOptions: {debuggerAddress: localhost:9058}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3426a776fd14685b7aaaa6760d48ca10
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions.deleteAllCookies(RemoteWebDriver.java:690)
+	at com.codeborne.selenide.Driver.clearCookies(Driver.java:28)
+	at com.codeborne.selenide.SelenideDriver.clearCookies(SelenideDriver.java:154)
+	at com.codeborne.selenide.Selenide.clearBrowserCookies(Selenide.java:784)
+	at com.example.excute.ExcuteCase.excute(ExcuteCase.java:70)
+	at java.util.ArrayList.forEach(ArrayList.java:1249)
+	at com.example.rabbitmq.ConsumeMq.consume(ConsumeMq.java:38)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120)
+	at org.springframework.amqp.rabbit.listener.adapter.DelegatingInvocableHandler.invoke(DelegatingInvocableHandler.java:130)
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:61)
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:196)
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:129)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1542)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1468)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1456)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1451)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1400)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:875)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:859)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:78)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1142)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1048)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

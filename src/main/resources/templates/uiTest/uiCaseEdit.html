@@ -154,15 +154,11 @@
 
     $("#uiTest").attr("class", "active");
 
-    //模块后面添加br隔开
-    var moduleList = document.getElementsByTagName("select");
-    var br = document.createElement("br");
-    // var deleteModule = document.createElement("<div class='col-sm-2'><a id='addModule' title='删除模块' class='btn btn-primary btn-block'>删除模块</a></div>");
-    for(var i = 0 ;i<moduleList.length -1 ;i++){
-        moduleList[i].after(br);
-    }
-
     $(document).ready(function () {
+        //模块后面添加br隔开
+        $('select').each(function () {
+            $(this).after("<br>");
+        });
         //提交
         $("#submitButton").click(function () {
 
