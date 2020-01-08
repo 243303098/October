@@ -71,7 +71,7 @@
                                 <div class="form-group"><label class="col-sm-2 control-label"><a
                                         class="text-danger">*</a>CASE名称：</label>
                                     <div class="col-sm-10">
-                                        <input id="name" name="name" type="text" class="form-control"
+                                        <input id="name" name="name" type="text" class="form-control" maxlength="200"
                                                th:value="${name}"/>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label">状态：</label>
                                     <div class="col-sm-10">
-                                        <input id="status" name="status" type="text" class="form-control"
+                                        <input id="status" name="status" type="number" class="form-control" maxlength="200" placeholder="输入1或0"
                                                th:value="${status}"/>
                                     </div>
                                 </div>

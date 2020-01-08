@@ -29,6 +29,7 @@ public class RabbitMqConfig {
     public static final String ROUTINGKEY_FAIL = "spring.boot.routingKey.failure";
     public static final String ROUTINGKEY = "spring.boot.routingKey";
     public static final String QUEUE_NAME = "ExcuteTest";
+    //public static final String QUEUE_NAME = "ExcuteTestPro";
     public static final String QUEUE_NAME_FAIL = "spring.demo.failure";
 
     //RabbitMQ的配置信息

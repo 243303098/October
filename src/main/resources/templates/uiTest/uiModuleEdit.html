@@ -69,35 +69,35 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label"><a class="text-danger">*</a>模块名称：</label>
                                     <div class="col-sm-10">
-                                        <input id="moduleName" name="moduleName" type="text" class="form-control" th:value="${moduleName}"/>
+                                        <input id="moduleName" name="moduleName" type="text" class="form-control" th:value="${moduleName}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label"><a class="text-danger">*</a>状态：</label>
                                     <div class="col-sm-10">
-                                        <input id="status" name="status" type="text" class="form-control" th:value="${status}"/>
+                                        <input id="status" name="status" type="text" class="form-control" th:value="${status}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">参数：</label>
                                     <div class="col-sm-10">
-                                        <input id="paramData" name="paramData" type="text" class="form-control" th:value="${paramData}"/>
+                                        <input id="paramData" name="paramData" type="text" class="form-control" th:value="${paramData}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">返回参数：</label>
                                     <div class="col-sm-10">
-                                        <input id="returnData" name="returnData" type="text" class="form-control" th:value="${returnData}"/>
+                                        <input id="returnData" name="returnData" type="text" class="form-control" th:value="${returnData}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">描述：</label>
                                     <div class="col-sm-10">
-                                        <input id="comment" name="comment" type="text" class="form-control" th:value="${comment}"/>
+                                        <input id="comment" name="comment" type="text" class="form-control" th:value="${comment}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -147,19 +147,25 @@
     $(document).ready(function () {
         //提交
         $("#submitButton").click(function(){
-            $(this).attr("disabled",　true);
             if($("#moduleName").val() == ""){
                 toastr.error('请输入名称','提示');
-                $(this).attr("disabled",　false);
                 return;
             }
             if($("#status").val() == ""){
                 toastr.error('请输入状态','提示');
-                $(this).attr("disabled",　false);
                 return;
             }
-
+            if($("#uiElementName").val() == ""){
+                toastr.error('请输入状态','提示');
+                return;
+            }
+            if($("#actionid").val() == ""){
+                toastr.error('请输入状态','提示');
+                return;
+            }
+            $(this).attr("disabled",　true);
             $("#formTag").submit();
+            $(this).attr("disabled",　false);
         });
     });
 </script>

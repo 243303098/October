@@ -198,6 +198,7 @@ public class UICaseController {
         }
         setDateMap(dateMap);
         ConsumeMq.setRetryCount(0);
+        //template.convertAndSend("ExcuteTestPro", uiCase.getId());
         template.convertAndSend("ExcuteTest", uiCase.getId());
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
@@ -238,6 +239,7 @@ public class UICaseController {
         setDateMap(dateMapDetail);
         ConsumeMq.setRetryCount(0);
         template.convertAndSend("ExcuteTest", list.get(0));
+        //template.convertAndSend("ExcuteTestPro", list.get(0));
         modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
     }

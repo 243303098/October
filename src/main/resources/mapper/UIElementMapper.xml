@@ -22,7 +22,7 @@
       and id = #{id,jdbcType=INTEGER}
     </if>
     <if test="name != null">
-      and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+      and name = #{name,jdbcType=VARCHAR}
     </if>
     <if test="projectid != null">
       and projectid = #{projectid,jdbcType=INTEGER}

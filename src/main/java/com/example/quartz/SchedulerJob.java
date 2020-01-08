@@ -67,10 +67,6 @@ public class SchedulerJob implements Job,Serializable {
 		}
 		UICaseController.setDateMap(dateMapDetail);
 		template.convertAndSend("ExcuteTest", uiCaseList.get(0).getId());
-//		TestNG testNG = new TestNG();
-//		Class[] listenerClass = {ExtentTestNGIReporterListener.class};
-//		testNG.setListenerClasses(Arrays.asList(listenerClass));
-//		testNG.setTestClasses(new Class[]{ExcuteCase.class});
-//		testNG.run();
+		//template.convertAndSend("ExcuteTestPro", uiCaseList.get(0).getId());
 	}
 }

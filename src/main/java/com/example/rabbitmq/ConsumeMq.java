@@ -16,6 +16,7 @@ import java.util.Arrays;
  */
 
 @Component
+//@RabbitListener(queues = "ExcuteTestPro")
 @RabbitListener(queues = "ExcuteTest")
 public class ConsumeMq {
 

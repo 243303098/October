@@ -69,28 +69,28 @@
 
                                 <div class="form-group"><label class="col-sm-2 control-label">JobName：</label>
                                     <div class="col-sm-10">
-                                        <input id="jobName" name="jobName" type="text" class="form-control" th:value="${jobName}"/>
+                                        <input id="jobName" name="jobName" type="text" class="form-control" th:value="${jobName}" maxlength="200"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">CRON：</label>
                                     <div class="col-sm-10">
-                                        <input id="cron" name="cron" type="text" class="form-control" th:value="${cron}"/>
+                                        <input id="cron" name="cron" type="text" class="form-control" th:value="${cron}" placeholder="请输入CRON表达式"/>
                                     </div>
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group"><label class="col-sm-2 control-label">JobParam：</label>
                                     <div class="col-sm-10">
-                                        <input id="jobParam" name="jobParam" type="text" class="form-control" th:value="${jobParam}"/>
+                                        <input id="jobParam" name="jobParam" type="text" class="form-control" th:value="${jobParam}" maxlength="200" placeholder="请输入需要执行的CASEID，多个CASE以,号隔开"/>
                                     </div>
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Description：</label>
                                     <div class="col-sm-10">
-                                        <input id="description" name="description" type="text" class="form-control" th:value="${description}"/>
+                                        <input id="description" name="description" type="text" class="form-control" th:value="${description}" maxlength="200"/>
                                     </div>
                                 </div>
 
