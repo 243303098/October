@@ -1,6 +1,6 @@
 package com.example.util;
 
-import org.apache.commons.httpclient.HttpStatus;
+import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;

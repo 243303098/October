@@ -28,8 +28,6 @@ public class RabbitMqConfig {
     public static final String EXCHANGE = "spring.boot.direct";
     public static final String ROUTINGKEY_FAIL = "spring.boot.routingKey.failure";
     public static final String ROUTINGKEY = "spring.boot.routingKey";
-    public static final String QUEUE_NAME = "ExcuteTest";
-    //public static final String QUEUE_NAME = "ExcuteTestPro";
     public static final String QUEUE_NAME_FAIL = "spring.demo.failure";
 
     //RabbitMQ的配置信息
@@ -43,7 +41,8 @@ public class RabbitMqConfig {
     private String password;
     @Value("${spring.rabbitmq.virtual-host}")
     private String virtualHost;
-
+    @Value("${spring.rabbitmq.name}")
+    private String mqName;
 
     //建立一个连接容器，类型数据库的连接池
     @Bean
@@ -90,7 +89,7 @@ public class RabbitMqConfig {
      */
     @Bean
     public Queue queue() {
-        return new Queue(QUEUE_NAME, true); //队列持久
+        return new Queue(mqName, true); //队列持久
 
     }
     @Bean

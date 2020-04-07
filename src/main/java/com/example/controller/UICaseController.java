@@ -12,9 +12,9 @@ import com.example.service.UICaseService;
 import com.example.service.UIModuleService;
 import com.example.service.UIStepService;
 import com.example.tools.StringUtil;
-import kotlin.jvm.Synchronized;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
@@ -49,6 +49,9 @@ public class UICaseController {
     private UIStepService uiStepService;
 
     private static Object dateMap[][];
+
+    @Value("${spring.rabbitmq.name}")
+    private String mqName;
 
 
     @RequestMapping(value = "/uiTest/caseManage", method = RequestMethod.GET)
@@ -173,34 +176,35 @@ public class UICaseController {
      * @param id
      * @return
      */
-    @Synchronized
     @RequestMapping(value = "/uiTest/excuteCase", method = RequestMethod.POST)
     public ModelAndView excuteCase(Integer id) throws IOException, TimeoutException {
         ModelAndView modelAndView = new ModelAndView();
-        List<UICase> uiCaseList = new ArrayList<>();
-        UICase uiCase = uiCaseService.selectByKey(id);
-        uiCaseList.add(uiCase);
-        List<Integer> moduleIdList = new ArrayList();
-        Object dateMap[][] = new Object[uiCaseList.size()][2];
-        for (int i = 0; i < uiCaseList.size(); i++) {
-            List<UIStep> uiStepList = new ArrayList<>();
-            UIStep uiStep = new UIStep();
-            String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
-            for (String s : modulearr) {
-                moduleIdList.add(Integer.valueOf(s));
+        synchronized(this){
+            List<UICase> uiCaseList = new ArrayList<>();
+            UICase uiCase = uiCaseService.selectByKey(id);
+            uiCaseList.add(uiCase);
+            List<Integer> moduleIdList = new ArrayList();
+            Object dateMap[][] = new Object[uiCaseList.size()][2];
+            for (int i = 0; i < uiCaseList.size(); i++) {
+                List<UIStep> uiStepList = new ArrayList<>();
+                UIStep uiStep = new UIStep();
+                String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
+                for (String s : modulearr) {
+                    moduleIdList.add(Integer.valueOf(s));
+                }
+                for (int j = 0; j < moduleIdList.size(); j++) {
+                    uiStep.setModuleid(moduleIdList.get(j));
+                    uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+                }
+                dateMap[i][0] = uiCaseList.get(i);
+                dateMap[i][1] = uiStepList;
             }
-            for (int j = 0; j < moduleIdList.size(); j++) {
-                uiStep.setModuleid(moduleIdList.get(j));
-                uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
-            }
-            dateMap[i][0] = uiCaseList.get(i);
-            dateMap[i][1] = uiStepList;
+            setDateMap(dateMap);
+            ConsumeMq.setRetryCount(0);
+            //template.convertAndSend("ExcuteTestPro", uiCase.getId());
+            template.convertAndSend(mqName, uiCase.getId());
+            modelAndView.setViewName("uiTest/uiCaseManage");
         }
-        setDateMap(dateMap);
-        ConsumeMq.setRetryCount(0);
-        //template.convertAndSend("ExcuteTestPro", uiCase.getId());
-        template.convertAndSend("ExcuteTest", uiCase.getId());
-        modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
     }
 
@@ -210,37 +214,38 @@ public class UICaseController {
      * @param json
      * @return
      */
-    @Synchronized
     @RequestMapping(value = "/uiTest/excuteAllCase", method = RequestMethod.POST)
     public ModelAndView excuteCase(@RequestBody JSONArray json) {
         ModelAndView modelAndView = new ModelAndView();
-        List<UICase> uiCaseList;
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < json.size(); i++) {
-            list.add(Integer.valueOf(json.get(i).toString()));
-        }
-        uiCaseList = uiCaseService.getUICaseByIdIn(list);
-        Object dateMapDetail[][] = new Object[uiCaseList.size()][2];
-        for (int i = 0; i < uiCaseList.size(); i++) {
-            List<Integer> moduleIdList = new ArrayList();
-            List<UIStep> uiStepList = new ArrayList<>();
-            UIStep uiStep = new UIStep();
-            String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
-            for (String s : modulearr) {
-                moduleIdList.add(Integer.valueOf(s));
+        synchronized(this){
+            List<UICase> uiCaseList;
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < json.size(); i++) {
+                list.add(Integer.valueOf(json.get(i).toString()));
             }
-            for (int j = 0; j < moduleIdList.size(); j++) {
-                uiStep.setModuleid(moduleIdList.get(j));
-                uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+            uiCaseList = uiCaseService.getUICaseByIdIn(list);
+            Object dateMapDetail[][] = new Object[uiCaseList.size()][2];
+            for (int i = 0; i < uiCaseList.size(); i++) {
+                List<Integer> moduleIdList = new ArrayList();
+                List<UIStep> uiStepList = new ArrayList<>();
+                UIStep uiStep = new UIStep();
+                String[] modulearr = uiCaseList.get(i).getModuleid().split(",");
+                for (String s : modulearr) {
+                    moduleIdList.add(Integer.valueOf(s));
+                }
+                for (int j = 0; j < moduleIdList.size(); j++) {
+                    uiStep.setModuleid(moduleIdList.get(j));
+                    uiStepList.addAll(uiStepService.getUIStepBy(uiStep));
+                }
+                dateMapDetail[i][0] = uiCaseList.get(i);
+                dateMapDetail[i][1] = uiStepList;
             }
-            dateMapDetail[i][0] = uiCaseList.get(i);
-            dateMapDetail[i][1] = uiStepList;
+            setDateMap(dateMapDetail);
+            ConsumeMq.setRetryCount(0);
+            template.convertAndSend(mqName, list.get(0));
+            //template.convertAndSend("ExcuteTestPro", list.get(0));
+            modelAndView.setViewName("uiTest/uiCaseManage");
         }
-        setDateMap(dateMapDetail);
-        ConsumeMq.setRetryCount(0);
-        template.convertAndSend("ExcuteTest", list.get(0));
-        //template.convertAndSend("ExcuteTestPro", list.get(0));
-        modelAndView.setViewName("uiTest/uiCaseManage");
         return modelAndView;
     }
 

@@ -10,6 +10,8 @@ import org.quartz.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,6 +37,9 @@ public class SchedulerJob implements Job,Serializable {
 	private RabbitTemplate template;
 
 	private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SchedulerJob.class);
+
+	@Value("${spring.rabbitmq.name}")
+	private String mqName;
 
 	@Override
 	public void execute(JobExecutionContext context) {
@@ -66,7 +71,7 @@ public class SchedulerJob implements Job,Serializable {
 			dateMapDetail[i][1] = uiStepList;
 		}
 		UICaseController.setDateMap(dateMapDetail);
-		template.convertAndSend("ExcuteTest", uiCaseList.get(0).getId());
+		template.convertAndSend(mqName, uiCaseList.get(0).getId());
 		//template.convertAndSend("ExcuteTestPro", uiCaseList.get(0).getId());
 	}
 }

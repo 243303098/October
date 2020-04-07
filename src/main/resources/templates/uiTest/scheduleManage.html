@@ -84,9 +84,14 @@
                                     </tr>
                                     </tfoot>
                                 </table>
-                                <div class="col-sm-12 m-b-xs">
+                                <div class="col-sm-5 m-b-xs">
                                     <a id="excuteAll" th:href="@{/toEditSchedulePage(id='',jobName='',cron='',jobParam='',description='',jobProject='')}" class="btn btn-primary btn-block" type="submit"><i
                                             class="fa fa-plus"></i>&nbsp;&nbsp;<strong>新增任务</strong>&nbsp;&nbsp;
+                                    </a>
+                                </div>
+                                <div class="col-sm-5 m-b-xs">
+                                    <a id="refresh" th:href="@{/refreshSchedule}" class="btn btn-primary btn-block" type="submit"><i
+                                            class="fa fa-refresh"></i>&nbsp;&nbsp;<strong>刷新</strong>&nbsp;&nbsp;
                                     </a>
                                 </div>
                             </div>

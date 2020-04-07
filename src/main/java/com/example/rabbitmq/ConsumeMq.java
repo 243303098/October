@@ -16,8 +16,8 @@ import java.util.Arrays;
  */
 
 @Component
-//@RabbitListener(queues = "ExcuteTestPro")
-@RabbitListener(queues = "ExcuteTest")
+@RabbitListener(queues = "ExcuteTestPro")
+//@RabbitListener(queues = "ExcuteTest")
 public class ConsumeMq {
 
     private static Integer retryCount = 0;

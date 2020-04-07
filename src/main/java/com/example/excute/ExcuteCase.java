@@ -12,8 +12,8 @@ import com.example.controller.UICaseController;
 import com.example.model.ExcuteLog;
 import com.example.model.UICase;
 import com.example.model.UIStep;
-import com.example.tools.HttpRequestUtil;
 import com.example.tools.StringUtil;
+import com.example.util.HttpClientUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -65,8 +65,9 @@ public class ExcuteCase {
         Configuration.browser = uiSteps.get(0).getBrowsertype();
         Configuration.baseUrl = uiSteps.get(0).getUrl();
         Configuration.reportsFolder = "C:\\workspace\\report";
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.timeout = 30000;
+        Selenide.close();
         //传递项目ID
         context.setAttribute("projectId", uiCase.getProjectid());
         //输出UICaseId以便插入日志
@@ -86,22 +87,6 @@ public class ExcuteCase {
     public Object[][] initData() {
         return UICaseController.getDateMap();
     }
-
-//    部署之后暂时不删除该文件
-//    @AfterMethod
-//    public void initReport(){
-//        File file = new File("D:\\workspace\\SpringBootDemo-master\\demo-test\\src\\main\\resources\\templates\\report.html");
-//        //File file = new File("report.html");
-//        if (file != null){
-//            System.gc();
-//            if (file.delete()){
-//                System.out.println("删除文件成功");
-//            }else {
-//                System.out.println("删除文件失败");
-//            }
-//
-//        }
-//    }
 
     /**
      * 执行具体的操作步骤
@@ -300,8 +285,8 @@ public class ExcuteCase {
                 }
 
             case OPEN:
-                HttpRequestUtil httpRequestUtil = new HttpRequestUtil();
-                httpRequestUtil.ynchronousGetRequests(uiStep.getDatakey());
+                HttpClientUtils httpRequestUtil = new HttpClientUtils();
+                Assert.assertEquals(httpRequestUtil.sendHttpGet(uiStep.getDatakey()).getStatusLine().getStatusCode(),200);
                 break;
             case OPENBR:
                 open(uiStep.getDatakey());
@@ -322,7 +307,7 @@ public class ExcuteCase {
     private void executeCheckAction(UIStep uiStep) {
         switch (actionKey) {
             case EQUALTEXT:
-                Reporter.log("期望相等且预期值为：" + uiStep.getDatakey() + "实际值为：" + selenideElement.getText());
+                Reporter.log("期望相等且预期值为：" + uiStep.getDatakey() + "，实际值为：" + selenideElement.getText());
                 selenideElement.waitUntil(Condition.matchesText(uiStep.getDatakey()), 30000);
                 break;
             case NOTEQUALTEXT:
