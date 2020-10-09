@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Command_line_suite">
-              <span class="suite-name border-failed">Command line suite</span>
+              <span class="suite-name border-passed">Command line suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods failed suite-Command_line_suite"> (hide)</a> <!-- hide-methods failed suite-Command_line_suite -->
-                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods failed suite-Command_line_suite"> (show)</a> <!-- show-methods failed suite-Command_line_suite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods passed suite-Command_line_suite"> (hide)</a> <!-- hide-methods passed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods passed suite-Command_line_suite"> (show)</a> <!-- show-methods passed suite-Command_line_suite -->
                     </span>
-                    <div class="method-list-content failed suite-Command_line_suite">
+                    <div class="method-list-content passed suite-Command_line_suite">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="com.example.excute.ExcuteCase" hash-for-method="excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...)">excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...)</a> <!-- method navigator-link -->
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="com.example.excute.ExcuteCase" hash-for-method="excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...)">excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Command_line_suite -->
+                    </div> <!-- method-list-content passed suite-Command_line_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,139 +117,22 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Command_line_suite" class="panel Command_line_suite">
-          <div class="suite-Command_line_suite-class-failed">
+          <div class="suite-Command_line_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.example.excute.ExcuteCase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...)">
-                  </a> <!-- excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...) -->
+                  <a name="excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...)">
+                  </a> <!-- excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...) -->
                   <span class="method-name">excute</span>
-                  <span class="parameters">(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd74864)</span>
-                  <div class="stack-trace">io.github.bonigarcia.wdm.WebDriverManagerException: io.github.bonigarcia.wdm.WebDriverManagerException: chromedriver &lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;chromedriverLATEST_RELEASE Mirror&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;!-- Bootstrap --&gt;
-    &lt;link href=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;
-    &lt;style&gt;
-      #fork{position:fixed;top:0;right:0;_position:absolute;z-index: 10000;}
-      .bottom{margin: 20px auto; width: 100%; text-align: center;}
-      .container{width: 1080px; margin: 50px auto;}
-    &lt;/style&gt;
-  &lt;head&gt;
-  &lt;body&gt;
-    &lt;a href=&quot;https://github.com/cnpm/cnpmjs.org&quot; id=&quot;fork&quot; target=&quot;_blank&quot;&gt;
-        &lt;img alt=&quot;Fork me on GitHub&quot; src=&quot;//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;div class=&quot;container&quot;&gt;
-      &lt;h1&gt;Mirror index of &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
-&lt;hr&gt;
-&lt;pre&gt;&lt;a href=&quot;../&quot;&gt;../&lt;/a&gt;
-&lt;/pre&gt;
-&lt;hr&gt;
-
-    &lt;/div&gt;
-
-      &lt;hr/&gt;
-      &lt;div class=&quot;bottom&quot;&gt;
-        Copyright &amp;copy; &lt;a href=&quot;https://github.com/cnpm&quot; target=&quot;_blank&quot;&gt;cnpm&lt;/a&gt;
-        |
-        &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
- for WIN64 not found in http://npm.taobao.org/mirrors/chromedriver
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:774)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:771)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:764)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:258)
-	at com.codeborne.selenide.webdriver.WebDriverBinaryManager.setupChrome(WebDriverBinaryManager.java:19)
-	at com.codeborne.selenide.webdriver.WebDriverBinaryManager.setupBinaryPath(WebDriverBinaryManager.java:10)
-	at com.codeborne.selenide.webdriver.WebDriverFactory.createWebDriver(WebDriverFactory.java:45)
-	at com.codeborne.selenide.drivercommands.CreateDriverCommand.createDriver(CreateDriverCommand.java:39)
-	at com.codeborne.selenide.impl.WebDriverThreadLocalContainer.createDriver(WebDriverThreadLocalContainer.java:126)
-	at com.codeborne.selenide.impl.WebDriverThreadLocalContainer.getAndCheckWebDriver(WebDriverThreadLocalContainer.java:120)
-	at com.codeborne.selenide.WebDriverRunner.getAndCheckWebDriver(WebDriverRunner.java:89)
-	at com.codeborne.selenide.impl.StaticDriver.getAndCheckWebDriver(StaticDriver.java:47)
-	at com.codeborne.selenide.SelenideDriver.getAndCheckWebDriver(SelenideDriver.java:150)
-	at com.codeborne.selenide.drivercommands.Navigator.navigateTo(Navigator.java:65)
-	at com.codeborne.selenide.drivercommands.Navigator.open(Navigator.java:28)
-	at com.codeborne.selenide.SelenideDriver.open(SelenideDriver.java:66)
-	at com.codeborne.selenide.Selenide.open(Selenide.java:41)
-	at com.example.excute.ExcuteCase.excute(ExcuteCase.java:77)
-	at java.util.ArrayList.forEach(ArrayList.java:1249)
-	at com.example.rabbitmq.ConsumeMq.consume(ConsumeMq.java:37)
-	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:171)
-	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:120)
-	at org.springframework.amqp.rabbit.listener.adapter.DelegatingInvocableHandler.invoke(DelegatingInvocableHandler.java:130)
-	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:61)
-	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:196)
-	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:129)
-	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1542)
-	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1468)
-	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1456)
-	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1451)
-	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1400)
-	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:875)
-	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:859)
-	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:78)
-	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1142)
-	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1048)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: io.github.bonigarcia.wdm.WebDriverManagerException: chromedriver &lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;chromedriverLATEST_RELEASE Mirror&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;!-- Bootstrap --&gt;
-    &lt;link href=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;
-    &lt;style&gt;
-      #fork{position:fixed;top:0;right:0;_position:absolute;z-index: 10000;}
-      .bottom{margin: 20px auto; width: 100%; text-align: center;}
-      .container{width: 1080px; margin: 50px auto;}
-    &lt;/style&gt;
-  &lt;head&gt;
-  &lt;body&gt;
-    &lt;a href=&quot;https://github.com/cnpm/cnpmjs.org&quot; id=&quot;fork&quot; target=&quot;_blank&quot;&gt;
-        &lt;img alt=&quot;Fork me on GitHub&quot; src=&quot;//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png&quot;&gt;
-    &lt;/a&gt;
-    &lt;div class=&quot;container&quot;&gt;
-      &lt;h1&gt;Mirror index of &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
-&lt;hr&gt;
-&lt;pre&gt;&lt;a href=&quot;../&quot;&gt;../&lt;/a&gt;
-&lt;/pre&gt;
-&lt;hr&gt;
-
-    &lt;/div&gt;
-
-      &lt;hr/&gt;
-      &lt;div class=&quot;bottom&quot;&gt;
-        Copyright &amp;copy; &lt;a href=&quot;https://github.com/cnpm&quot; target=&quot;_blank&quot;&gt;cnpm&lt;/a&gt;
-        |
-        &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
- for WIN64 not found in http://npm.taobao.org/mirrors/chromedriver
-	at io.github.bonigarcia.wdm.WebDriverManager.downloadAndExport(WebDriverManager.java:573)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:545)
-	... 66 more
-... Removed 28 stack frames
-</div> <!-- stack-trace -->
+                  <span class="parameters">(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d45a, com.example.model.UIStep@701d76e2, com.example.model.UIStep@1758f335, com.example.model.UIStep@365f37dc, com.example.model.UIStep@1f4d9e49, com.example.model.UIStep@4fc5124, com.example.model.UIStep@54edcbd5, com.example.model.UIStep@1b43e743, com.example.model.UIStep@688f9db4, com.example.model.UIStep@e1c84f0, com.example.model.UIStep@34155585, com.example.model.UIStep@30e8c5bb, com.example.model.UIStep@241e9c2f, com.example.model.UIStep@4ecfb758, com.example.model.UIStep@50687a79, com.example.model.UIStep@26dba8d2, com.example.model.UIStep@7674b7c2], org.testng.TestRunner@1b737ec9)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-failed -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
         </div> <!-- panel Command_line_suite -->
         <div panel-name="test-xml-Command_line_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -305,12 +188,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'excute')
 data.setCell(0, 2, 'com.example.excute.ExcuteCase')
-data.setCell(0, 3, 27485);
+data.setCell(0, 3, 19056);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 27 seconds</span>
+              <span class="suite-total-time">Total running time: 19 seconds</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -322,9 +205,90 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...)</span>
+              <span class="reporter-method-name">excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...)</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">使用的浏览器为：Chrome打开的默认URL为：https://www.tissotwatches.cn</span>
+                <span class="reporter-method-output">使用的浏览器为：firefox打开的默认URL为：http://testircloud.iresearchdata.cn/one-media/login</span>
+                <span class="reporter-method-output">18</span>
+                <span class="reporter-method-output">执行的步骤名称为：1</span>
+                <span class="reporter-method-output">选择的Action为：元素做输入操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：.//*[@id='app']/div/div/form/div[1]/div/div/input</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请输入用户名" type="text" value></input></span>
+                <span class="reporter-method-output">输入参数为：iris</span>
+                <span class="reporter-method-output">执行的步骤名称为：2</span>
+                <span class="reporter-method-output">选择的Action为：元素做输入操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：.//*[@id='app']/div/div/form/div[2]/div/div/input</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请输入密码" type="password" value></input></span>
+                <span class="reporter-method-output">输入参数为：123456</span>
+                <span class="reporter-method-output">执行的步骤名称为：3</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：.//*[@id='app']/div/div/form/div[3]/div/button</span>
+                <span class="reporter-method-output">获取到的元素为：<button class="el-button el-button--primary" data-v-68a944d1 type="button" value>登录</button></span>
+                <span class="reporter-method-output">执行的步骤名称为：1</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//a[contains(text(),'投放管理')]</span>
+                <span class="reporter-method-output">获取到的元素为：<a class data-v-3288c69c href="/one-media/management" type>投放管理</a></span>
+                <span class="reporter-method-output">执行的步骤名称为：2</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//tbody//tr[1]//span[contains(text(),'编辑')]</span>
+                <span class="reporter-method-output">获取到的元素为：<span>编辑</span></span>
+                <span class="reporter-method-output">执行的步骤名称为：3</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：.//*[@id='app']/div/div[3]/div[3]/div/div[2]/div/div[2]/div[2]/div/div/input</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请选择" readonly="readonly" type="text" value="抖音"></input></span>
+                <span class="reporter-method-output">执行的步骤名称为：4</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//span[text() = '淘宝直播']</span>
+                <span class="reporter-method-output">获取到的元素为：<span>淘宝直播</span></span>
+                <span class="reporter-method-output">执行的步骤名称为：5</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//input[@placeholder='请输入KOL关键词']</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请输入KOL关键词" readonly="readonly" type="text" value></input></span>
+                <span class="reporter-method-output">执行的步骤名称为：6</span>
+                <span class="reporter-method-output">选择的Action为：元素做输入操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//input[@placeholder='请输入KOL关键词']</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请输入KOL关键词" type="text" value></input></span>
+                <span class="reporter-method-output">输入参数为：店铺测试001</span>
+                <span class="reporter-method-output">执行的步骤名称为：7</span>
+                <span class="reporter-method-output">选择的Action为：强制等待</span>
+                <span class="reporter-method-output">获取到的元素为：null</span>
+                <span class="reporter-method-output">强制等待3S</span>
+                <span class="reporter-method-output">执行的步骤名称为：8</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//span[contains(text(), '店铺测试001')]</span>
+                <span class="reporter-method-output">获取到的元素为：<span class="name" data-v-868ba82c>店铺测试001</span></span>
+                <span class="reporter-method-output">执行的步骤名称为：9</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//input[@placeholder='选择日期']</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" name placeholder="选择日期" type="text" value></input></span>
+                <span class="reporter-method-output">执行的步骤名称为：10</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：html/body/div[6]/div[1]/div/div[2]/table[1]/tbody/tr[4]/td[6]/div</span>
+                <span class="reporter-method-output">获取到的元素为：<div>18</div></span>
+                <span class="reporter-method-output">执行的步骤名称为：11</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：.//*[@id='app']/div/div[3]/div[3]/div/div[2]/div/div[2]/div[7]/div/div/input</span>
+                <span class="reporter-method-output">获取到的元素为：<input autocomplete="off" class="el-input__inner" placeholder="请选择" readonly="readonly" type="text" value></input></span>
+                <span class="reporter-method-output">执行的步骤名称为：12</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//span[text() = '16']//parent::li</span>
+                <span class="reporter-method-output">获取到的元素为：<li class="el-select-dropdown__item" data-v-36aa87bc type value="0">16</li></span>
+                <span class="reporter-method-output">执行的步骤名称为：13</span>
+                <span class="reporter-method-output">选择的Action为：强制等待</span>
+                <span class="reporter-method-output">获取到的元素为：null</span>
+                <span class="reporter-method-output">强制等待3S</span>
+                <span class="reporter-method-output">执行的步骤名称为：14</span>
+                <span class="reporter-method-output">选择的Action为：元素做点击操作</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//span[contains(text(),'添加')]</span>
+                <span class="reporter-method-output">获取到的元素为：<span>添加</span></span>
+                <span class="reporter-method-output">执行的步骤名称为：15</span>
+                <span class="reporter-method-output">选择的Action为：校验元素是否存在</span>
+                <span class="reporter-method-output">查找的locationType为：xpath元素路径为：//div[@class = 'detail-info']//div[@class = 'manage-table']//tbody//tr</span>
+                <span class="reporter-method-output">获取到的元素为：<tr class="el-table__row">1
+淘宝直播
+店铺测试001
+9cf6f29b2b61d601eaa611987852b1dc
+-
+删除</tr></span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -348,10 +312,8 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">excute(com.example.model.UICase@21b08288, [com.example.model.UIStep@15eea6e1], org.testng.TestRunner@1bd748...)</span>
-                <span class="method-start">9 ms</span>
+                <span class="method-name">excute(com.example.model.UICase@56f992d5, [com.example.model.UIStep@a257062, com.example.model.UIStep@6719d...)</span>
+                <span class="method-start">3 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

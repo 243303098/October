@@ -208,7 +208,7 @@
                 checkID[i] = $(this).val();
             });
             if (checkID.length < 1) {
-                toastr.error('请输入选择执行CASE', '提示');
+                toastr.error('请选择需要执行的CASE', '提示');
                 return;
             }
             $(this).attr("disabled",　true);

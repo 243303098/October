@@ -343,8 +343,8 @@ public class ExcuteCase {
             case SWITCHWINDOW:
                 try {
                     Reporter.log("根据参数：" + uiStep.getDatakey() + "切换至新窗口");
-                    //nameOrHandleOrTitle
-                    Selenide.switchTo().window(uiStep.getDatakey());
+                    //根据index切换窗口
+                    Selenide.switchTo().window(Integer.valueOf(uiStep.getDatakey()));
                     break;
                 } catch (Exception e) {
                     Reporter.log("切换窗口时发生异常：" + e.toString());

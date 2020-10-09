@@ -32,6 +32,8 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
         //设置重新执行次数为0
         ConsumeMq.setRetryCount(0);
         List<ITestResult> list = new ArrayList<>();
+        Integer projectId = null;
+
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> suiteResults = suite.getResults();
             for (ISuiteResult suiteResult : suiteResults.values()) {
@@ -39,13 +41,14 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
                 IResultMap passedTests = testContext.getPassedTests();
                 IResultMap failedTests = testContext.getFailedTests();
                 IResultMap skippedTests = testContext.getSkippedTests();
+                projectId = Integer.valueOf(testContext.getAttribute("projectId").toString());
                 list.addAll(this.listTestResult(passedTests));
                 list.addAll(this.listTestResult(failedTests));
                 list.addAll(this.listTestResult(skippedTests));
             }
         }
         this.sort(list);
-        this.outputResult(list);
+        this.outputResult(list, projectId);
     }
 
     private ArrayList<ITestResult> listTestResult(IResultMap resultMap) {
@@ -63,7 +66,7 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
         });
     }
 
-    private void outputResult(List<ITestResult> list) {
+    private void outputResult(List<ITestResult> list, Integer projectId) {
         Boolean flag = true;
         int successCount = 0;
         for (ITestResult result : list) {
@@ -105,8 +108,8 @@ public class TestNGSimpleReport implements ITestListener, IReporter {
         } else {
             excuteLog.setStatus("FAILURE");
             //若发生错误则发送邮件通知
-            //Project project = BaseConfigController.getInstance().getProjectService().selectByKey(projectId);
-            //MailController.getInstance().getMailService().sendSimpleMail(project.getMail(), "异常通知", "FAILURE，请登录后台查看具体Report");
+            Project project = BaseConfigController.getInstance().getProjectService().selectByKey(projectId);
+            MailController.getInstance().getMailService().sendSimpleMail(project.getMail(), "异常通知", "FAILURE，请登录后台查看具体Report");
         }
         ExcuteLogController.getInstance().getExcuteLogService().updateNotNull(excuteLog);
     }

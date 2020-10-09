@@ -23,11 +23,14 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public void sendSimpleMail(String to, String subject, String content) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);//收信人
-        message.setSubject(subject);//主题
-        message.setText(content);//内容
-        message.setFrom(from);//发信人
-        mailSender.send(message);
+        String[] toarr = to.split(",");
+        for (int i = 0; i < toarr.length; i++) {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(toarr[i]);//收信人
+            message.setSubject(subject);//主题
+            message.setText(content);//内容
+            message.setFrom(from);//发信人
+            mailSender.send(message);
+        }
     }
 }
